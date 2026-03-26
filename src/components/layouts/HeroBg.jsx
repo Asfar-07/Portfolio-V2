@@ -25,8 +25,8 @@ export default function HeroBg() {
         }
     },[])
   return (
-    <>
-      <div className="hero-bg fixed w-full h-dvh inset-0 z-0">
+    <div className='fixed w-full h-screen inset-0 z-0'>
+      <div className="hero-bg w-full h-screen">
       </div>
       <div className="stars" id="stars" ref={starDiv}></div>
       <div className="clouds">
@@ -37,6 +37,6 @@ export default function HeroBg() {
           <div className="cloud cloud-5"></div>
           <div className="cloud cloud-6"></div>
         </div>
-    </>
+    </div>
   );
 }

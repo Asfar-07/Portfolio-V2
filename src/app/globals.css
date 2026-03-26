@@ -1,22 +1,41 @@
 @import "tailwindcss";
 
 *{
-  padding: 0;
+  /* padding: 0; */
   /* margin: 0; */
   box-sizing: border-box;
   
 }
+@font-face {
+  font-family: 'ZenDots';
+  src: url('/fonts/ZenDots-Regular.woff2') format('woff2'),
+       url('/fonts/ZenDots-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/Outfit-Regular.woff2') format('woff2'),
+       url('/fonts/Outfit-Regular.woff') format('woff');
+  font-weight: 400; 
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --p-bg-dark:#050818; 
   --p-bg-deep: #000631;
   --p-bg-light: #030E51;
   --s-bg-deep: #8B2FFF;
   --s-bg-light: #e040fb;
-  --cyan-mark: #00e5ff;
+  --cyan-mark: #00E7FF;
   --neon-blue: #2979ff;
   --p-font: white;
   --s-font: #e8f4f8;
-  --header1-text:clamp(3rem,calc(7vw + 1rem),4.8rem);
-  --para-text:clamp(.8rem, calc(2vw + .1rem), 1rem) ;
+  --header1-text:clamp(3rem,calc(7vw + 1rem),3.8rem);
+  --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem);
 }
 body {
   padding: 0;
@@ -24,16 +43,30 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0f0520;
   width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
+  height: 100vh; 
 }
 h1{
   font-size:var(--header1-text);
+  font-family: ZenDots;
   line-height: normal ;
 }
+h2{
+  font-family: ZenDots; 
+  font-size: 36px;
+}
+h3{
+  font-family: ZenDots; 
+  font-size: 36px; 
+}
+h5{
+  font-size: 1.05rem ;
+}
 p{
-  font-size: var(--para-text);
+  font-size: var(--para-text) ; 
+  font-family: 'Outfit', sans-serif;
   letter-spacing: 1.1px;
+  line-height: normal;
+  font-weight: lighter ;
 }
 .btn{
   padding:10px 25px;
