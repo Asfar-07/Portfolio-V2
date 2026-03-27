@@ -4,7 +4,7 @@ import '../../styles/hero.css'
 
 export default function Hero() {
   return (
-    <div className="home w-full h-dvh text-(--p-font) relative z-3">
+    <div className="home w-full h-dvh text-(--p-font) relative z-3" id="home">
       <main className="h-full m-auto relative  z-3  w-[88%] max-w-350 min-w-100 text-(--p-font) max-sm:min-w-full" style={{margin:"auto"}}>
         <aside className='h-full flex flex-col gap-5 justify-center max-md:items-center'>
           <h1 className=' font-bold m-0 max-md:text-center w-full'>HI, I'M <br></br> <span className=' ml-[10%] max-md:m-0'>ASFAR</span></h1>
@@ -21,20 +21,43 @@ export default function Hero() {
   );
 }
 function Hero_Ground(){
-  return(
+  return (
     <>
-     <section className="hero-ground flex justify-baseline absolute -bottom-8 w-full h-90 ">
-      <Image src="/images/Front_Ground.webp"  alt="Ground Image" fill className='ground-img w-full h-full ' priority/>
-        <div className='set-rocks w-[50%] relative overflow-hidden max-md:w-full'>
-          <Image src="/images/Rocks_Left.png" alt="Rocks Image" width={500} height={500} className='rocks-img absolute bottom-0 left-0 w-[80%]  min-w-[380px] h-52 max-md:w-[90%] max-sm::h-45' priority/>
-        </div>
-        <div className='set-rocks r-right w-[50%] relative overflow-hidden max-md:hidden'>
-          <Image src="/images/Frame_6.png" alt="Rocks Image" width={500} height={500} className='rocks-img absolute bottom-0 right-0 w-[80%] min-w-[380px] h-56 max-md:w-[90%] max-sm::h-45' priority/>
+      <section className="hero-ground  absolute -bottom-8 w-full h-90 ">
+        <Image
+          src="/images/Front_Ground.webp"
+          alt="Ground Image"
+          width={5000}
+          height={5000}
+          className="ground-img w-full absolute bottom-0 left-0 object-cover object-center h-full"
+          priority
+        />
+        <div className="front-rocks flex justify-baseline w-full h-full">
+          <div className="set-rocks w-[50%] relative overflow-hidden max-md:w-full">
+            <Image
+              src="/images/Rocks_Left.png"
+              alt="Rocks Image"
+              width={500}
+              height={500}
+              className="rocks-img absolute bottom-0 left-0 w-[80%]  min-w-[380px] h-52 max-md:w-[90%] max-sm::h-45"
+              priority
+            />
+          </div>
+          <div className="set-rocks r-right w-[50%] relative overflow-hidden max-md:hidden">
+            <Image
+              src="/images/Frame_6.png"
+              alt="Rocks Image"
+              width={500}
+              height={500}
+              className="rocks-img absolute bottom-0 right-0 w-[80%] min-w-[380px] h-56 max-md:w-[90%] max-sm::h-45"
+              priority
+            />
+          </div>
         </div>
       </section>
-      <section className='ground-blur z-20  h-80 absolute bottom-0 w-full overflow-hidden'>
-        <div className=' h-40  bg-(--p-bg-deep) blur-sm'></div>
+      <section className="ground-blur z-20  h-80 absolute bottom-0 w-full overflow-hidden">
+        <div className=" h-40  bg-(--p-bg-deep) blur-sm"></div>
       </section>
     </>
-  )
+  );
 }
