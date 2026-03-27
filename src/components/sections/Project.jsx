@@ -1,4 +1,5 @@
 import React from "react";
+import { RevealWrapper } from "../ui/RevealWrapper";
 import "@/styles/project.css";
 
 export default function Project() {
@@ -9,13 +10,16 @@ export default function Project() {
     >
       <main className="w-[90%] max-w-350 m-auto max-md:w-full">
         <div>
+          <RevealWrapper type='wipe'>
           <h5 className=" uppercase tracking-[10px] mb-5">
             <span className="text-(--s-bg-deep)">//</span> showcase my works
           </h5>
           <h2 className=" uppercase font-bold">Project</h2>
           <div className="section-divider"></div>
+          </RevealWrapper>
           {/* display project here */}
           <section className="w-full grid grid-cols-3 gap-6 max-sm:grid-cols-1">
+            <RevealWrapper type="fadeUp" className={"project-card col-span-2 max-md:col-span-1"}>
             {/* each project */}
             <div className="project-card col-span-2 max-md:col-span-1">
               <div className="project-glow"></div>
@@ -48,7 +52,9 @@ export default function Project() {
               <div className="neon-corner tl"></div>
               <div className="neon-corner br"></div>
             </div>
+            </RevealWrapper>
             {/* each project */}
+            <RevealWrapper type="fadeUp" className={"project-card"}>
             <div className="project-card">
               <div className="project-glow"></div>
               <div className="project-img h-40 relative overflow-hidden">
@@ -74,7 +80,10 @@ export default function Project() {
               <div className="neon-corner tl"></div>
               <div className="neon-corner br"></div>
             </div>
+            </RevealWrapper>
+            
              {/* each project */}
+            <RevealWrapper type="fadeUp" className={"project-card"}>
             <div className="project-card">
               <div className="project-glow"></div>
               <div className="project-img h-40 relative overflow-hidden">
@@ -101,6 +110,8 @@ export default function Project() {
               <div className="neon-corner tl"></div>
               <div className="neon-corner br"></div>
             </div>
+            </RevealWrapper>
+            <RevealWrapper type="fadeUp" className={"project-card"}>
              {/* each project */}
             <div className="project-card">
               <div className="project-glow"></div>
@@ -127,6 +138,7 @@ export default function Project() {
               <div className="neon-corner tl"></div>
               <div className="neon-corner br"></div>
             </div>
+            </RevealWrapper>
           </section>
         </div>
       </main>

@@ -17,7 +17,7 @@ export function RevealWrapper({
 
     const ctx = gsap.context(() => {
       const animations = {
-        fadeUp: () =>
+        fadeUp: () => // element come from bottom
           gsap.fromTo(
             el,
             { opacity: 0, y: 50 },
@@ -27,7 +27,7 @@ export function RevealWrapper({
               scrollTrigger: { trigger: el, start: "top 85%" },
             }
           ),
-        fadeIn: () =>
+        fadeIn: () => // 0 to 1 opacity
           gsap.fromTo(
             el,
             { opacity: 0 },
@@ -36,7 +36,7 @@ export function RevealWrapper({
               scrollTrigger: { trigger: el, start: "top 85%" },
             }
           ),
-        wipe: () =>
+        wipe: () => //display element from left to right
           gsap.fromTo(
             el,
             { clipPath: "inset(0 100% 0 0)" },
@@ -46,7 +46,7 @@ export function RevealWrapper({
               scrollTrigger: { trigger: el, start: "top 80%" },
             }
           ),
-        stagger: () =>
+        stagger: () => // each element come from bottom one by one
           gsap.fromTo(
             el.children,
             { opacity: 0, y: 30 },

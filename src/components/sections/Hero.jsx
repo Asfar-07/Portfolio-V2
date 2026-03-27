@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
+import { RevealWrapper } from "../ui/RevealWrapper";
 import "../../styles/hero.css";
 
 export default function Hero() {
@@ -36,6 +37,7 @@ export default function Hero() {
           style={{ margin: "auto" }}
         >
           <aside className="h-full flex flex-col gap-5 justify-center max-md:items-center">
+          <RevealWrapper type="stagger" delay={1} className={"h-full flex flex-col gap-5 justify-center max-md:items-center"}>
             <h1 className=" font-bold m-0 max-md:text-center w-full">
               HI, I'M <br></br>{" "}
               <span className=" ml-[10%] max-md:m-0">ASFAR</span>
@@ -43,7 +45,7 @@ export default function Hero() {
             <span className="font-bold text-2xl max-sm:text-xl">
               Full Stack Developer
             </span>
-            <p className="w-[60%]  min-w-130 max-w-4xl text-justify max-sm:min-w-[90%]">
+              <p className="w-[60%]  min-w-130 max-w-4xl text-justify max-sm:min-w-[90%]">
               I create user-focused web applications that merge performance and
               simplicity through thoughtful design. Every project I build
               reflects a passion for modern development and meaningful user
@@ -57,6 +59,7 @@ export default function Hero() {
                 Download CV
               </button>
             </div>
+          </RevealWrapper>
           </aside>
         </main>
         <Hero_Ground handleLoad={handleLoad} />

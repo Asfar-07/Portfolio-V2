@@ -1,5 +1,6 @@
 import "@/styles/contact.css";
 import { Mail, MapPin, DoorOpen } from "lucide-react";
+import { RevealWrapper } from "../ui/RevealWrapper";
 
 export default function Contact() {
   return (
@@ -13,8 +14,10 @@ export default function Contact() {
           className="relative z-10 flex items-center gap-3 text-(--s-bg-light) mb-3
                       text-[0.72rem] font-semibold tracking-[0.12em] uppercase"
         >
+          <RevealWrapper type="wipe">
           <span className="w-6 h-px bg-(--s-bg-light)" />
           Get In Touch
+          </RevealWrapper>
         </div>
 
         {/* two-column layout */}
@@ -24,6 +27,7 @@ export default function Contact() {
         >
           {/* ── LEFT: contact info ── */}
           <div>
+            <RevealWrapper type="fadeIn" >
             <h3
               className="font-[Syne,sans-serif] text-[1.55rem] font-extrabold leading-[1.2]
                          tracking-tight text-(--p-font) mb-4"
@@ -131,9 +135,11 @@ export default function Contact() {
                 <Mail />
               </a>
             </div>
+            </RevealWrapper>
           </div>
 
           {/* ── RIGHT: form ── */}
+          <RevealWrapper type="fadeUp">
           <div className="bg-[#111120] border border-white/[0.07] rounded-3xl p-10 max-md:p-6">
             {/* row 1 */}
             <div className="grid grid-cols-2 gap-4 mb-4 max-sm:grid-cols-1">
@@ -221,6 +227,7 @@ export default function Contact() {
               Send Message →
             </button>
           </div>
+          </RevealWrapper>
         </div>
       </main>
     </section>
