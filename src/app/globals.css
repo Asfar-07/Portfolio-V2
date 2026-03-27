@@ -18,9 +18,9 @@
 @font-face {
   font-family: 'Outfit';
   src: url('/fonts/Outfit-Regular.woff2') format('woff2'),
-       url('/fonts/Outfit-Regular.woff') format('woff');
-  font-weight: 400; 
+       url('/fonts/Outfit-Regular.woff') format('woff');  
   font-style: normal;
+  font-weight: 200; 
   font-display: swap;
 }
 
@@ -66,9 +66,8 @@ p{
   font-family: 'Outfit', sans-serif;
   letter-spacing: 1.1px;
   line-height: normal;
-  font-weight: lighter ;
 }
 .btn{
-  padding:10px 25px;
+  padding:10px 25px; 
   cursor: pointer;
 }

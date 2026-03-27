@@ -1,0 +1,1 @@
+import { gsap, ScrollTrigger } from "./index";

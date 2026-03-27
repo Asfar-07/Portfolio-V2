@@ -6,10 +6,15 @@
      object-position:center;
      height: 100%;
      animation: moveWidth 1.5s ease-out;
+     animation-play-state: paused;
  }
- .front-rocks{
+ .rocks-img{
     animation: moveTO 2s ease-out;
+    animation-play-state: paused;
  }
+ .hero-loaded{
+  animation-play-state: running;
+}
 .set-rocks > div{
     position: absolute;
     bottom: -10px;
