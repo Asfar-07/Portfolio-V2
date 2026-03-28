@@ -8,7 +8,7 @@ export function heroGroundAnimation(parent,selectedChild) {
          scrollTrigger: {
           trigger: parent,
           start: "10% 50%",
-          end: "bottom 50%",
+          end: "bottom 20%",
           scrub: true,
         },
         ease:"power1"
@@ -30,7 +30,7 @@ export function heroRockAnimation(parent,selectedChild) {
         scrollTrigger: {
           trigger: parent,
           start: "10% 50%",
-          end: "bottom 50%",
+          end: "bottom 20%",
           scrub: true,
         },
         ease:"power1"
