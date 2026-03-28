@@ -52,12 +52,16 @@ export default function Hero() {
               experiences.
             </p>
             <div className="flex gap-5">
-              <button className="btn bg-(--s-bg-deep) font-bold">
+              <a href="#project" className="btn bg-(--s-bg-deep) font-bold">
                 View My Work
-              </button>
-              <button className="btn border border(--cyan-mark) font-bold">
+              </a>
+              <a 
+                href="/cv.pdf" 
+                download 
+                className="btn border border(--cyan-mark) font-bold"
+              >
                 Download CV
-              </button>
+              </a>
             </div>
           </RevealWrapper>
           </aside>

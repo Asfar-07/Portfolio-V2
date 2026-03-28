@@ -18,6 +18,7 @@
     overflow: hidden;
     transition: transform 0.3s, border-color 0.3s;
     cursor: pointer;
+    height: 100%;
 }
 .project-card:hover .project-glow {
     opacity: 1;
@@ -70,4 +71,8 @@
     border: 1px solid #df40fb88;
     color: var(--s-bg-light);
     letter-spacing: 0.05em;
+}
+.project-description {
+    font-size: 0.80rem;
+    color: rgba(255, 255, 255, 0.8);
 }

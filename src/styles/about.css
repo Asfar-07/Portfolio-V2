@@ -34,7 +34,7 @@
 }
 .count-works li > h4{
    font-family: ZenDots; 
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 900;
     display: block;
     color: var( --s-bg-light);

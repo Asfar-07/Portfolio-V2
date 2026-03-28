@@ -91,7 +91,8 @@ export default function Contact() {
             {/* social row */}
             <div className="flex gap-3 mt-6">
               <a
-                href="#"
+                href="https://github.com/Asfar-07"
+                target="_black"
                 title="GitHub"
                 className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#7a7a9a]
@@ -108,7 +109,8 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/asfar2003"
+                target="_black"
                 title="LinkedIn"
                 className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#7a7a9a]
@@ -126,6 +128,7 @@ export default function Contact() {
               </a>
               <a
                 href="mailto:asfarmuhammedns@gmail.com"
+                target="_black"
                 title="Email"
                 className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#7a7a9a] text-[1.1rem]

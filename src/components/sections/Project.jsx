@@ -32,7 +32,7 @@ export default function Project() {
                 </span>
                 <div className="flex justify-between"><h6 className="text-[1rem] mb-3 leading-5">DinoRyx </h6> <span className="text-[0.8rem] text-(--cyan-mark)">working</span></div>
                 
-                <p className="text-[0.85rem] leading-5 text-white mb-5">
+                <p className="project-description leading-5 mb-5">
                   A real-time Gym management platform with immersive data
                   visualization, custom WebGL charts, and live API integration
                   for dashboard.
@@ -65,7 +65,7 @@ export default function Project() {
                   Web Application
                 </span>
                 <h6 className="text-[1rem] mb-3 leading-5">E-Learning Website</h6>
-                <p className="text-[0.85rem] leading-5 text-white mb-5">
+                <p className="project-description leading-5  mb-5">
                  Built for the education sector with strong user authentication.
                 </p>
                 <div className="project-stack flex flex-wrap gap-2">
@@ -87,14 +87,14 @@ export default function Project() {
             <div className="project-card">
               <div className="project-glow"></div>
               <div className="project-img h-40 relative overflow-hidden">
-                <div className="project-num">02</div>
+                <div className="project-num">03</div>
               </div>
               <div className="project-about p-6">
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
                 <h6 className="text-[1rem] mb-3 leading-5">Portfolio-1 Website</h6>
-                <p className="text-[0.85rem] leading-5 text-white mb-5">
+                <p className="project-description leading-5  mb-5">
                    Personal portfolio to showcase my design and coding projects.
                 </p>
                 <div className="project-stack flex flex-wrap gap-2">
@@ -116,14 +116,14 @@ export default function Project() {
             <div className="project-card">
               <div className="project-glow"></div>
               <div className="project-img h-40 relative overflow-hidden">
-                <div className="project-num">02</div>
+                <div className="project-num">04</div>
               </div>
               <div className="project-about p-6">
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
                 <h6 className="text-[1rem] mb-3 leading-5">Coding Platform</h6>
-                <p className="text-[0.85rem] leading-5 text-white mb-5">
+                <p className=" project-description leading-5  mb-5">
                  Modern web app with virtual coding and a large code repository.
                 </p>
                 <div className="project-stack flex flex-wrap gap-2">
