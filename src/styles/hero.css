@@ -11,6 +11,8 @@
  .rocks-img{
     animation: moveTO 2s ease-out;
     animation-play-state: paused;
+    transform: translateY(0px);
+
  }
  .hero-loaded{
   animation-play-state: running;

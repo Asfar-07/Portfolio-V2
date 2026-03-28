@@ -5,7 +5,6 @@ import "../../styles/heroBg.css"
 export default function HeroBg() {
     const starDiv=useRef();
     useEffect(()=>{
-        console.log(starDiv.current);
         if (starDiv.current) {
           const starsContainer = starDiv.current;
           for (let i = 0; i < 120; i++) {

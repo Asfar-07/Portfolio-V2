@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef} from "react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
 import { RevealWrapper } from "../ui/RevealWrapper";
+import {useGSAP} from '@/hooks/useGSAP.js';
+import { heroRockAnimation, heroGroundAnimation } from "@/lib/gsap/animations";
 import "../../styles/hero.css";
 
 export default function Hero() {
@@ -72,9 +74,14 @@ export default function Hero() {
   );
 }
 function Hero_Ground({ handleLoad }) {
+  const groundRef = useRef(null);
+ const sectionRef = useGSAP((ref) => {
+    heroRockAnimation(ref.current,".rocks-img");
+    heroGroundAnimation(ref.current,groundRef.current);
+});
   return (
     <>
-      <section className="hero-ground  absolute -bottom-8 w-full h-90 ">
+      <section className="hero-ground  absolute -bottom-8 w-full h-90 " ref={sectionRef}>
         <Image
           src="/images/Front_Ground.webp"
           alt="Ground Image"
@@ -82,6 +89,7 @@ function Hero_Ground({ handleLoad }) {
           height={5000}
           onLoad={handleLoad}
           className="ground-img w-full absolute bottom-0 left-0 object-cover object-center h-full"
+          ref={groundRef}
           priority
         />
         <div className="front-rocks flex justify-baseline w-full h-full">
