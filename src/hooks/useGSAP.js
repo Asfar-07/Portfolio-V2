@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 
 
-export function useGSAP(callback) {
+export function useGSAP(callback,deps = []) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function useGSAP(callback) {
     }, ref);
 
     return () => ctx.revert();
-  }, []);
+  }, deps = []);
 
   return ref;
 }

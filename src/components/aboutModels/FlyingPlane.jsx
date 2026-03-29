@@ -1,8 +1,10 @@
 "use client"
 import React,{useEffect} from 'react'
+import { gsap } from '@/lib/gsap/index';
 import { useGraph } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { SkeletonUtils } from 'three-stdlib'
+import { revealPlaneModel } from '@/lib/gsap/animations';
 
 export function FlyingPlane(props) {
   const group = React.useRef()
@@ -10,11 +12,21 @@ export function FlyingPlane(props) {
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone)
   const { actions,names, mixer } = useAnimations(animations, group)
-  useEffect(() => {
 
-    actions[names[0]]?.play()
-    mixer.timeScale=1;
-  }, [actions, names,mixer])
+
+  useEffect(() => {
+    if (!mixer) return
+    actions[names[0]]?.play();
+    const parentDiv = document.querySelector(".plane-model");
+
+     const ctx = gsap.context(() => {
+      revealPlaneModel(parentDiv,mixer);
+    }, parentDiv);
+
+    return () => ctx.revert();
+  }, [mixer])
+
+
   return (
     <group ref={group} {...props} dispose={null} position={[0,-3.5,0]} rotation={[0.2,Math.PI,0]}>
       <group name="Sketchfab_Scene">

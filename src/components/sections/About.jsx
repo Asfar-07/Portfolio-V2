@@ -12,10 +12,8 @@ export default function About() {
         {/* left side of about section */}
         <section className="left-about max-md:w-full">
           {/* 3D model here */}
-          <figure>
-            <div className="w-full h-70 relative">
+          <figure>   
               <AboutExperience />
-            </div>
           </figure>
             <ul className="count-works">
               <li>

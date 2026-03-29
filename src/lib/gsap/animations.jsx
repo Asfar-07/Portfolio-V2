@@ -37,3 +37,40 @@ export function heroRockAnimation(parent,selectedChild) {
       });
     });  
 }
+export function revealPlaneModel(parent,mixer){
+  if (!parent) return;
+  if (!mixer) return;
+  planePassing(parent);
+  return  gsap.fromTo(mixer,{
+           timeScale: 1
+        },
+           {
+          timeScale: 0.1,
+          duration: 2,
+          scrollTrigger: {
+             trigger: parent, 
+             start: "50% 80%", 
+            //  markers:true,
+          },
+          ease:"power1.out"
+        }); 
+
+}
+function planePassing(parent){
+  return gsap.fromTo(parent,{
+           x:-200,
+           y:0
+        },
+           {
+          x:0,
+          y:0,
+          duration: 2,
+          scrollTrigger: {
+             trigger: parent, 
+             start: "50% 80%", 
+            //  markers:true,
+          },
+          ease:"power1.out"
+        }); 
+
+}
