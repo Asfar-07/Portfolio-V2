@@ -1,23 +1,22 @@
+"use client"
 import React from 'react'
 import "@/styles/about.css"
 import Image from 'next/image';
 import { RevealWrapper } from "../ui/RevealWrapper";
+import AboutExperience from '../aboutModels/AboutExperience';
 
 export default function About() {
   return (
     <div id='about' className="about w-full  text-(--p-font) relative z-3 p-[5rem_2rem] max-md:p-[3rem_1.5rem]">
       <main className="h-full grid grid-cols-[1fr_1.5fr] items-center w-[90%] max-w-350  gap-20  m-auto relative z-3 text-(--p-font) max-md:grid-cols-[1fr] max-md:gap-12 max-md:w-full">
+        {/* left side of about section */}
         <section className="left-about max-md:w-full">
-          <RevealWrapper type="fadeIn" className={"left-about max-md:w-full"}>
-            <div className="flex justify-center">
-              <Image
-                src="/images/About.png"
-                alt="about_image"
-                className="w-130 h-55"
-                width={500}
-                height={500}
-              />
+          {/* 3D model here */}
+          <figure>
+            <div className="w-full h-70 relative">
+              <AboutExperience />
             </div>
+          </figure>
             <ul className="count-works">
               <li>
                 <h4>Fresher</h4>
@@ -36,7 +35,6 @@ export default function About() {
                 <samp>Ideas to Build</samp>
               </li>
             </ul>
-          </RevealWrapper>
         </section>
         <section className="right-about max-md:w-full">
           <RevealWrapper type='wipe'>
