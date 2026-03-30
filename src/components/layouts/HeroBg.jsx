@@ -1,5 +1,6 @@
 "use client"
 import {useRef,useEffect} from 'react'
+import DroneExperience from '../models/DroneExperience';
 import "../../styles/heroBg.css"
 
 export default function HeroBg() {
@@ -24,18 +25,24 @@ export default function HeroBg() {
         }
     },[])
   return (
-    <div className='fixed w-full h-screen inset-0 z-0'>
-      <div className="hero-bg w-full h-screen">
-      </div>
+  <div className="fixed w-full h-screen inset-0 z-0">
+      <div className="hero-bg w-full h-screen"></div>
       <div className="stars" id="stars" ref={starDiv}></div>
       <div className="clouds">
-          <div className="cloud cloud-1"></div>
-          <div className="cloud cloud-2"></div>
-          <div className="cloud cloud-3"></div>
-          <div className="cloud cloud-4"></div>
-          <div className="cloud cloud-5"></div>
-          <div className="cloud cloud-6"></div>
-        </div>
+        <div className="cloud cloud-1"></div>
+        <div className="cloud cloud-2"></div>
+        <div className="cloud cloud-3"></div>
+        <div className="cloud cloud-4"></div>
+        <div className="cloud cloud-5"></div>
+        <div className="cloud cloud-6"></div>
+      </div>
+      <div>
+          <div className="moon-planet absolute bottom-[10%] right-0 h-100 w-[40%] max-sm:hidden">
+            {/* <figure >
+              <DroneExperience />
+            </figure> */}
+          </div>
+      </div>
     </div>
   );
 }

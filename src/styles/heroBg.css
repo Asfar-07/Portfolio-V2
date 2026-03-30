@@ -148,3 +148,23 @@
     to   { opacity: 1; }
   }
 
+.drone-model{
+  animation: moveDrone 20s linear infinite;
+}
+@keyframes moveDrone {
+  0% {
+    transform: translateX(0%) rotateY(0deg);
+  }
+  49.9999% {
+    transform: translateX(-800%) rotateY(0deg);
+  }
+  50% {
+    transform: translateX(-800%) rotateY(180deg);
+  }
+  99.9999% {
+    transform: translateX(0%) rotateY(180deg);
+  }
+  100%{
+    transform: translateX(0%) rotateY(0deg);
+  }
+}

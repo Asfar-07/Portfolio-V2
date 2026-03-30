@@ -33,11 +33,10 @@
     background-color: var(--cyan-mark);
 }
 .count-works li > h4{
-   font-family: ZenDots; 
     font-size: 1.9rem;
     font-weight: 900;
     display: block;
-    color: #6048e8;
+    color: var( --s-bg-light);
 }
 .count-works li > samp{
     color: rgba(255, 255, 255, 0.759);

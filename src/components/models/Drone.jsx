@@ -18,7 +18,7 @@ export function Drone(props) {
     actions[names[0]]?.play()
   }, [actions, names])
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} position={[0,0,3.5]} rotation={[0,-Math.PI/2,0]} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="octanian_droneFBX" rotation={[Math.PI / 2, 0, 0]}>
@@ -32,7 +32,7 @@ export function Drone(props) {
                         <group name="Object_9" scale={0.394} />
                         <group name="Octanian_Drone_Mesh" />
                         <skinnedMesh name="Object_10" geometry={nodes.Object_10.geometry} material={materials.octanian_drone} skeleton={nodes.Object_10.skeleton} >
-                          {/* <meshStandardMaterial color="pink" /> */}
+                          <meshStandardMaterial color="white" />
                         </skinnedMesh>
                       </group>
                     </group>
