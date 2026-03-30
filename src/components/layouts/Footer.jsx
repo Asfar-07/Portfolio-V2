@@ -4,15 +4,16 @@ export default function Footer() {
                        flex items-center justify-between
                        max-md:px-6 max-sm:flex-col relative z-20 max-sm:gap-2 max-sm:text-center">
       <span className="text-[#7a9a99] text-[0.82rem]">
-        © 2026 ASAFR MUAHAMMED — All systems online
+        © 2026 Asfar Muhammed N S. All rights reserved. 
       </span>
       <span className="text-[#7a9a99] text-[0.82rem]">
-        Built with{" "}
+        Do you know {" "} 
         <a
-          href="#"
-          className="text-(--s-bg-light) transition-colors duration-200 hover:text-[#00d9b4]"
+          href="https://en.wikipedia.org/wiki/Ikigai"
+          target="_black"
+          className="text-(--s-bg-light) font-bold transition-colors duration-200 hover:text-[#00d9b4]"
         >
-          precision
+           Ikigai?
         </a>
       </span>
     </footer>
