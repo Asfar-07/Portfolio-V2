@@ -61,8 +61,7 @@
 }
 
 .project-about code {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
     background: #df40fb1e;
     border: 1px solid #df40fb88;
@@ -70,6 +69,6 @@
     letter-spacing: 0.05em;
 }
 .project-description {
-    font-size: 0.80rem;
+    font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.8);
 }

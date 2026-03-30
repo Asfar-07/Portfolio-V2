@@ -12,7 +12,7 @@ export default function Project() {
         <div>
           <RevealWrapper type='wipe'>
           <h5 className=" uppercase tracking-[10px] mb-5">
-            <span className="text-(--s-bg-deep)">//</span> showcase my works
+            <span className="text-(--s-bg-light)">//</span> showcase my works
           </h5>
           <h2 className=" uppercase font-bold">Project</h2>
           <div className="section-divider"></div>
@@ -30,7 +30,8 @@ export default function Project() {
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
-                <div className="flex justify-between"><h6 className="text-[1rem] mb-3 leading-5">DinoRyx </h6> <span className="text-[0.8rem] text-(--cyan-mark)">working</span></div>
+                <div className="flex justify-between">
+                  <h6 className="text-[1.1rem] mb-3 font-bold leading-5">DinoRyx </h6> <span className="text-[0.8rem] text-(--cyan-mark)">working</span></div>
                 
                 <p className="project-description leading-5 mb-5">
                   A real-time Gym management platform with immersive data
@@ -64,7 +65,7 @@ export default function Project() {
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
-                <h6 className="text-[1rem] mb-3 leading-5">E-Learning Website</h6>
+                <h6 className="text-[1.1rem] mb-3 font-bold leading-5">E-Learning Website</h6>
                 <p className="project-description leading-5  mb-5">
                  Built for the education sector with strong user authentication.
                 </p>
@@ -93,7 +94,7 @@ export default function Project() {
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
-                <h6 className="text-[1rem] mb-3 leading-5">Portfolio-1 Website</h6>
+                <h6 className="text-[1.1rem] mb-3 font-bold leading-5">Portfolio-1 Website</h6>
                 <p className="project-description leading-5  mb-5">
                    Personal portfolio to showcase my design and coding projects.
                 </p>
@@ -122,7 +123,7 @@ export default function Project() {
                 <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
                   Web Application
                 </span>
-                <h6 className="text-[1rem] mb-3 leading-5">Coding Platform</h6>
+                <h6 className="text-[1.1rem] mb-3 font-bold leading-5">Coding Platform</h6>
                 <p className=" project-description leading-5  mb-5">
                  Modern web app with virtual coding and a large code repository.
                 </p>
