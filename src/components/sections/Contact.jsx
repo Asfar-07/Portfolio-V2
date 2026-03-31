@@ -1,13 +1,18 @@
+"use client";
 import "@/styles/contact.css";
 import { Mail, MapPin, DoorOpen } from "lucide-react";
 import { RevealWrapper } from "../ui/RevealWrapper";
+import Maintain from "../layouts/popup/maintain";
+import React from "react";
 
 export default function Contact() {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <section
       id="contact"
       className="relative w-full  text-(--p-font)z-3 p-[7rem_2rem] max-md:p-[5rem_1.5rem]"
     >
+      {isOpen && <Maintain setIsOpen={setIsOpen} />}
       <main className="w-[90%] max-w-350 m-auto max-md:w-full">
         {/* section label */}
         <div
@@ -221,6 +226,7 @@ export default function Contact() {
 
             {/* submit */}
             <button
+            onClick={()=>setIsOpen(true)}
               type="submit"
               className="w-full mt-4 bg-(--s-bg-deep) text-white rounded-xl py-4 text-[0.92rem]
                        font-semibold tracking-wide transition-all duration-200
