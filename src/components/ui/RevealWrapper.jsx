@@ -56,6 +56,17 @@ export function RevealWrapper({
               scrollTrigger: { trigger: el, start: "top 80%" },
             }
           ),
+        afterHeader: ()=>{
+          gsap.fromTo(
+            el,
+            { filter: "blur(0px)" , backgroundColor: "white"},
+            {
+              opacity: 1, y: 0, duration: 0.9, delay,
+              ease: "power3.out",
+              scrollTrigger: { trigger: el, start: "top 100%" },
+            }
+          )
+        }
       };
 
       animations[type]();

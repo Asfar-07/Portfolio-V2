@@ -6,6 +6,9 @@
   box-sizing: border-box;
   
 }
+html {
+  scroll-behavior: smooth;
+} 
 @font-face {
   font-family: 'Outfit';
   src: url('/fonts/Outfit-Regular.woff2') format('woff2'),
@@ -57,9 +60,8 @@ p{
 }
 .btn{ 
   color: #fff; 
-  padding: 12px 28px;
-   border-radius: 8px; 
-   border: none; 
+  padding: 10px 25px; 
+   border-radius: 8px;
    font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease; 
