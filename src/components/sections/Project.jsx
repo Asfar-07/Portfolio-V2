@@ -140,6 +140,33 @@ export default function Project() {
               <div className="neon-corner br"></div>
             </div>
             </RevealWrapper>
+            <RevealWrapper type="fadeUp" className={"project-card"}>
+            <div className="project-card">
+              <div className="project-glow"></div>
+              <div className="project-img h-40 relative overflow-hidden">
+                <div className="project-num">05</div>
+              </div>
+              <div className="project-about p-6">
+                <span className=" uppercase text-[0.6rem] tracking-wide text-(--s-bg-light) mb-2">
+                  Web Application
+                </span>
+                <h6 className="text-[1.1rem] mb-3 font-bold leading-5">this.Portfolio Website</h6>
+                <p className=" project-description leading-5  mb-5">
+                 Updated personal portfolio to showcase my design and coding projects.
+                </p>
+                <div className="project-stack flex flex-wrap gap-2">
+                     <code >Next js</code>
+                     <code>React js</code>
+                    <code >Tailwind CSS</code>
+                    <code >JavaScript</code>
+                    <code>Three js</code>
+                    <code>GSAP</code>
+                </div>
+              </div>
+              <div className="neon-corner tl"></div>
+              <div className="neon-corner br"></div>
+            </div>
+            </RevealWrapper>
           </section>
         </div>
       </main>
