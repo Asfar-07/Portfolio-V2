@@ -1,11 +1,15 @@
-#header a{
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-}
-#header a:hover{
-    color: var(--cyan-mark);
-}
-#header > div{
+#header > h4{
     font-family: 'Outfit', sans-serif;
     font-size: 30px;
+}
+.nav-hover-btn{
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    margin-inline-start: 40px;
+    text-transform: uppercase;
+}
+.floating-nav{
+    background-color: white;
 }
