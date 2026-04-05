@@ -13,7 +13,6 @@ export default function Header() {
   const { y:currentScrollY } = useWindowScroll();
 
   React.useEffect(() => {
-    console.log(currentScrollY);
     if (currentScrollY === 0) {
       setIsNavVisible(true);
       navContainer.current.classList.remove("floating-nav")
