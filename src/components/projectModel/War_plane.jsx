@@ -76,7 +76,7 @@ export function WarPlane(props) {
   return (
     <group
       ref={group}
-      position={[0, -0.4, -2]}
+      position={[0.01, -0.4, -2]}
       rotation={[0, 0, 0]}
       {...props}
       dispose={null}
