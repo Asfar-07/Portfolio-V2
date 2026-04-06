@@ -5,11 +5,10 @@ import * as THREE from 'three'
 export default function PlaneLight() {
   return (
     <>
-      <ambientLight intensity={1} color="#ffffff"/>
-      <directionalLight position={[5,5,5]} intensity={5} color="white"/>
-       <directionalLight position={[5,-2,-5]} intensity={5} color="white"/>
-      <spotLight position={[6,5,5]} intensity={100} penumbra={.2} angle={.11} color="white" />
-      <primitive object={new THREE.RectAreaLight("#A259FF")} />
+      <ambientLight intensity={3} color="#ffffff" position={[10,0,-10]}/>
+      <directionalLight position={[0,5,5]} intensity={10} color="#3F00FF"/>
+       <directionalLight position={[5,-5,5]} intensity={10} color="#3F00FF"/>
+      <primitive object={new THREE.RectAreaLight("#3F00FF")} />
     </>
   )
 }
