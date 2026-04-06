@@ -42,10 +42,10 @@ export function revealPlaneModel(parent,mixer){
   if (!mixer) return;
   planePassing(parent);
   return  gsap.fromTo(mixer,{
-           timeScale: 1
+           timeScale: 2
         },
            {
-          timeScale: 0.1,
+          timeScale: 0.7,
           duration: 2,
           scrollTrigger: {
              trigger: parent, 

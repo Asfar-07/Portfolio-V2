@@ -54,12 +54,15 @@ export default function Service() {
         </main>
       </section>
 
-      {/* plane model */}
+      {/* garage sections */}
       <section
         id="clip"
         ref={clipRef}
         className="relative flex justify-center w-full h-dvh overflow-hidden"
       >
+        <div className="show-project">
+          
+        </div>
         <div className=" relative h-full w-100 rounded-2xl overflow-hidden mask-clip-path">
           <img
             src="/images/Garege.webp"
