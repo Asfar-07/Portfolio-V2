@@ -1,0 +1,75 @@
+var projectData;
+export default  projectData=[
+    {
+    order: 1,
+    type: "web application",
+    name: "DinoRyx",
+    description: "A real-time Gym management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
+    display:"image",
+    image: "/images/projects/dinoryx.webp",
+    tool: [ "Microservices",
+            "Java",
+            "Spring",
+            "React",
+            "TypeScript",
+            "Api Gateway",
+            "CSS",
+            "Tailwind CSS",
+            "shadcn"]
+  },
+   {
+    order: 2,
+    type:"web application",
+    name: "E-Learning Website",
+    description: "Built for the education sector with strong user authentication.",
+    display:"image",
+    image: "/images/projects/E-Learning.webp",
+       tool: ["HTML",
+           "CSS",
+           "JavaScript",
+           "Java",
+           "Spring",
+           "OOBs"]
+  },{
+    order: 3,
+    type:"web application",
+    name: "Portfolio-1 Website",
+    description: "Personal portfolio to showcase my design and coding projects.",
+    display:"video",
+    image: "/images/projects/portfolio-v1",
+    tool: ["React",
+           "CSS",
+           "JavaScript",
+           "Node js",
+           "Express js",
+           "Three js",
+           "GSAP"]
+  },
+  {
+    order: 4,
+    type:"web application",
+    name: "Coding Platform",
+    description: "Modern web app with virtual coding and a large code repository.",
+    image: "/images/projects/codingplatform.webp",
+    tool: ["React",
+          "CSS",
+          "JavaScript",
+          "Python",
+          "Flask",
+          "Three js"]
+  },
+  {
+    order: 5,
+    type:"web application",
+    name: "this.Portfolio Website",
+    description: "Updated personal portfolio to showcase my design and coding projects.",
+    display:"image",
+    image: "/images/projects/codingplatform.webp",
+    tool: ["Next js",
+          "React",
+          "Tailwind CSS",
+          "JavaScript",
+          "Three js",
+          "GSAP"]
+  }
+]

@@ -3,7 +3,7 @@ import * as THREE from "three";
 import React,{useEffect,useRef, useState,useContext} from 'react'
 import { useThree, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from '@react-three/drei'
-import { ControllerContext, SpeedContext } from "../sections/Service";
+import { ControllerContext, SpeedContext } from "../sections/Project";
 
 export function WarPlane(props) {
   // const { viewport } = useThree();

@@ -2,14 +2,15 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Project from "@/components/sections/Project";
 import Contact from "@/components/sections/Contact";
-import Service from "@/components/sections/Service";
+import Experience from "@/components/sections/Experience";
+
 export default function Home() {
   return (
     <div >
       <Hero />
       <About />
+      <Experience />
       <Project />
-      <Service />
       <Contact />
     </div>
   );
