@@ -9,7 +9,7 @@ import projects from '@/store/db/projectData';
 import { displayTool } from '@/utils/displayTool';
 import { displayImage } from '@/utils/dispalyImage';
 import { ArrowLeftCircle, ArrowRightCircle,Check,CloudLightningIcon,LucideEdit, check } from 'lucide-react';
-import '@/styles/service.css'
+import '@/styles/project.css'
 
 gsap.registerPlugin(ScrollTrigger);
 const ControllerContext = React.createContext();
@@ -128,7 +128,7 @@ export default function Project() {
 
 
   return (
-    <div id="services" className="relative w-full text-(--p-font) z-3 ">
+    <div id="project" className="relative w-full text-(--p-font) z-3 ">
       <section className="w-full mb-7  text-(--p-font) relative z-3 p-[2rem_2rem] max-md:p-[2rem_1.5rem]">
         <main className="w-[90%] flex flex-col items-center max-w-350 m-auto max-md:w-full">
           <div className="text-sm uppercase ms:text-[10px]">
@@ -155,7 +155,7 @@ export default function Project() {
             className=" absolute left-0 top-0 size-full object-cover z-10"
           />
           <div className="absolute w-120 min-w-80 h-100 left-1/2 bottom-0  -translate-x-1/2  z-50 overflow-hidden">
-            <figure className="size-full">
+            <figure className="size-full overflow-hidden">
               <SpeedContext.Provider value={targetSpeed}>
                 <ControllerContext.Provider value={direction}>
                   <ProjectExperience />

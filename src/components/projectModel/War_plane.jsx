@@ -18,7 +18,7 @@ export function WarPlane(props) {
   useFrame((_, delta) => {
     currentSpeed.current += (speed - currentSpeed.current) * 0.1;
     if (pointer.current) {
-      const targetScale = speed > 20 ? 1 : 0.9; // move to front
+      const targetScale = speed > 20 ? 1.3 : 1.1; // move to front
       const targetY = speed > 20 ? 6.808 : 5.808; // move to top
       const rotationX = speed > 20 ? -0.333 : -0.033; // rotation to up
       if(speed > 20){

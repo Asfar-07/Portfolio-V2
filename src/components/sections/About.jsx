@@ -10,9 +10,9 @@ export default function About() {
       id="about"
       className="about w-full  text-(--p-font) relative z-3 p-[5rem_2rem] max-md:p-[3rem_1.5rem]"
     >
-      <main className="h-full grid grid-cols-[1fr_1.5fr] items-center w-[90%] max-w-350  gap-20  m-auto relative z-3 text-(--p-font) max-md:grid-cols-[1fr] max-md:gap-12 max-md:w-full">
+      <main className="h-full grid grid-cols-[1fr_1.5fr] items-center w-[90%] max-w-350  gap-20  m-auto relative z-3 text-(--p-font) max-md:grid-cols-[1fr] max-md: reverse max-md:gap-12 max-md:w-full">
         {/* left side of about section */}
-        <section className="left-about max-md:w-full">
+        <section className="left-about max-md:w-full max-md:order-2">
           {/* 3D model here */}
           <figure>
             <AboutExperience />
@@ -36,7 +36,7 @@ export default function About() {
             </li>
           </ul>
         </section>
-        <section className="right-about h-full flex flex-col justify-end max-md:w-full">
+        <section className="right-about h-full flex flex-col justify-end max-md:w-full max-md:order-1">
           <RevealWrapper type="wipe">
             <h5 className=" uppercase tracking-[10px] mb-5">
               <span className="text-(--s-bg-light)">//</span> About Me
