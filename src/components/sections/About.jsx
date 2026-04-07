@@ -8,9 +8,9 @@ export default function About() {
   return (
     <div
       id="about"
-      className="about w-full  text-(--p-font) relative z-3 p-[5rem_2rem] max-md:p-[3rem_1.5rem]"
+      className="about  text-(--p-font) relative p-[7rem_4rem] w-full max-md:p-[3rem_1.5rem]"
     >
-      <main className="h-full grid grid-cols-[1fr_1.5fr] items-center w-[90%] max-w-350  gap-20  m-auto relative z-3 text-(--p-font) max-md:grid-cols-[1fr] max-md: reverse max-md:gap-12 max-md:w-full">
+      <main className="h-full grid grid-cols-[1fr_1.5fr] items-center w-100% max-w-[1250px] m-auto  gap-20 relative z-3 text-(--p-font) max-md:grid-cols-[1fr] max-md: reverse max-md:gap-12 max-md:w-full">
         {/* left side of about section */}
         <section className="left-about max-md:w-full max-md:order-2">
           {/* 3D model here */}
