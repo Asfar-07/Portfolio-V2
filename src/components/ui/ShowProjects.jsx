@@ -10,13 +10,13 @@ export default function ShowProjects() {
         <p className="project-desc relative z-10 leading-none "></p>
       </div>
 
-      <div className="right-top absolute right-10 top-20 w-90 h-55 rounded-md overflow-hidden max-md:hidden">
+      <div className="right-top absolute right-10 top-20 w-90 h-55 p-5 rounded-md overflow-hidden max-md:hidden">
         <div className="project-image size-full">
           
         </div>
       </div>
 
-      <div className="left-bottom   absolute left-10 bottom-5 w-80 max-sm:w-full max-sm:left-0 ">
+      <div className="left-bottom   absolute left-10 bottom-5 p-5 w-80 max-sm:w-full max-sm:left-0 ">
         <div className="project-tools w-full flex gap-5  overflow-hidden  max-sm:justify-center"></div>
       </div>
     </div>

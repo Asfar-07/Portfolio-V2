@@ -19,7 +19,7 @@ export default function Project() {
     const [isNaming, setIsNaming] = useState(false);
     const [direction, setDirection] = useState(0); 
     const [targetSpeed, setTargetSpeed] = useState(5);
-    const [name, setName] = useState("You");
+    const [name, setName] = useState("Bot");
     const clipRef=useRef(null);
 
   useGSAP(() => {
@@ -168,7 +168,7 @@ export default function Project() {
             {name}
           </div>
           {/* controller model */}
-          <div className="plane-controller  opacity-0 flex justify-around items-center gap-5 absolute right-10 bottom-10 z-50 max-md:hidden">
+          <div className="plane-controller  opacity-0 flex justify-around p-5 items-center gap-5 absolute right-10 bottom-5 z-50 max-md:hidden">
             <button className=""
             onClick={() => {setTargetSpeed(50)
               setTimeout(()=>{setTargetSpeed(5)
