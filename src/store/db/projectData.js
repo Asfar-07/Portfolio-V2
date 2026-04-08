@@ -64,7 +64,7 @@ export default  projectData=[
     name: "this.Portfolio Website",
     description: "Updated personal portfolio to showcase my design and coding projects.",
     display:"image",
-    image: "/images/projects/codingplatform.webp",
+    image: "/images/projects/portfolio-v2.webp",
     tool: ["Next js",
           "React",
           "Tailwind CSS",
