@@ -96,7 +96,7 @@ export function WarPlane(props) {
                 <group
                   name="polySurface172"
                   position={[-0.825, 5.808, -1.092]}
-                  rotation={[-0.033, 0, 0]}
+                  rotation={[-0.033, -0.8, 0]}
                   ref={pointer}
                   scale={0.9}
                 >

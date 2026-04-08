@@ -55,7 +55,7 @@ export default function Hero() {
 
   return (
     <>
-      {!ready && <GeneralLoading />}
+      {/* {!ready && <GeneralLoading />} */}
       <div className="home w-full h-dvh text-(--p-font) relative z-3" id="home">
         <main
           className="h-full m-auto relative  z-30  w-[88%] max-w-350 min-w-100 text-(--p-font) max-sm:min-w-full"
@@ -123,12 +123,12 @@ function Hero_Ground({ handleLoad }) {
 });
   return (
     <>
-    <div className="hero-ground  absolute -bottom-8 h-90 w-full ">
-      <div className=" absolute inset-0 w-full h-full  z-10">
+    <div className="hero-ground  absolute -bottom-8 h-85 w-full ">
+      {/* <div className=" absolute inset-0 w-full h-full  z-10">
         <figure>
           <DroneExperience />
         </figure>
-      </div>
+      </div> */}
       <section className=" w-full h-full " ref={sectionRef}>
         <Image
           src="/images/Front_Ground.webp"

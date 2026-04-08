@@ -8,7 +8,7 @@ export function displayImage(path,typeDisplay){
     `;
   } else {
     return `
-      <img src="${path}" alt="web" class="size-full object-cover" loading="lazy">
+      <img src="${path}" alt="web" class="size-full rounded-md object-cover" loading="lazy">
     `;
   }
 }
