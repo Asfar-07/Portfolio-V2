@@ -55,7 +55,7 @@ export default function Hero() {
 
   return (
     <>
-      {/* {!ready && <GeneralLoading />} */}
+      {!ready && <GeneralLoading />}
       <div className="home w-full h-dvh text-(--p-font) relative z-3" id="home">
         <main
           className="h-full m-auto relative  z-30  w-[88%] max-w-350 min-w-100 text-(--p-font) max-sm:min-w-full"
