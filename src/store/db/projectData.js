@@ -21,7 +21,7 @@ export default  projectData=[
     order: 2,
     type:"web application",
     name: "E-Learning Website",
-    description: "Built for the education sector with strong user authentication.",
+    description: "A full-featured e-learning platform built with Spring Boot and MySQL, featuring Spring Security authentication, course management, JPA-based data handling, and an email notification system. Built with clean MVC architecture using Thymeleaf for dynamic UI rendering.",
     display:"image",
     image: "/images/projects/E-Learning.webp",
        tool: ["HTML",
@@ -34,7 +34,7 @@ export default  projectData=[
     order: 3,
     type:"web application",
     name: "Portfolio-1 Website",
-    description: "Personal portfolio to showcase my design and coding projects.",
+    description: "A responsive and animated personal portfolio built with React and Three.js, featuring 3D WebGL visuals, smooth GSAP animations, and a Node.js/Express backend for contact form handling. Designed for performance and modern user experience.",
     display:"video",
     image: "/images/projects/portfolio-v1",
     tool: ["React",
@@ -48,15 +48,10 @@ export default  projectData=[
   {
     order: 4,
     type:"web application",
-    name: "Coding Platform",
-    description: "Modern web app with virtual coding and a large code repository.",
+    name: "Social Media Web App",
+    description: "A real-time social media platform built as a college team project using Node.js and Socket.IO. Features include secure user authentication, public and private chat, user dashboard, search functionality, and a gaming section — all built with Express and Handlebars templating",
     image: "/images/projects/codingplatform.webp",
-    tool: ["React",
-          "CSS",
-          "JavaScript",
-          "Python",
-          "Flask",
-          "Three js"]
+    tool: ["Node.js", "Express.js", "Socket.IO", "Handlebars", "MongoDB", "CSS"]
   },
   {
     order: 5,

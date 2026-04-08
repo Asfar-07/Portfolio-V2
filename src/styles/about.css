@@ -36,7 +36,7 @@
     font-size: 1.9rem;
     font-weight: 900;
     display: block;
-    color: var( --s-bg-light);
+    color: white;
 }
 .count-works li > samp{
     color: rgba(255, 255, 255, 0.759);

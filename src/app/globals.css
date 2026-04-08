@@ -53,8 +53,7 @@ h3{
 h5{
   font-size: 1.05rem;
 }
-p{
-  font-size: var(--para-text) ; 
+p{ 
   line-height: normal;
 }
 .btn{ 

@@ -21,7 +21,7 @@ export function displayTool(tools){
                     tool.replaceAll(" ", "").toLowerCase()
             )
         ) {
-            result += `<div class="w-12 h-12 p-2 bg-[#030E51] rounded-lg cursor-pointer" title="${tool}">
+            result += `<div class="w-12 h-12 p-2 bg-[#ffffff] rounded-lg cursor-pointer" title="${tool}">
                 <img src="/images/icons/${tool.replaceAll(" ", "").toLowerCase()}.svg" alt="${tool}" class="size-full"/>
                     </div>`;
         }

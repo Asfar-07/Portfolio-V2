@@ -4,6 +4,7 @@ import { WarPlane } from "./War_plane";
 import { Suspense } from "react";
 import PlaneLight from "./PlaneLight";
 import React from "react";
+import { ContactShadows } from "@react-three/drei";
 
 export default function ProjectExperience() {
   
@@ -12,6 +13,7 @@ export default function ProjectExperience() {
       <Canvas camera={{ position: [0, 0, 0], fov: 45 }}>
         <Suspense fallback={null}>
           <WarPlane />
+           <ContactShadows scale={[16,16]} opacity={1}/>
         </Suspense>
         <PlaneLight />     
       </Canvas>

@@ -19,7 +19,7 @@ export default function Project() {
     const [isNaming, setIsNaming] = useState(false);
     const [direction, setDirection] = useState(0); 
     const [targetSpeed, setTargetSpeed] = useState(5);
-    const [name, setName] = useState("Bot");
+    const [name, setName] = useState("");
     const clipRef=useRef(null);
 
   useGSAP(() => {
@@ -84,7 +84,9 @@ export default function Project() {
          // CHANGE CONTENT
          clipAnimation.call(
            () => {
-             q(".project-name")[0].innerText = project.name;
+             q(".project-name").forEach((data)=>{
+              data.innerText = project.name
+             });
              q(".project-type")[0].innerHTML =project.type;
              q(".project-desc")[0].innerText = project.description;
              q(".project-image")[0].innerHTML = displayImage(project.image,project.display);
