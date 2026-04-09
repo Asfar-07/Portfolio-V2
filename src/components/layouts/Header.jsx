@@ -4,6 +4,7 @@ import "@/styles/header.css"
 import { useWindowScroll  } from 'react-use';
 import { Menu } from 'lucide-react';
 import { gsap } from 'gsap';
+import Link from 'next/link';
 
 export default function Header() {
   const [lastScrolled, setLastScrolled] = React.useState(0);
@@ -67,9 +68,10 @@ export default function Header() {
 
         <header className=" absolute top-1/2 w-full -translate-y-1/2">
           <nav className="flex size-full items-center justify-between p-4">
-            <div className="flex items-center gap-7">
+            <Link href="/" className="flex items-center gap-7">
+              <img src="/images/Logo.jpg" alt="logo" className='w-10 h-10 rounded-full'/>
               <h4 className=" uppercase font-bold text-2xl m-0">Asfar</h4>
-            </div>
+            </Link>
             <div className="flex h-full item-center">
               <div className="hidden md:block">
                 {navItems.map((item, index) => (
