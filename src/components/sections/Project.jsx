@@ -38,6 +38,7 @@ export default function Project() {
         borderRadius:0,
 
        },0)
+       
        clipAnimation.to(".plane-controller",{
         opacity:1
        },0)
@@ -47,6 +48,12 @@ export default function Project() {
        //start
        projects.forEach((project, i) => {
          if (i !== 0) {
+
+          // For hide container
+          clipAnimation.to(q(".left-top"),{opacity:1,duration: 0.1,},startTime-0.2,);
+          clipAnimation.to(q(".right-top"),{opacity:1,duration: 0.1},startTime-0.2);
+
+           //left top container
            clipAnimation.to(
              q(".left-top"),
              {
@@ -56,6 +63,7 @@ export default function Project() {
              startTime,
            );
 
+            //right top container
            clipAnimation.to(
              q(".right-top"),
              {
@@ -67,6 +75,7 @@ export default function Project() {
              startTime,
            );
 
+          //left bottom container
            clipAnimation.to(
              q(".left-bottom"),
              {
@@ -95,7 +104,23 @@ export default function Project() {
            startTime,
          );
 
+
          // end
+         // For hide container
+         clipAnimation.fromTo(
+           q(".left-top"),
+           { opacity:0},
+           { opacity:1,  duration: 0.1, ease: "power3.out" },
+           startTime-0.2,
+         );
+          clipAnimation.fromTo(
+           q(".right-top"),
+           { opacity:0},
+           { opacity:1,  duration: 0.1, ease: "power3.out" },
+           startTime-0.2,
+         );
+
+        //left top container
          clipAnimation.fromTo(
            q(".left-top"),
            { x: "-120%"},
@@ -103,6 +128,7 @@ export default function Project() {
            startTime,
          );
 
+         //right top container
          clipAnimation.fromTo(
            q(".right-top"),
            { scale: 1.2, rotate: -5, x:"120%"},
@@ -116,6 +142,7 @@ export default function Project() {
            startTime,
          );
 
+         //left bottom container
          clipAnimation.fromTo(
            q(".left-bottom"),
            { y: 60, opacity: 0 },

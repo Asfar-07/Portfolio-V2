@@ -3,7 +3,7 @@ export default  projectData=[
     {
     order: 1,
     type: "web application",
-    name: "DinoRyx",
+    name: "Gym Management Platform",
     description: "A real-time Gym management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
     display:"image",
     image: "/images/projects/dinoryx.webp",
