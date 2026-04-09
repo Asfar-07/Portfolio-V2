@@ -50,8 +50,7 @@ export default function Project() {
            clipAnimation.to(
              q(".left-top"),
              {
-               x: -80,
-               opacity: 0,
+               x: "-120%",
                duration: 0.4,
              },
              startTime,
@@ -60,10 +59,10 @@ export default function Project() {
            clipAnimation.to(
              q(".right-top"),
              {
+               x:"120%",
                scale: 0.8,
                rotate: 5,
-               opacity: 0,
-               duration: 0.4,
+               duration: 0.4,  
              },
              startTime,
            );
@@ -99,18 +98,18 @@ export default function Project() {
          // end
          clipAnimation.fromTo(
            q(".left-top"),
-           { x: 80, opacity: 0 },
-           { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+           { x: "-120%"},
+           { x: 0,  duration: 0.6, ease: "power3.out" },
            startTime,
          );
 
          clipAnimation.fromTo(
            q(".right-top"),
-           { scale: 1.2, rotate: -5, opacity: 0 },
+           { scale: 1.2, rotate: -5, x:"120%"},
            {
              scale: 1,
              rotate: 0,
-             opacity: 1,
+             x:0,
              duration: 0.7,
              ease: "power2.out",
            },

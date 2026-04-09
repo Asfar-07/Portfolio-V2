@@ -11,7 +11,7 @@ export function heroGroundAnimation(parent,selectedChild) {
           end: "bottom 20%",
           scrub: true,
         },
-        ease:"power1"
+         ease: "power3.out"
     })
 }
 export function heroRockAnimation(parent,selectedChild) {
@@ -33,7 +33,7 @@ export function heroRockAnimation(parent,selectedChild) {
           end: "bottom 20%",
           scrub: true,
         },
-        ease:"power1"
+        ease: "power3.out"
       });
     });  
 }
