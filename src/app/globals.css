@@ -27,8 +27,8 @@ html {
   --neon-blue: #2979ff;
   --p-font: white;
   --s-font: #e8f4f8;
-  --header1-text:clamp(2.7rem,calc(6vw + 1rem),3.3rem); 
-  --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem);
+  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 4rem); 
+  --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem); 
 }
 body {
   padding: 0;
@@ -43,10 +43,10 @@ h1{
    font-weight: 700; 
    line-height: 3.5rem;
 }
-h2{
+/* h2{
   font-weight: 700;
-  font-size: 36px;
-}
+  font-size: 36px; 
+} */
 h3{
   font-size: 36px; 
 }

@@ -1,16 +1,17 @@
-//test
 "use client";
 import { useEffect, useState ,useRef} from "react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
 import { RevealWrapper } from "../ui/RevealWrapper";
-import {useGSAP} from '@/hooks/useGSAP.js';
-import { heroRockAnimation, heroGroundAnimation } from "@/lib/gsap/animations";
 import Loader from "../loader/Loader";
-import DroneExperience from "../models/DroneExperience";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import "../../styles/hero.css";
 
-  const roles = [
+gsap.registerPlugin(ScrollTrigger);
+
+const roles = [
   "Full Stack Developer",
   "MERN Stack Developer",
   "Java Developer",
@@ -87,14 +88,18 @@ export default function Hero() {
                   </span>
                 </div>
               </div>
-              <h1 className=" font-black m-0 w-[50%]  min-w-130 max-w-4xl  max-sm:min-w-[90%] max-md:text-center">
+              <h1 className=" font-black m-0 w-[60%]  min-w-130 max-w-4xl  max-sm:min-w-[90%] max-md:text-center">
                Crafting <span className="grad">Engaging</span> User Experiences<span className="grad">.</span>
                   {/* Providing the <span className="grad">best project</span> experience. */}
               </h1>
-              <p className="w-[55%] font-normal min-w-130 max-w-4xl max-md:text-justify  max-sm:min-w-[90%]">
+              <div className="w-[55%] min-w-130 max-w-4xl max-sm:min-w-[90%]">
+                {/* <div className=" absolute z-0 w-full h-full  bg-(--p-bg-deep) blur-[20px]"></div> */}
+                <p className="relative z-2 w-full font-normal  max-md:text-justify  ">
                 I am Asfar Muhammed N S, a passionate software developer building modern, scalable web experiences. 
                 Explore my creative work and skills.
               </p>
+              </div>
+              
               <div className="flex gap-5">
                 <a
                   href="#project"
@@ -119,14 +124,56 @@ export default function Hero() {
   );
 }
 function Hero_Ground({ handleLoad }) {
-  const groundRef = useRef(null);
- const sectionRef = useGSAP((ref) => {
-    heroRockAnimation(ref.current,".rocks-img");
-    heroGroundAnimation(ref.current,groundRef.current);
-});
+ const groundRef = useRef(null);
+ const sectionRef = useRef(null);
+//  const sectionRef = useGSAP((ref) => {
+//    heroRockAnimation(ref.current, ".rocks-img");
+//   //  heroGroundAnimation(ref.current, groundRef.current);
+//  });
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+    if (!groundRef.current) return;
+    gsap.to(groundRef.current, {
+      scaleY: 0.38,
+      transformOrigin: "bottom center",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "0% 30%",
+        end: "90% 0%",
+        scrub: .8,
+      },
+      ease: "power1",
+    });
+
+    const children = sectionRef.current?.querySelectorAll(".rocks-img");
+    const boxes = gsap.utils.toArray(children);
+    boxes.map((box) => {
+       gsap.fromTo(
+        box,
+        {
+          y: 0,
+          x: 0,
+        },
+        {
+          y: -50,
+          x: 0,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "10% 0%",
+            end: "90% 30%",
+            scrub: .8,
+          },
+          ease: "power1"
+        },
+      );
+    });
+
+  }, [sectionRef.current,groundRef.current]);
+
+ 
   return (
     <>
-    <div className="hero-ground  absolute -bottom-8 h-85 w-full ">
+    <div className="hero-ground  absolute -bottom-8 h-[70%] max-h-120 w-full ">
       {/* <div className=" absolute inset-0 w-full h-full  z-10">
         <figure>
           <DroneExperience />

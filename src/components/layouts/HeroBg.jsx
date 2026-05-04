@@ -2,6 +2,7 @@
 import {useRef,useEffect} from 'react'
 import DroneExperience from '../models/DroneExperience';
 import "../../styles/heroBg.css"
+import PlanetExperience from '../heromodel/PlanetExperience';
 
 export default function HeroBg() {
     const starDiv=useRef();
@@ -25,7 +26,7 @@ export default function HeroBg() {
         }
     },[])
   return (
-  <div className="fixed w-full h-screen inset-0 z-0">
+    <div className="fixed w-full h-screen inset-0 z-0 overflow-hidden">
       <div className="hero-bg w-full h-screen"></div>
       <div className="stars" id="stars" ref={starDiv}></div>
       <div className="clouds">
@@ -37,11 +38,21 @@ export default function HeroBg() {
         <div className="cloud cloud-6"></div>
       </div>
       <div>
-          <div className="moon-planet absolute bottom-[10%] right-0 h-100 w-[40%] max-sm:hidden">
-            {/* <figure >
+        
+        <div className="moon-planet absolute bottom-[10%] right-0 h-100 w-[40%] max-sm:hidden">
+          {/* <figure >
               <DroneExperience />
             </figure> */}
+        </div>
+
+        <div className=" flex justify-end items-center  w-[40%] h-full absolute right-0 bottom-0 max-md:w-full max-md:justify-center ">
+          <div className=" w-[95%] h-[70%] translate-x-1/6  rotate-20 max-md:translate-x-0 max-md:w-full">
+            <figure className="w-full h-full">
+              <PlanetExperience />
+            </figure>
           </div>
+        </div>
+
       </div>
     </div>
   );
