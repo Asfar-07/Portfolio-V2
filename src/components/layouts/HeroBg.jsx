@@ -26,7 +26,7 @@ export default function HeroBg() {
         }
     },[])
   return (
-    <div className="fixed w-full h-screen inset-0 z-0 overflow-hidden">
+    <div className="fixed w-full h-screen min-h-[600px] inset-0 z-0 overflow-hidden">
       <div className="hero-bg w-full h-screen"></div>
       <div className="stars" id="stars" ref={starDiv}></div>
       <div className="clouds">

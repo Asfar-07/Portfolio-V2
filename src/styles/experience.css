@@ -1,3 +1,3 @@
 #experience{
-    background: radial-gradient(ellipse 80% 50% at 100% 50%, rgba(10, 15, 46, 0.8) 0%, transparent 60%), linear-gradient(180deg, var(--p-bg-light) 0%, var(--p-bg-dark) 100%);
+    background: var(--p-bg-deep);
 }

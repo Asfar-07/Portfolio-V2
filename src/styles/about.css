@@ -1,3 +1,6 @@
+.about {
+    /* background-color: #00041b; */
+}
 .glitch-box {
     position: relative;
     width: 100%;
@@ -13,72 +16,105 @@
 
 }
 
-.about-heading {
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
-}
-
-.text-slider {
-    position: relative;
-    height: 60%;
-    max-height: 500px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.text-slider h2 {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    line-height: 60px;
-    width: 100%;
-    margin: 0;
-    font-size: 3.5rem;
-    font-weight: bold;
-    text-align: center;
-    white-space: nowrap;
-    /* background-color: aqua; */
-    /* animation: textMove 4s linear infinite; */
-}
-/* .text-slider>:nth-child(1){
-    animation-delay: 0s;
-}
-.text-slider>:nth-child(2){
-    animation-delay: 1.2s;
-}
-.text-slider>:nth-child(3){
-    animation-delay: 2.2s;
-}
-.text-slider:nth-child(4){
-    animation-delay: 3s;
-}
-.text-slider>:nth-child(5){
-    animation-delay: 4s;
+/* .right-about span{
+    display: inline-block;
 } */
+.bg-lines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+.dot-grid {
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(circle, #00F0FF 1px, transparent 1px);
+  background-size: 14px 14px;
 
-@keyframes textMove {
-    0%{
-        transform: rotateX(90deg);
+  opacity: 0.15;
+
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, transparent 100%);
+}
+.projector{
+     filter: drop-shadow(0 0 30px rgba(80, 160, 255, 0.5))
+            drop-shadow(0 0 60px #7850ff4d)
+            drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+}
+.beam-main{
+    position: absolute;
+    top: -50px;
+    width: 54%;
+    height: 100px;
+    z-index: 10;
+}
+.project-beam{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #7950ff , #00eeff00);
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+    filter: blur(10px);
+}
+.beam-particles{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+    inset: 0;
+}
+.projectile-particle-floating {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: floatX linear infinite;
+}
+
+.projectile-particle-moving {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatX {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
     }
-    20%{
-        transform: rotateX(20deg);
-        top:0%;
+
+    10% {
+        opacity: 1;
     }
-    50%{
-        transform: rotateX(0deg) translateY(-50%);
-        top: 50%;
+
+    90% {
+        opacity: 0.6;
     }
-    80%{
-        transform: rotateX(-60deg) translateY(-50%);
-        top: 90%;
+
+    100% {
+        transform: translateY(0px) translateX(var(--drift));
+        opacity: 0;
     }
-    100%{
-        transform: rotateX(-90deg) translateY(-50%);
-        top: 100%;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
     }
-    
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-80px) translateX(var(--drift));
+        opacity: 0;
+    }
 }
 
 @keyframes redMove {
