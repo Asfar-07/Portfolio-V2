@@ -1,23 +1,27 @@
-.list-highlight li{
+.list-highlight li {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.list-highlight span{
+
+.list-highlight span {
     display: block;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     /* color: #b236ff; */
 }
-.welcome-bottom-button{
-    background: linear-gradient( to right, #1491ff, #a91fff);
+
+.welcome-bottom-button {
+    background: linear-gradient(to right, #1491ff, #a91fff);
 }
-.rounded-grad{
+
+.rounded-grad {
     position: relative;
     z-index: 2;
 }
-.rounded-grad::after{
+
+.rounded-grad::after {
     content: "";
     width: 50%;
     height: 24%;
@@ -26,7 +30,14 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-53%,-10%);
-    background:linear-gradient(120deg, #2E35FF, #A333FF);
+    transform: translate(-53%, -10%);
+    background: linear-gradient(120deg, #2E35FF, #A333FF);
 
+}
+
+@media screen and (width<600px) {
+    .list-highlight span {
+        width: 8px;
+        height: 8px;
+    }
 }

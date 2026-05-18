@@ -2,7 +2,7 @@
 
 *{
   /* padding: 0; */
-  /* margin: 0; */
+  /* margin: 0; */ 
   box-sizing: border-box;
 }
 html {
@@ -26,7 +26,7 @@ html {
   --neon-blue: #2979ff;
   --p-font: white;
   --s-font: #e8f4f8;
-  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 4rem); 
+  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 4.4rem); 
   --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem); 
 }
 body {
