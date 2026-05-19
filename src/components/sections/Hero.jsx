@@ -19,7 +19,69 @@ const roles = [
   "React Developer",
   "Backend Engineer",
 ];
+
+
+function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
+  const sectionRef = useRef(null);
+
+  return (
+    <div className="hero-ground absolute bottom-0 h-full w-full ">
+      <section className="absolute inset-0 size-full overflow-hidden" ref={sectionRef}>
+        <div ref={groundRef} className="ground-img absolute z-5 -bottom-10 right-0 w-full h-80">
+          <Image
+            src="/images/hero/hero_ground2.webp"
+            alt="Ground Image"
+            fill
+            onLoad={handleLoad}
+            className="size-full object-cover object-center"
+            priority
+          />
+        </div>
+        <div className="left-rock"></div>
+        <div ref={rightRockRef} className="right-rock absolute z-6 right-0 bottom-0 w-[60%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100">
+          <Image
+            src="/images/hero/hero_right.webp"
+            alt="Rocks Image"
+            fill
+            className="rocks-img size-full object-cover object-center"
+            priority
+          />
+        </div>
+      </section>
+      <section className="ground-blur z-20  h-80 absolute bottom-0  w-full overflow-hidden">
+          <div className=" h-40  bg-(--p-bg-deep) blur-sm"></div>
+      </section>
+    </div>
+  );
+}
+
+function Hero_Bg({moonRef}) {  
+  return (
+    <div className=" absolute inset-0 size-full">
+       <section className="hero-bg absolute z-1 inset-0 size-full flex justify-end overflow-hidden ">
+        <div ref={moonRef} className="moon-img sticky">
+          <Image
+            src="/images/hero/planet.webp"
+            alt="Moon Image"
+            fill
+            sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
+            className="moon-img-main w-full h-full "
+            priority
+          />
+        </div>
+      </section>
+    </div>
+  )
+}
+
 export default function Hero() {
+  const heroRef = useRef();
+  const groundRef = useRef();
+  const rightRockRef = useRef();
+  const moonRef = useRef();
+  const mainHeroRef = useRef();
+  const heroParagraph = useRef();
+
   const [loaded, setLoaded] = useState(0);
   const [ready, setReady] = useState(false);
   const [imageCollected, setImageCollected] = useState([]);
@@ -55,27 +117,50 @@ export default function Hero() {
     }
   }, [loaded]);
 
+  useGSAP(() => {
+
+    gsap.set(heroRef.current, { backgroundColor:"#000631" })
+    gsap.set(groundRef.current, { y: 300 })
+    gsap.set(rightRockRef.current, { y: 300, scale:.4, transformOrigin: "bottom right", })
+    gsap.set(moonRef.current, { y: 600, scale: .6 })
+    gsap.set(mainHeroRef.current, { opacity:0 })
+
+     const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "+=2500",
+          scrub: true,
+          pin: true,
+        },
+      });
+
+      tl
+      .to(heroRef.current, { backgroundColor:"#000027", duration: 1, ease: 'none'}, 0)
+      .to(moonRef.current, { y: 0, duration: 1, ease: 'none', scale: 1}, .1)
+      .to(groundRef.current, { y: 0, duration: 1, ease: 'none'}, .2)
+      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1}, .4)
+      .to(groundRef.current, { scale: 1.1, duration: 1, ease: 'none'}, .4)
+      .to(mainHeroRef.current, { opacity: 1 , duration: .2, ease: 'none'}, .8)
+
+  },[groundRef])
+
   return (
-    <>
-      <Welcome />
-      {/* <Loader /> */}
-      {/* {!ready && <GeneralLoading />} */}
+    <div className="main-hero relative" ref={heroRef}>
+
+      <Welcome heroRef= {heroRef}/>
+      <Hero_Bg moonRef= {moonRef}/>
+      <Hero_Ground handleLoad={handleLoad} groundRef= {groundRef} rightRockRef= {rightRockRef}/>
       <div
-        className="home w-full h-dvh min-h-[600px] text-(--p-font) relative z-3"
+        className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative z-3"
         id="home"
+        ref={mainHeroRef}
       >
         <main
           className="h-full m-auto relative  z-30  w-[88%] max-w-350  text-(--p-font) max-sm:w-full max-sm:px-5"
           style={{ margin: "auto" }}
         >
           <aside className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 max-sm:justify-start max-sm:pt-16">
-            <RevealWrapper
-              type="stagger"
-              delay={1}
-              className={
-                " flex flex-col gap-7  justify-center  max-sm:pb-10 max-sm:justify-start "
-              }
-            >
               <div className="flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]">
                 <div className="w-5 h-5 relative">
                   <Image
@@ -96,7 +181,7 @@ export default function Hero() {
                 <span className="grad">.</span>
               </h1>
               <div className="w-[55%]  max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]">
-                <p className="relative z-2 w-full font-light text-[16px]   max-sm:text-sm ">
+                <p className=" w-full font-light text-[16px]   max-sm:text-sm ">
                   I am Asfar Muhammed N S, a passionate software developer
                   building modern, scalable web experiences. Explore my creative
                   work and skills.
@@ -106,77 +191,15 @@ export default function Hero() {
               <div className="flex gap-5">
                 <a
                   href="#project"
-                  className="btn text-lg bg-(--s-bg-deep) uppercase relative"
+                  className="btn text-lg bg-(--s-bg-deep) uppercase relative opacity-0"
                 >
                   View My Work
                 </a>
-                {/* <a 
-                href="/cv.pdf" 
-                download 
-                className="btn border border(--cyan-mark) font-bold"
-              >
-                Download CV
-              </a> */}
               </div>
-            </RevealWrapper>
           </aside>
         </main>
-        <Hero_Ground handleLoad={handleLoad} />
-        <section className="ground-blur z-20  h-80 absolute bottom-0  w-full overflow-hidden">
-          <div className=" h-40  bg-(--p-bg-deep) blur-sm"></div>
-        </section>
       </div>
-    </>
-  );
-}
-function Hero_Ground({ handleLoad }) {
-  const groundRef = useRef(null);
-  const sectionRef = useRef(null);
-  const rocksRef = useRef(null);
-
-  useGSAP(() => {
-    if (!sectionRef.current) return;
-    if (!groundRef.current) return;
-  }, [sectionRef.current, groundRef.current, rocksRef.current]);
-
-  return (
-    <div className="hero-ground absolute bottom-0 h-full w-full ">
-      <section className="hero-bg absolute z-1 inset-0 size-full flex justify-end overflow-hidden ">
-        <div className="moon-img sticky">
-          <Image
-            src="/images/hero/planet.webp"
-            alt="Moon Image"
-            fill
-            sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
-            className="moon-img-main w-full h-full "
-            priority
-          />
-        </div>
-      </section>
-      <section className="absolute inset-0 w-full h-full" ref={sectionRef}>
-        <div className="ground-img absolute z-5 -bottom-10 right-0 w-full h-80">
-          <Image
-            src="/images/hero/hero_ground2.webp"
-            alt="Ground Image"
-            fill
-            onLoad={handleLoad}
-            ref={groundRef}
-            className="size-full object-cover object-center"
-            priority
-          />
-        </div>
-        <div className="left-rock"></div>
-        <div className="right-rock absolute z-6 right-0 bottom-15 w-[60%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100">
-          <Image
-            src="/images/hero/hero_right.webp"
-            alt="Rocks Image"
-            fill
-            ref={rocksRef}
-            className="rocks-img size-full object-cover object-center"
-            priority
-          />
-        </div>
-      </section>
     </div>
   );
 }
+

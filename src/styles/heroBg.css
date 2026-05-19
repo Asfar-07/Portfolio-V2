@@ -1,11 +1,3 @@
-.hero-bg {
-  background:  linear-gradient(180deg, #12003a00 0% , #12003a00 40%,#7a1edd 100%),
-  linear-gradient(165deg, #12003a 0% 20%, #1b0050 35%,
-   #3d0b73 50%, #7a1edd 65%, #7a1edd 75%,
-    #993aff 85%, #bb7cff 100%),;
-    
-}
-
 .clouds {
   position: absolute;
   inset: 0;
