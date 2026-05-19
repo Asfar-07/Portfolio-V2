@@ -29,7 +29,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
       <section className="absolute inset-0 size-full overflow-hidden" ref={sectionRef}>
         <div ref={groundRef} className="ground-img absolute z-5 -bottom-10 right-0 w-full h-80">
           <Image
-            src="/images/hero/hero_ground2.webp"
+            src="/images/hero/hero_ground.webp"
             alt="Ground Image"
             fill
             onLoad={handleLoad}
