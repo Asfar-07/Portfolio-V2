@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import "@/styles/about.css";
 import { Code2, Rocket, Coffee, Target } from "lucide-react";
-import AstronautImageTiles from "../ui/AstronautImageTiles";
 
 const stats = [
   {

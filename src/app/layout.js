@@ -1,6 +1,5 @@
 import "./globals.css";
 import Header from "@/components/layouts/Header";
-import HeroBg from "@/components/layouts/HeroBg";
 import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
