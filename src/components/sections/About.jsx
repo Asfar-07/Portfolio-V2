@@ -185,7 +185,7 @@ export default function About() {
           fill="none"
         />
       </svg>
-      <main className="flex flex-row gap-8 w-100%  h-screen  max-w-[1250px]  relative z-3 text-(--p-font) max-md:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto">
+      <main className="flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px]  relative z-3 text-(--p-font) max-md:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto">
         <section className="left-about flex-1 flex justify-center items-center max-md:w-full">
           <div className="w-full h-full  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
             <div className="glitch-box" ref={glitchBox}>

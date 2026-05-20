@@ -16,7 +16,7 @@
   z-index: -2;
   left: 0;
   bottom: 0;
-  box-shadow: 0px -35px 80px #e74bff, 0 -130px 61px #07006bcc;
+  box-shadow: 0px -35px 80px #e74bffe7, 0 -130px 61px #07006b7b;
 }
 
 .rocks-img {
@@ -141,7 +141,7 @@
 
 .moon-img-main {
 
-  filter: drop-shadow(0px 0px 3px #e329ff);
+  filter: drop-shadow(0px 0px 5px #9300aa) drop-shadow(0 0 100px #07006b);
 
 }
 

@@ -157,7 +157,7 @@ export default function Hero() {
         ref={mainHeroRef}
       >
         <main
-          className="h-full m-auto relative  z-30  w-[88%] max-w-350  text-(--p-font) max-sm:w-full max-sm:px-5"
+          className="h-full m-auto relative  z-30  w-[88%] max-w-350 text-(--p-font) max-sm:w-full max-sm:px-5"
           style={{ margin: "auto" }}
         >
           <aside className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 max-sm:justify-start max-sm:pt-16">
