@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full  text-(--p-font)z-3 p-[7rem_2rem] max-md:p-[5rem_1.5rem]"
+      className="relative w-full  text-(--p-font) bg-(--s-bg-deep) z-3 p-[7rem_2rem] max-md:p-[5rem_1.5rem]"
     >
       {isOpen && <Maintain setIsOpen={setIsOpen} />}
       <main className="w-[90%] max-w-350 m-auto max-md:w-full">

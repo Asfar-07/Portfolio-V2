@@ -17,10 +17,10 @@ html {
 }
 
 :root {
-  --p-bg-dark:#050818; 
+  --p-bg-dark:#050818;   
   --p-bg-deep: #000631;
-  --p-bg-light: #030E51;
-  --s-bg-deep: #8B2FFF;
+  --p-bg-light: #030E51; 
+  --s-bg-deep: #755EF4;
   --s-bg-light: #e040fb;
   --cyan-mark: #00E7FF;
   --neon-blue: #2979ff;

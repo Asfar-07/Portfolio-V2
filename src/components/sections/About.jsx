@@ -251,7 +251,7 @@ export default function About() {
               About Me
             </h2>
             <p
-              className=" font-bold leading-relaxed text-[20px] overflow-hidden"
+              className=" font-medium leading-relaxed text-[22px] overflow-hidden"
               ref={aboutMeRef}
             >
               I’m a{" "}

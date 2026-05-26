@@ -37,7 +37,6 @@ export default function Welcome({heroRef}) {
         trigger: hero,
         start: '0% top',
         end: '+=1500',
-        markers: true,
         pin: true,
         anticipatePin: true,
         scrub: 0.8,
