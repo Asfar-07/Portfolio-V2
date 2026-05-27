@@ -266,7 +266,7 @@ export default function Hero() {
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
-          end: "+=2500",
+          end: "+=2000",
           scrub: true,
           pin: true,
         },
