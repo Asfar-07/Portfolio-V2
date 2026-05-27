@@ -9,7 +9,7 @@ export default projectData = [
     order: 1,
     type: { category: "web tool", color: "#005c9d", icon: Wrench },
     name: "Qu.dev Survey Builder",
-    description: "A real-time Gym management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
+    description: "QuDev solves this. It automatically generates a best-practice relational database schema for your survey system and gives you a full web interface to build, manage, version, and test surveys — without writing a single entity from scratch.",
     point: "if have struggle with create questions",
     display: "image",
     links:["https://github.com/Asfar-07/QuDev","https://github.com/Asfar-07/QuDev"],
@@ -26,14 +26,13 @@ export default projectData = [
       icon: Braces,
     }
     ],
-    image: ["/images/projects/qudev1.png", "/images/projects/qudev2.png"],
+    image: ["/images/projects/qudev1.webp", "/images/projects/qudev2.webp"],
     tool: [
       "Java",
       "Spring",
-      "React",
-      "TypeScript",
+      "MySQL",
       "CSS",
-      "Tailwind CSS",
+      "Thymeleaf"
     ]
   },
 
@@ -58,7 +57,7 @@ export default projectData = [
       icon: LayoutDashboard,
     }
     ],
-    image: ["/images/projects/dinoryx.webp", "/images/projects/dinoryx.webp"],
+    image: ["/images/projects/dinoryx1.webp", "/images/projects/dinoryx2.webp"],
     tool: [
       "Java",
       "Spring",
@@ -89,7 +88,7 @@ export default projectData = [
       icon: Form,
     }
     ],
-    image: ["/images/projects/E-Learning.webp","/images/projects/E-Learning.webp"],
+    image: ["/images/projects/e-learning1.webp","/images/projects/E-Learning.webp"],
     tool: ["HTML5",
       "CSS",
       "JavaScript",
