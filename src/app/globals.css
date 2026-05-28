@@ -63,5 +63,5 @@ p{
   cursor: pointer;
   transition: all 0.25s ease; 
 }  
-.btn:hover { background: #7a1fef; transform: translateY(-2px); } 
+.btn:hover { background: #7a1fef; transform: translateY(-2px); }  
  
