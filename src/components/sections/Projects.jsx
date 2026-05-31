@@ -59,7 +59,7 @@ export default function Projects() {
             leftContainerRef.current,
             {
               width: 0,
-              duration: 1,
+              duration: .5,
             },
           )
 
@@ -67,7 +67,7 @@ export default function Projects() {
             rightContainerRef.current,
             {
               width: "100%",
-              duration: 1,
+              duration: .5,
             },
             "<",
           );

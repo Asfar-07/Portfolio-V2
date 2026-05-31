@@ -130,7 +130,7 @@ export default function About() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "0% top",
-        end: "+=2000",
+        end: "+=1500",
         scrub: 1.5,
         pin: true,
         anticipatePin: true,
