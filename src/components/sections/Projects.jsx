@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
   const sectionRef = useRef(null);
+  const leftContainerRef = useRef(null);
+  const rightContainerRef = useRef(null);
 
   useGSAP(() => {
     const section = sectionRef.current;
@@ -47,13 +49,28 @@ export default function Projects() {
         tl.to(card, {
           width: "100vw",
           height: "100vh",
-
           maxWidth: "none",
           maxHeight: "none",
-
           borderRadius: 0,
           duration: 1,
-        });
+        })
+
+          .to(
+            leftContainerRef.current,
+            {
+              width: 0,
+              duration: 1,
+            },
+          )
+
+          .to(
+            rightContainerRef.current,
+            {
+              width: "100%",
+              duration: 1,
+            },
+            "<",
+          );
       }
     });
   }, [sectionRef]);
@@ -74,12 +91,12 @@ export default function Projects() {
         return (
           <div
             key={index}
-            className="project-card flex absolute w-[95%] max-w-280 left-1/2 top-1/2 -translate-y-1/2  -translate-x-1/2 inset-0 h-[95%] min-h-140  max-h-160 max-md:max-h-full  bg-[#755EF4] rounded-2xl overflow-hidden
+            className="project-card flex absolute w-[95%] max-w-280 left-1/2 top-1/2 -translate-y-1/2  -translate-x-1/2 inset-0 h-[95%] min-h-140  max-h-160 max-md:max-h-full  bg-(--s-bg-deep) rounded-2xl overflow-hidden
             "
           >
-            <section className="flex flex-col justify-between flex-1 h-full bg-[#661DE7] max-md:hidden">
-              <header className="flex flex-col">
-                <div className="w-full h-15 border-b-2 border-[#755EF4]"></div>
+            <section ref={leftContainerRef} className="flex flex-col justify-between w-[6%] h-full bg-[#4C1D95] overflow-hidden max-md:hidden">
+              <header  className="flex flex-col">
+                <div className="w-full h-15 border-b-2 border-(--s-bg-deep)"></div>
                 <ul className="flex flex-col items-center gap-5 pt-5 w-full">
                   {project.tool.map((tool, index) => (
                     <li
@@ -98,10 +115,10 @@ export default function Projects() {
               </header>
             </section>
 
-            <section className="flex flex-14 p-10 max-md:p-7 gap-10 max-md:gap-5 max-sm:w-full max-sm:p-4
+            <section ref={rightContainerRef} className="flex w-[94%] p-10 max-md:p-7 gap-10 max-md:gap-5 max-sm:w-full max-sm:p-4
             [@media(max-width:768px)_and_(min-height:650px)]:flex-col">
               <div className="flex flex-col justify-center gap-4 flex-1 max-sm:w-full [@media(max-height:700px)]:gap-3">
-                <div className=" uppercase flex items-center tracking-normal gap-2 text-xs text-[#661DE7] font-bold px-3 py-1   border border-[#ffffff47] w-fit rounded-lg">
+                <div className=" uppercase flex items-center tracking-normal gap-2 text-xs text-[#4C1D95] font-bold px-3 py-1   border border-[#ffffff47] w-fit rounded-lg">
                   <span>
                     <Sparkles />
                   </span>
@@ -141,7 +158,7 @@ export default function Projects() {
                 <section className="flex gap-5 text-sm font-medium pt-2">
                   <a
                     href={project.links[0]}
-                    className="flex gap-2 bg-[#661DE7] text-white px-4 py-2.5 rounded-lg"
+                    className="flex gap-2 bg-[#7C3AED] text-white px-4 py-2.5 rounded-lg"
                   >
                     View Project <ArrowRight />
                   </a>

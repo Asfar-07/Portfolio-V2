@@ -172,11 +172,11 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
             className="rocks-img size-full object-cover object-center"
             priority
           />
-          <div class="firefly-fixed w-0.5 h-0.5 absolute right-[38%] bottom-[30%]"></div>
-          <div class="firefly-fixed w-0.75 h-0.75 absolute right-[30%] bottom-[20%]"></div>
-          <div class="firefly-fixed w-0.75 h-0.75 absolute right-[60%] bottom-[15%] rotate-y-45"></div>
-          <div class="firefly-fixed w-0.75 h-0.75 absolute right-[15%] bottom-[30%] rotate-x-45"></div>
-          <div class="firefly w-0.75 h-0.75 absolute right-[15%] bottom-[15%] rotate-x-45"></div>
+          <div className="firefly-fixed w-0.5 h-0.5 absolute right-[38%] bottom-[30%]"></div>
+          <div className="firefly-fixed w-0.75 h-0.75 absolute right-[30%] bottom-[20%]"></div>
+          <div className="firefly-fixed w-0.75 h-0.75 absolute right-[60%] bottom-[15%] rotate-y-45"></div>
+          <div className="firefly-fixed w-0.75 h-0.75 absolute right-[15%] bottom-[30%] rotate-x-45"></div>
+          <div className="firefly w-0.75 h-0.75 absolute right-[15%] bottom-[15%] rotate-x-45"></div>
         </div>
       </section>
       <section className="ground-blur z-20  h-80 absolute bottom-0  w-full overflow-hidden">
