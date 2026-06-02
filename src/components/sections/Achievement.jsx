@@ -66,39 +66,37 @@ export default function Achievement() {
   useGSAP(() => {
     const growthItems = gsap.utils.toArray(".growth");
 
-    growthItems.forEach((item,index) => {
+    growthItems.forEach((item, index) => {
       const count = item.querySelector(".growth-count");
 
       gsap.set(item, {
-        y: 90,
+        y: 80,
       });
 
       gsap.set(count, {
-        y: 80,
+        y: 100,
       });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
           start: "-10% bottom",
-          end: "140% bottom",
-          scrub: 3.5,
+          end: "+=140 bottom",
+          scrub: 4,
         },
       });
 
       tl.to(item, {
         y: 0,
-        duration: .9,
-      })
-
-        .to(
-          count,
-          {
-            y: 0,
-            duration: 1.5,
-          },
-          "<", // same time
-        );
+        duration: 1,
+      }).to(
+        count,
+        {
+          y: 0,
+          duration: 1,
+        },
+        "<", // same time
+      );
     });
   }, []);
 
