@@ -167,10 +167,10 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
         <div className="left-rock"></div>
         <div
           ref={rightRockRef}
-          className="right-rock absolute z-6 right-0 bottom-0 w-[60%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
+          className="right-rock absolute z-6 right-0 bottom-10 w-[55%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
         >
           <Image
-            src="/images/hero/hero_right.webp"
+            src="/images/hero/hero_rightRock.webp"
             alt="Rocks Image"
             fill
             className="rocks-img size-full object-cover object-center"
