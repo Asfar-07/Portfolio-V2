@@ -160,7 +160,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="about bg-(--p-bg-deep) mt-20 text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
+      className="about bg-(--p-bg-deep) mt-20 text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-lg:pt-20 max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
       ref={containerRef}
     >
       <div className="dot-grid absolute left-15 top-15"></div>
@@ -184,7 +184,10 @@ export default function About() {
           fill="none"
         />
       </svg>
-      <main className="flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px]  relative z-3 text-(--p-font) max-md:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto">
+      <main
+        className="flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px] max-lg:h-auto  relative z-3 text-(--p-font) 
+      max-lg:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto"
+      >
         <section className="left-about flex-1 flex justify-center items-center max-md:w-full">
           <div className="w-full h-full  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
             <div className="glitch-box" ref={glitchBox}>
@@ -242,7 +245,7 @@ export default function About() {
             </div>
           </div>
         </section>
-        <section className="right-about relative flex-2 overflow-hidden  flex flex-col justify-center max-md:w-full ">
+        <section className="right-about relative flex-2 overflow-hidden max-lg:pt-20  flex flex-col justify-center max-md:w-full ">
           <div className="overflow-hidden max-md:my-8">
             <span className=" uppercase text-cyan-400 tracking-[0.2rem]">
               Get to know me
@@ -278,31 +281,15 @@ export default function About() {
           <div className="dot-grid absolute right-15 bottom-15"></div>
           <div
             ref={collectionRef}
-            className="
-        relative 
-        mt-15
-        w-full 
-        rounded-2xl p-4 md:p-4
-        backdrop-blur-md bg-white/5
-        border border-white/10
-      "
+            className="relative mt-15 w-full rounded-2xl p-4 md:p-4 bg-[#18008523] border border-white/10"
           >
             <div
-              className="
-          grid 
-          grid-cols-2 
-          sm:grid-cols-2 
-          lg:grid-cols-4 
-          gap-4 md:gap-6
-        "
+              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
             >
               {stats.map((item, i) => (
                 <div
                   key={i}
-                  className="
-              flex items-center gap-3
-              hover:scale-105 transition-all duration-300
-            "
+                  className="flex items-center gap-3hover:scale-105 transition-all duration-300"
                 >
                   {/* Icon */}
                   <div className="min-w-10 min-h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400/20 to-purple-500/20 border border-white/10">
