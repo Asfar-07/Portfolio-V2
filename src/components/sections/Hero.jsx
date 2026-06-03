@@ -1,5 +1,6 @@
 "use client";
-import React,{ useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
+import { ArrowRight } from "lucide-react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
 import { RevealWrapper } from "../ui/RevealWrapper";
@@ -21,12 +22,47 @@ const roles = [
 ];
 
 const clouds = [
-  { id: 1, src: "/images/hero/clouds/cloud1.webp", alt: "Cloud 1", count: 4, minH: 12, maxH: 16, minW: 25, maxW: 30 },
-  { id: 2, src: "/images/hero/clouds/cloud2.webp", alt: "Cloud 2", count: 4, minH: 10, maxH: 16, minW: 40, maxW: 60 },
-  { id: 3, src: "/images/hero/clouds/cloud3.webp", alt: "Cloud 3", count: 4, minH: 8, maxH: 12, minW: 40, maxW: 60 },
-  { id: 4, src: "/images/hero/clouds/cloud4.webp", alt: "Cloud 4", count: 4, minH: 8, maxH: 16, minW: 25, maxW: 30 }
+  {
+    id: 1,
+    src: "/images/hero/clouds/cloud1.webp",
+    alt: "Cloud 1",
+    count: 4,
+    minH: 12,
+    maxH: 16,
+    minW: 25,
+    maxW: 30,
+  },
+  {
+    id: 2,
+    src: "/images/hero/clouds/cloud2.webp",
+    alt: "Cloud 2",
+    count: 4,
+    minH: 10,
+    maxH: 16,
+    minW: 40,
+    maxW: 60,
+  },
+  {
+    id: 3,
+    src: "/images/hero/clouds/cloud3.webp",
+    alt: "Cloud 3",
+    count: 4,
+    minH: 8,
+    maxH: 12,
+    minW: 40,
+    maxW: 60,
+  },
+  {
+    id: 4,
+    src: "/images/hero/clouds/cloud4.webp",
+    alt: "Cloud 4",
+    count: 4,
+    minH: 8,
+    maxH: 16,
+    minW: 25,
+    maxW: 30,
+  },
 ];
-
 
 function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
   const sectionRef = useRef(null);
@@ -64,15 +100,15 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
   function displayCloudsOrder(cloud) {
     // if (!cloudsRef.current) return null;
     if (cloud.id === 1 || cloud.id === 4) return;
-    
+
     const widthMain = 1000;
-    var startingPoint = 0; 
+    var startingPoint = 0;
     const clouds = [];
-    console.log(cloud.id, "cloud id")
+    console.log(cloud.id, "cloud id");
     while (startingPoint < widthMain) {
       const styleClouds = {
-        left: startingPoint + "px", 
-         top: Math.floor(Math.random() * (85 - 60 + 1)) + 60 + "%",
+        left: startingPoint + "px",
+        top: Math.floor(Math.random() * (85 - 60 + 1)) + 60 + "%",
         width:
           Math.floor(Math.random() * (cloud.maxW - cloud.minW + 1)) +
           cloud.minW +
@@ -89,13 +125,13 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
           style={styleClouds}
         >
           <Image src={cloud.src} alt={cloud.alt} className="size-full" fill />
-        </div>
+        </div>,
       );
-      startingPoint += styleClouds.width.replace("px", "") * 1.5; 
+      startingPoint += styleClouds.width.replace("px", "") * 1.5;
     }
     return clouds;
   }
-  
+
   return (
     <div className="hero-ground absolute bottom-0 h-full w-full ">
       <section
@@ -104,11 +140,11 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
       >
         <div
           ref={groundRef}
-          className="ground-img absolute z-5  -bottom-0 right-0 w-full h-70"
+          className="ground-img absolute z-5  -bottom-0 right-0 w-full h-[100%]"
         >
           <div
             ref={cloudsRef}
-            className="sky-clouds absolute w-full h-[22%] top-[22%] left-0 "
+            className="sky-clouds absolute w-full h-[10%] bottom-[30%] left-0"
           >
             {clouds.map((cloud, index) => {
               return (
@@ -118,41 +154,9 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
                 </React.Fragment>
               );
             })}
-            {/* <div className=" w-8 h-6 z-10 left-[28.5%] top-[85%] absolute object-fill object-center -translate-x-1/2 -translate-y-1/2">
-              <Image
-                src="/images/hero/clouds/cloud1.webp"
-                alt="Cloud 1"
-                className="size-full"
-                fill
-              />
-            </div>
-             <div className=" w-10 h-6 z-10 left-[59%] top-[80%] absolute object-fill object-center -translate-x-1/2 -translate-y-1/2">
-              <Image
-                src="/images/hero/clouds/cloud1.webp"
-                alt="Cloud 1"
-                className="size-full"
-                fill
-              />
-            </div>
-              <div className=" w-10 h-6 z-10 left-[47%] top-[90%] absolute object-fill object-center -translate-x-1/2 -translate-y-1/2">
-              <Image
-                src="/images/hero/clouds/cloud1.webp"
-                alt="Cloud 1"
-                className="size-full"
-                fill
-              />
-            </div>
-            <div className=" w-10 h-6 z-10 left-[62%] top-[95%] absolute object-fill object-center -translate-x-1/2 -translate-y-1/2">
-              <Image
-                src="/images/hero/clouds/cloud1.webp"
-                alt="Cloud 1"
-                className="size-full"
-                fill
-              />
-            </div> */}
           </div>
           <Image
-            src="/images/hero/hero_ground.webp"
+            src="/images/hero/ground.webp"
             alt="Ground Image"
             fill
             onLoad={handleLoad}
@@ -186,23 +190,50 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
   );
 }
 
-function Hero_Bg({moonRef}) {  
+function Hero_Bg({ moonRef }) {
+
+   const stars = useMemo(() => {
+    return Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 2 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: Math.random() * 3 + 2,
+      opacity: Math.random() * 0.8 + 0.2,
+    }));
+  }, []);
+
   return (
-    <div className=" absolute inset-0 size-full">
-       <section className="hero-bg absolute z-1 inset-0 size-full flex justify-end overflow-hidden ">
-        <div ref={moonRef} className="moon-img sticky">
-          <Image
-            src="/images/hero/planet.webp"
-            alt="Moon Image"
-            fill
-            sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
-            className="moon-img-main w-full h-full "
-            priority
-          />
-        </div>
-      </section>
-    </div>
-  )
+    <section className="hero-bg absolute z-1 inset-0 size-full flex justify-end overflow-hidden ">
+      {stars.map((star) => (
+        <span
+          key={star.id}
+          className="absolute rounded-full star"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            opacity: star.opacity,
+            animationDelay: `${star.delay}s`,
+            animationDuration: `${star.duration}s`,
+          }}
+        />
+      ))}
+
+      <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
+        <Image
+          src="/images/hero/planet.webp"
+          alt="Moon Image"
+          fill
+          sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
+          className="moon-img-main w-full h-full "
+          priority
+        />
+      </div>
+    </section>
+  );
 }
 
 export default function Hero() {
@@ -222,6 +253,7 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animState, setAnimState] = useState("active");
 
+  //tittle action
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimState("exit");
@@ -229,7 +261,7 @@ export default function Hero() {
         setCurrent((prev) => (prev + 1) % roles.length);
         setAnimState("active");
       }, 500);
-    }, 5000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
@@ -252,44 +284,61 @@ export default function Hero() {
   }, [loaded]);
 
   useGSAP(() => {
-
-    gsap.set(heroRef.current, { backgroundColor:"#000631" })
-    gsap.set(groundRef.current, { y: 300 })
-    gsap.set(rightRockRef.current, { y: 300, scale:.4, transformOrigin: "bottom right", })
-    gsap.set(moonRef.current, { y: 600, scale: .6 })
+    gsap.set(heroRef.current, { backgroundColor: "#000631" });
+    gsap.set(groundRef.current, { y: 300 });
+    gsap.set(rightRockRef.current, {
+      y: 300,
+      scale: 0.4,
+      transformOrigin: "bottom right",
+    });
+    gsap.set(moonRef.current, { y: 600, scale: 0.6 });
     // gsap.set(mainHeroRef.current, { opacity:0 })
-    gsap.set(heroHeading.current, { y: 200, opacity: 0 })
-    gsap.set(heroBadge.current, { y: 200, opacity:0 })
-    gsap.set(heroParagraph.current, { x: -200, opacity:0 })
+    gsap.set(heroHeading.current, { y: 200, opacity: 0 });
+    gsap.set(heroBadge.current, { y: 200, opacity: 0 });
+    gsap.set(heroParagraph.current, { x: -200, opacity: 0 });
+    gsap.set(heroButton.current, { opacity: 0 });
 
-     const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "+=2000",
-          scrub: true,
-          pin: true,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "+=2000",
+        scrub: true,
+        pin: true,
+      },
+    });
 
-      tl
-      .to(heroRef.current, { backgroundColor:"#000027", duration: 1, ease: 'none'}, 0)
-      .to(moonRef.current, { y: 0, duration: 1, ease: 'none', scale: 1}, .1)
-      .to(groundRef.current, { y: 0, duration: 1, ease: 'none'}, .2)
-      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1}, .4)
-      .to(groundRef.current, { scale: 1.2, duration: 1, ease: 'none'}, .4)
-      .to(heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: 'none'}, 1)
-      .to(heroBadge.current, { y: 0, opacity: 1, duration: 1, ease: 'none'}, 1)
-      .to(heroParagraph.current,{ x: 0, opacity: 1, duration: .2, ease: 'none'}, 2)
-
-  },[groundRef])
+    tl.to(
+      heroRef.current,
+      { backgroundColor: "#000027", duration: 1, ease: "none" },
+      0,
+    )
+      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 0.1)
+      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 0.2)
+      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 0.4)
+      .to(
+        heroHeading.current,
+        { y: 0, opacity: 1, duration: 1, ease: "none" },
+        1,
+      )
+      .to(heroBadge.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 1)
+      .to(
+        heroParagraph.current,
+        { x: 0, opacity: 1, duration: 0.5, ease: "none" },
+        2,
+      )
+      .to(heroButton.current, { opacity: 1, duration: 0.5, ease: "none" }, 2);
+  }, [groundRef]);
 
   return (
     <div className="main-hero relative" ref={heroRef}>
-
-      <Welcome heroRef= {heroRef}/>
-      <Hero_Bg moonRef= {moonRef}/>
-      <Hero_Ground handleLoad={handleLoad} groundRef= {groundRef} rightRockRef= {rightRockRef}/>
+      <Welcome heroRef={heroRef} />
+      <Hero_Bg moonRef={moonRef} />
+      <Hero_Ground
+        handleLoad={handleLoad}
+        groundRef={groundRef}
+        rightRockRef={rightRockRef}
+      />
       <div
         className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
         id="home"
@@ -299,46 +348,65 @@ export default function Hero() {
           className="h-full m-auto relative  w-[88%] max-w-350 text-(--p-font) max-sm:w-full max-sm:px-5"
           style={{ margin: "auto" }}
         >
-          <aside className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 max-sm:justify-start max-sm:pt-16">
-              <div ref={heroBadge} className="flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]">
-                <div className="w-5 h-5 relative">
-                  <Image
-                    src="/images/hero/planeticon.webp"
-                    alt="Planet Icon"
-                    fill
-                    priority
-                  />
-                </div>
-                <div className="role-wrapper">
-                  <span key={current} className={`role-text ${animState}`}>
-                    {roles[current]}
-                  </span>
-                </div>
+          <aside
+            className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
+           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40"
+          >
+            <div
+              ref={heroBadge}
+              className="flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]"
+            >
+              <div className="w-5 h-5 relative">
+                <Image
+                  src="/images/hero/planeticon.webp"
+                  alt="Planet Icon"
+                  fill
+                  priority
+                />
               </div>
-              <h1 ref={heroHeading} className=" font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] ">
-                Crafting <span className="grad">Engaging</span> User Experiences
-                <span className="grad">.</span>
-              </h1>
-              <div ref={heroParagraph} className="w-[50%] relative pl-2 z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]">
-                <p className=" w-full font-extralight text-[14px]   max-sm:text-sm ">
-                  I am Asfar Muhammed N S, a passionate software developer
-                  building modern, scalable web experiences. Explore my creative
-                  work and skills.
-                </p>
+              <div className="role-wrapper">
+                <span key={current} className={`role-text ${animState}`}>
+                  {roles[current]}
+                </span>
               </div>
+            </div>
+            <h1
+              ref={heroHeading}
+              className=" font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]"
+            >
+              Crafting <span className="grad">Engaging</span> User Experiences
+              <span className="grad">.</span>
+            </h1>
+            <div
+              ref={heroParagraph}
+              className="w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]"
+            >
+              <p className=" w-full font-light text-[15px] tracking-wider  max-sm:text-sm ">
+                I am Asfar Muhammed N S, a passionate software developer
+                building modern, scalable web experiences. Explore my creative
+                work and skills.
+              </p>
+            </div>
 
-              <div ref={heroButton} className="flex gap-5">
-                <a
-                  href="#project"
-                  className="btn text-lg bg-(--s-bg-deep) uppercase relative opacity-0"
-                >
-                  View My Work
-                </a>
-              </div>
+            <div
+              ref={heroButton}
+              className="flex gap-5 relative z-100 uppercase"
+            >
+              <a
+                href="#projects"
+                className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
+              >
+                View my work{" "}
+                <span className="ml-4">
+                  <ArrowRight />
+                </span>
+              </a>
+            </div>
           </aside>
         </main>
       </div>
     </div>
   );
 }
-

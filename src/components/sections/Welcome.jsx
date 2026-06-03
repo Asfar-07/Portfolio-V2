@@ -89,7 +89,7 @@ export default function Welcome({heroRef}) {
               </h4>
             </div>
             <div ref={rolesRef}>
-              <ul className="list-highlight text-xl uppercase mt-4 flex items-center gap-12 max-sm:gap-2 max-sm:text-[14px]">
+              <ul className="list-highlight text-[18px] -tracking-tighter uppercase mt-4 flex items-center gap-12 max-sm:gap-2 max-sm:text-[14px]">
                 <li>developer</li>
                 <span className="bg-[#4F6FFF]"></span>
                 <li>designer</li>
@@ -102,12 +102,12 @@ export default function Welcome({heroRef}) {
                 transforming ideas into digital experiences that are modern,
                 responsive & user focused.
               </p>
-              <button className="welcome-bottom-button flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
+              <a href='#projects' className="welcome-bottom-button flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
                 <span>explore my work</span>
                 <span>
                   <ArrowRight />
                 </span>
-              </button>
+              </a>
             </div>
           </section>
         </main>
