@@ -64,7 +64,7 @@ const clouds = [
   },
 ];
 
-function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
+function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
   const sectionRef = useRef(null);
   const cloudsRef = useRef(null);
 
@@ -169,7 +169,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
           ref={rightRockRef}
           className="right-rock absolute z-6 right-0 bottom-10 w-[55%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
         >
-          <div className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 ">
+          <div ref={rightRockHubRef} className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 ">
             <div className="relative  w-[100%]  h-[55%]  flex justify-center items-center">
               <svg
                 className="size-full absolute inset-0"
@@ -276,6 +276,7 @@ export default function Hero() {
   const heroRef = useRef();
   const groundRef = useRef();
   const rightRockRef = useRef();
+  const rightRockHubRef = useRef();
   const moonRef = useRef();
   const mainHeroRef = useRef();
   const heroHeading = useRef();
@@ -322,23 +323,20 @@ export default function Hero() {
   useGSAP(() => {
     gsap.set(heroRef.current, { backgroundColor: "#000631" });
     gsap.set(groundRef.current, { y: 300 });
-    gsap.set(rightRockRef.current, {
-      y: 300,
-      scale: 0.4,
-      transformOrigin: "bottom right",
-    });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
+    gsap.set(rightRockRef.current, { y: 300, scale: 0.4, transformOrigin: "bottom right"});
+    gsap.set(rightRockHubRef.current, { scale: 0, xPercent: 40, yPercent: 20});
     // gsap.set(mainHeroRef.current, { opacity:0 })
+    gsap.set(heroBadge.current, { transformOrigin:"10px center", opacity: 0, rotate:"90deg" });
     gsap.set(heroHeading.current, { y: 200, opacity: 0 });
-    gsap.set(heroBadge.current, { y: 200, opacity: 0 });
-    gsap.set(heroParagraph.current, { x: -200, opacity: 0 });
+    gsap.set(heroParagraph.current, { opacity: 0 });
     gsap.set(heroButton.current, { opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
         start: "top top",
-        end: "+=2000",
+        end: "+=2200",
         scrub: true,
         pin: true,
       },
@@ -349,31 +347,27 @@ export default function Hero() {
       { backgroundColor: "#000027", duration: 1, ease: "none" },
       0,
     )
-      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 0.1)
-      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 0.2)
-      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 0.4)
-      .to(
-        heroHeading.current,
-        { y: 0, opacity: 1, duration: 1, ease: "none" },
-        1,
-      )
-      .to(heroBadge.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 1)
-      .to(
-        heroParagraph.current,
-        { x: 0, opacity: 1, duration: 0.5, ease: "none" },
-        2,
-      )
-      .to(heroButton.current, { opacity: 1, duration: 0.5, ease: "none" }, 2);
+      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 1.5)
+      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 1.8)
+      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 2.2)
+      .to(rightRockHubRef.current, { scale: 1, xPercent: 0, yPercent: 0, duration: 1.5, ease: "power1.inOut" }, 3)
+      .to(heroBadge.current, { opacity: 1, rotate:"0deg",duration: 1.5, ease: "power1.inOut" }, 3.2)
+      .to(heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 4.2)
+      .to(heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, 5)
+      .to(heroButton.current, { opacity: 1, duration: 1, ease: "none" }, 6);
+
   }, [groundRef]);
 
   return (
     <div className="main-hero relative" ref={heroRef}>
+      {!ready && <GeneralLoading />}
       <Welcome heroRef={heroRef} />
       <Hero_Bg moonRef={moonRef} />
       <Hero_Ground
         handleLoad={handleLoad}
         groundRef={groundRef}
         rightRockRef={rightRockRef}
+        rightRockHubRef={rightRockHubRef}
       />
       <div
         className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
@@ -390,7 +384,7 @@ export default function Hero() {
           >
             <div
               ref={heroBadge}
-              className="flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]"
+              className="hero-badge flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]"
             >
               <div className="w-5 h-5 relative">
                 <Image

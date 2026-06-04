@@ -36,7 +36,7 @@ export default function Welcome({heroRef}) {
       scrollTrigger: {
         trigger: hero,
         start: '0% top',
-        end: '+=1500',
+        end: '+=1000',
         pin: true,
         anticipatePin: true,
         scrub: 0.8,
