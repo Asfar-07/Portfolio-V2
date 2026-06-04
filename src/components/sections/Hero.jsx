@@ -169,6 +169,39 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
           ref={rightRockRef}
           className="right-rock absolute z-6 right-0 bottom-10 w-[55%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
         >
+          <div className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 ">
+            <div className="relative  w-[100%]  h-[55%]  flex justify-center items-center">
+              <svg
+                className="size-full absolute inset-0"
+                viewBox="0 0 350 200"
+                fill="none"
+              >
+                <path
+                  d="M30 20 H120 L145 40 H320 Q335 40 335 55 V170 Q335 185 320 185 H30 Q15 185 15 170 V35 Q15 20 30 20 Z"
+                  fill="rgba(255,255,255,0.05)"
+                  stroke="#9f67ff"
+                  strokeWidth="1"
+                />
+              </svg>
+              <main className="pt-2 overflow-hidden flex justify-center">
+                <img
+                  src="/images/hero/hub_container1.webp"
+                  alt="hub container"
+                  className="h-[70%] w-[85%] "
+                />
+              </main>
+            </div>
+            <div className="w-full h-[40%]  pl-2">
+              <main className="w-1/2 h-full flex items-center  border border-[#9f67ffc2] bg-[rgba(255,255,255,0.05)] rounded-lg overflow-hidden">
+                 <img
+                  src="/images/hero/hub_container2.webp"
+                  alt="hub container"
+                  className="size-full object-contain object-left-bottom"
+                />
+              </main>
+            </div>
+          </div>
+
           <Image
             src="/images/hero/hero_rightRock.webp"
             alt="Rocks Image"
@@ -178,9 +211,12 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef }) {
           />
           <div className="firefly-fixed w-0.5 h-0.5 absolute right-[38%] bottom-[30%]"></div>
           <div className="firefly-fixed w-0.75 h-0.75 absolute right-[30%] bottom-[20%]"></div>
+          <div className="firefly-fixed w-0.5 h-0.5 absolute right-[5%] bottom-[35%] "></div>
           <div className="firefly-fixed w-0.75 h-0.75 absolute right-[60%] bottom-[15%] rotate-y-45"></div>
           <div className="firefly-fixed w-0.75 h-0.75 absolute right-[15%] bottom-[30%] rotate-x-45"></div>
-          <div className="firefly w-0.75 h-0.75 absolute right-[15%] bottom-[15%] rotate-x-45"></div>
+          <div className="firefly-fixed w-0.5 h-0.5 absolute right-[5%] bottom-[18%] rotate-x-45"></div>
+          <div className="firefly w-0.75 h-0.75 absolute animate-[fireflyMove_60s_linear_infinite,fireflyBlink_2s_ease-in-out_infinite] right-[15%] bottom-[15%] rotate-x-45"></div>
+          <div className="firefly w-0.75 h-0.75 absolute delay-75 animate-[fireflyMove_60s_12s_linear_infinite,fireflyBlink_2s_ease-in-out_infinite] right-[12%] bottom-[0%]"></div>
         </div>
       </section>
       <section className="ground-blur z-20  h-80 absolute bottom-0  w-full overflow-hidden">
