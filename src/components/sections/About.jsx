@@ -254,7 +254,7 @@ export default function About() {
               About Me
             </h2>
             <p
-              className=" font-medium leading-relaxed text-[22px] overflow-hidden"
+              className=" font-light leading-relaxed text-[20px] overflow-hidden"
               ref={aboutMeRef}
             >
               I’m a{" "}
@@ -289,7 +289,7 @@ export default function About() {
               {stats.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3hover:scale-105 transition-all duration-300"
+                  className="flex items-center gap-3 hover:scale-105 transition-all duration-300"
                 >
                   {/* Icon */}
                   <div className="min-w-10 min-h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400/20 to-purple-500/20 border border-white/10">
