@@ -46,7 +46,7 @@ export default function Contact() {
                 amazing together.
               </span>
             </h3>
-            <p className="text-[#7a7a9a] text-[0.92rem] font-light mb-7 leading-relaxed max-w-xs">
+            <p className="text-[#ffffff] text-[0.92rem] font-light mb-7 leading-relaxed max-w-xs">
               Whether you have a project in mind, a job opportunity, or just
               want to say hi — my inbox is always open.
             </p>
@@ -60,7 +60,7 @@ export default function Contact() {
                          hover:text-(--cyan-mark) group"
               >
                 <span
-                  className="w-9 h-9 bg-[#111120] border border-white/[0.07] rounded-[10px]
+                  className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
                                flex items-center justify-center text-base flex-shrink-0
                                group-hover:border-(--cyan-mark)/40 transition-colors duration-200"
                 >
@@ -74,7 +74,7 @@ export default function Contact() {
                             text-[#f0f0f8] text-[0.88rem]"
               >
                 <span
-                  className="w-9 h-9 bg-[#111120] border border-white/[0.07] rounded-[10px]
+                  className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
                                flex items-center justify-center text-base flex-shrink-0"
                 >
                   <MapPin />
@@ -84,7 +84,7 @@ export default function Contact() {
 
               <div className="flex items-center gap-4 py-[0.85rem] text-[#f0f0f8] text-[0.88rem]">
                 <span
-                  className="w-9 h-9 bg-[#111120] border border-white/[0.07] rounded-[10px]
+                  className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
                                flex items-center justify-center text-base flex-shrink-0"
                 >
                   <DoorOpen />
@@ -99,8 +99,8 @@ export default function Contact() {
                 href="https://github.com/Asfar-07"
                 target="_black"
                 title="GitHub"
-                className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
-                         flex items-center justify-center text-[#7a7a9a]
+                className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                         flex items-center justify-center text-[#ffffff]
                          transition-all duration-200
                          hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
               >
@@ -117,8 +117,8 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/asfar2003"
                 target="_black"
                 title="LinkedIn"
-                className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
-                         flex items-center justify-center text-[#7a7a9a]
+                className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                         flex items-center justify-center text-[#ffffff]
                          transition-all duration-200
                          hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
               >
@@ -135,8 +135,8 @@ export default function Contact() {
                 href="mailto:asfarmuhammedns@gmail.com"
                 target="_black"
                 title="Email"
-                className="w-11 h-11 bg-[#111120] border border-white/[0.07] rounded-[12px]
-                         flex items-center justify-center text-[#7a7a9a] text-[1.1rem]
+                className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                         flex items-center justify-center text-[#ffffff] text-[1.1rem]
                          transition-all duration-200
                          hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
               >
@@ -148,32 +148,32 @@ export default function Contact() {
 
           {/* ── RIGHT: form ── */}
           <RevealWrapper type="fadeUp">
-          <div className="bg-[#111120] border border-white/[0.07] rounded-3xl p-10 max-md:p-6">
+          <div className="bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-3xl p-10 max-md:p-6">
             {/* row 1 */}
             <div className="grid grid-cols-2 gap-4 mb-4 max-sm:grid-cols-1">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase text-[#7a7a9a]">
+                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase ">
                   First Name
                 </label>
                 <input
                   type="text"
-                  placeholder="John"
-                  className="bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-3
+                  placeholder="First Name"
+                  className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
-                           placeholder:text-[#7a7a9a]/50 transition-all duration-200
+                           placeholder:text-[#e0e0ff] transition-all duration-200
                            focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase text-[#7a7a9a]">
+                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase">
                   Last Name
                 </label>
                 <input
                   type="text"
-                  placeholder="Doe"
-                  className="bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-3
+                  placeholder="Last Name"
+                  className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
-                           placeholder:text-[#7a7a9a]/50 transition-all duration-200
+                           placeholder:text-[#e0e0ff] transition-all duration-200
                            focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
                 />
               </div>
@@ -182,28 +182,28 @@ export default function Contact() {
             {/* row 2 */}
             <div className="grid grid-cols-2 gap-4 mb-4 max-sm:grid-cols-1">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase text-[#7a7a9a]">
+                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase ">
                   Email
                 </label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
-                  className="bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-3
+                  placeholder="Email"
+                  className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
-                           placeholder:text-[#7a7a9a]/50 transition-all duration-200
+                           placeholder:text-[#e0e0ff] transition-all duration-200
                            focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase text-[#7a7a9a]">
+                <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase ">
                   Subject
                 </label>
                 <input
                   type="text"
-                  placeholder="Project Inquiry"
-                  className="bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-3
+                  placeholder="Subject"
+                  className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
-                           placeholder:text-[#7a7a9a]/50 transition-all duration-200
+                           placeholder:text-[#e0e0ff] transition-all duration-200
                            focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
                 />
               </div>
@@ -211,15 +211,15 @@ export default function Contact() {
 
             {/* textarea */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase text-[#7a7a9a]">
+              <label className="text-[0.7rem] font-semibold tracking-[0.06em] uppercase ">
                 Message
               </label>
               <textarea
                 placeholder="Tell me about your project..."
                 rows={5}
-                className="resize-y bg-white/[0.04] border border-white/[0.07] rounded-xl px-4 py-3
+                className="resize-y bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                          text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
-                         placeholder:text-[#7a7a9a]/50 transition-all duration-200
+                         placeholder:text-[#e0e0ff] transition-all duration-200
                          focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
               />
             </div>
@@ -228,7 +228,7 @@ export default function Contact() {
             <button
             onClick={()=>setIsOpen(true)}
               type="submit"
-              className="w-full mt-4 bg-(--s-bg-deep) text-white rounded-xl py-4 text-[0.92rem]
+              className="w-full shadow-lg mt-4 bg-(--s-bg-deep) text-white rounded-xl py-4 text-[0.92rem]
                        font-semibold tracking-wide transition-all duration-200
                        hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(108,99,255,0.45)]
                        cursor-pointer"

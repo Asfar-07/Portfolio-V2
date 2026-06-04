@@ -192,7 +192,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
               </main>
             </div>
             <div className="w-full h-[40%]  pl-2">
-              <main className="w-1/2 h-full flex items-center  border border-[#9f67ffc2] bg-[rgba(255,255,255,0.05)] rounded-lg overflow-hidden">
+              <main className="w-1/2 h-full flex items-center  border border-[#9f67ffc2] bg-[#ffffff0d] rounded-lg overflow-hidden">
                  <img
                   src="/images/hero/hub_container2.webp"
                   alt="hub container"
