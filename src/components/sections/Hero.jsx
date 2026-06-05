@@ -413,7 +413,7 @@ export default function Hero() {
               className="w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
               [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]"
             >
-              <p className=" w-full font-light text-[15px] tracking-wider  max-sm:text-sm ">
+              <p className=" w-full font-light leading-relaxed text-[18px]   max-sm:text-sm ">
                 I am Asfar Muhammed N S, a passionate software developer
                 building modern, scalable web experiences. Explore my creative
                 work and skills.
