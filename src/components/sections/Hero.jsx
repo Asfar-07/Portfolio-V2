@@ -227,8 +227,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
 }
 
 function Hero_Bg({ moonRef }) {
-
-   const stars = useMemo(() => {
+  const stars = useMemo(() => {
     return Array.from({ length: 100 }, (_, i) => ({
       id: i,
       size: Math.random() * 2 + 1,
@@ -241,7 +240,7 @@ function Hero_Bg({ moonRef }) {
   }, []);
 
   return (
-    <section className="hero-bg absolute z-1 inset-0 size-full flex justify-end overflow-hidden ">
+    <section className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none">
       {stars.map((star) => (
         <span
           key={star.id}
@@ -263,9 +262,8 @@ function Hero_Bg({ moonRef }) {
           src="/images/hero/planet.webp"
           alt="Moon Image"
           fill
-          sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
-          className="moon-img-main w-full h-full "
           priority
+          className="moon-img-main"
         />
       </div>
     </section>
@@ -283,6 +281,7 @@ export default function Hero() {
   const heroBadge = useRef();
   const heroButton = useRef();
   const heroParagraph = useRef();
+  const heroBgRef = useRef();
 
   const [loaded, setLoaded] = useState(0);
   const [ready, setReady] = useState(false);
@@ -321,7 +320,7 @@ export default function Hero() {
   }, [loaded]);
 
   useGSAP(() => {
-    gsap.set(heroRef.current, { backgroundColor: "#000631" });
+    gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
     gsap.set(groundRef.current, { y: 300 });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
     gsap.set(rightRockRef.current, { y: 300, scale: 0.4, transformOrigin: "bottom right"});
@@ -337,13 +336,13 @@ export default function Hero() {
         trigger: heroRef.current,
         start: "top top",
         end: "+=2200",
-        scrub: true,
+        scrub: 1,
         pin: true,
       },
     });
 
     tl.to(
-      heroRef.current,
+      heroBgRef.current,
       { backgroundColor: "#000027", duration: 1, ease: "none" },
       0,
     )
@@ -359,84 +358,90 @@ export default function Hero() {
   }, [groundRef]);
 
   return (
-    <div className="main-hero relative" ref={heroRef}>
-      {!ready && <GeneralLoading />}
-      <Welcome heroRef={heroRef} />
-      <Hero_Bg moonRef={moonRef} />
-      <Hero_Ground
-        handleLoad={handleLoad}
-        groundRef={groundRef}
-        rightRockRef={rightRockRef}
-        rightRockHubRef={rightRockHubRef}
-      />
+    <>
       <div
-        className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
-        id="home"
-        ref={mainHeroRef}
-      >
-        <main
-          className="h-full m-auto relative  w-[88%] max-w-350 text-(--p-font) max-sm:w-full max-sm:px-5"
-          style={{ margin: "auto" }}
+        className="fixed inset-0 -z-10 overflow-hidden"
+        ref={heroBgRef}
+      ></div>
+      <Hero_Bg moonRef={moonRef} />
+      <div className="main-hero relative" ref={heroRef}>
+        {!ready && <GeneralLoading />}
+        <Welcome heroRef={heroRef} />
+        <Hero_Ground
+          handleLoad={handleLoad}
+          groundRef={groundRef}
+          rightRockRef={rightRockRef}
+          rightRockHubRef={rightRockHubRef}
+        />
+        <div
+          className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
+          id="home"
+          ref={mainHeroRef}
         >
-          <aside
-            className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
-           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40"
+          <main
+            className="h-full m-auto relative  w-[88%] max-w-350 text-(--p-font) max-sm:w-full max-sm:px-5"
+            style={{ margin: "auto" }}
           >
-            <div
-              ref={heroBadge}
-              className="hero-badge flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]"
+            <aside
+              className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
+           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40"
             >
-              <div className="w-5 h-5 relative">
-                <Image
-                  src="/images/hero/planeticon.webp"
-                  alt="Planet Icon"
-                  fill
-                  priority
-                />
-              </div>
-              <div className="role-wrapper">
-                <span key={current} className={`role-text ${animState}`}>
-                  {roles[current]}
-                </span>
-              </div>
-            </div>
-            <h1
-              ref={heroHeading}
-              className=" font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
-              [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]"
-            >
-              Crafting <span className="grad">Engaging</span> User Experiences
-              <span className="grad">.</span>
-            </h1>
-            <div
-              ref={heroParagraph}
-              className="w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
-              [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]"
-            >
-              <p className=" w-full font-light leading-relaxed text-[18px]   max-sm:text-sm ">
-                I am Asfar Muhammed N S, a passionate software developer
-                building modern, scalable web experiences. Explore my creative
-                work and skills.
-              </p>
-            </div>
-
-            <div
-              ref={heroButton}
-              className="flex gap-5 relative z-100 uppercase"
-            >
-              <a
-                href="#projects"
-                className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
+              <div
+                ref={heroBadge}
+                className="hero-badge flex items-center w-fit bg-[#8d2fff4c] grow-0 shrink-0 px-2 py-1 gap-2 border-[.5px] border-[#8d2fff] rounded-2xl backdrop-blur-[4px]"
               >
-                View my work{" "}
-                <span className="ml-4">
-                  <ArrowRight />
-                </span>
-              </a>
-            </div>
-          </aside>
-        </main>
+                <div className="w-5 h-5 relative">
+                  <Image
+                    src="/images/hero/planeticon.webp"
+                    alt="Planet Icon"
+                    fill
+                    priority
+                  />
+                </div>
+                <div className="role-wrapper">
+                  <span key={current} className={`role-text ${animState}`}>
+                    {roles[current]}
+                  </span>
+                </div>
+              </div>
+              <h1
+                ref={heroHeading}
+                className=" font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]"
+              >
+                Crafting <span className="grad">Engaging</span> User Experiences
+                <span className="grad">.</span>
+              </h1>
+              <div
+                ref={heroParagraph}
+                className="w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]"
+              >
+                <p className=" w-full font-light leading-relaxed text-[18px]   max-sm:text-sm ">
+                  I am Asfar Muhammed N S, a passionate software developer
+                  building modern, scalable web experiences. Explore my creative
+                  work and skills.
+                </p>
+              </div>
+
+              <div
+                ref={heroButton}
+                className="flex gap-5 relative z-100 uppercase"
+              >
+                <a
+                  href="#projects"
+                  className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
+                >
+                  View my work{" "}
+                  <span className="ml-4">
+                    <ArrowRight />
+                  </span>
+                </a>
+              </div>
+            </aside>
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
