@@ -101,7 +101,7 @@ export default function Achievement() {
   }, []);
 
   return (
-    <div className="achievement bg-(--s-bg-deep) text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
+    <div className="achievement  text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
       <main className="flex flex-col  w-100% m-auto  max-w-[1250px] pt-25  relative text-(--p-font)  max-md:w-full max-md:h-auto">
         <section className=" flex w-full items-center justify-center">
           <div ref={wordSectionRef} className=" inline-block relative uppercase text-[15rem] whitespace-nowrap font-semibold leading-[1em] scale-y-[1.15] tracking-normal text-white

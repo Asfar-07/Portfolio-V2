@@ -10,7 +10,6 @@ import { useGSAP } from "@gsap/react";
 import Welcome from "./Welcome";
 import "../../styles/hero.css";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const roles = [
   "Full Stack Developer",
@@ -270,19 +269,20 @@ function Hero_Bg({ moonRef }) {
   );
 }
 
-export default function Hero() {
-  const heroRef = useRef();
-  const groundRef = useRef();
-  const rightRockRef = useRef();
-  const rightRockHubRef = useRef();
-  const moonRef = useRef();
-  const mainHeroRef = useRef();
-  const heroHeading = useRef();
-  const heroBadge = useRef();
-  const heroButton = useRef();
-  const heroParagraph = useRef();
-  const heroBgRef = useRef();
-
+export default function Hero({
+  heroBodyRef,
+  heroRef,
+  groundRef,
+  rightRockRef,
+  rightRockHubRef,
+  moonRef,
+  mainHeroRef,
+  heroHeading,
+  heroBadge,
+  heroButton,
+  heroParagraph,
+  heroBgRef,
+}) {
   const [loaded, setLoaded] = useState(0);
   const [ready, setReady] = useState(false);
   const [imageCollected, setImageCollected] = useState([]);
@@ -319,46 +319,8 @@ export default function Hero() {
     }
   }, [loaded]);
 
-  useGSAP(() => {
-    gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
-    gsap.set(groundRef.current, { y: 300 });
-    gsap.set(moonRef.current, { y: 600, scale: 0.6 });
-    gsap.set(rightRockRef.current, { y: 300, scale: 0.4, transformOrigin: "bottom right"});
-    gsap.set(rightRockHubRef.current, { scale: 0, xPercent: 40, yPercent: 20});
-    // gsap.set(mainHeroRef.current, { opacity:0 })
-    gsap.set(heroBadge.current, { transformOrigin:"10px center", opacity: 0, rotate:"90deg" });
-    gsap.set(heroHeading.current, { y: 200, opacity: 0 });
-    gsap.set(heroParagraph.current, { opacity: 0 });
-    gsap.set(heroButton.current, { opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "+=2200",
-        scrub: 1,
-        pin: true,
-      },
-    });
-
-    tl.to(
-      heroBgRef.current,
-      { backgroundColor: "#000027", duration: 1, ease: "none" },
-      0,
-    )
-      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 1.5)
-      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 1.8)
-      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 2.2)
-      .to(rightRockHubRef.current, { scale: 1, xPercent: 0, yPercent: 0, duration: 1.5, ease: "power1.inOut" }, 3)
-      .to(heroBadge.current, { opacity: 1, rotate:"0deg",duration: 1.5, ease: "power1.inOut" }, 3.2)
-      .to(heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 4.2)
-      .to(heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, 5)
-      .to(heroButton.current, { opacity: 1, duration: 1, ease: "none" }, 6);
-
-  }, [groundRef]);
-
   return (
-    <>
+    <div ref={heroBodyRef} className="absolute inset-0">
       <div
         className="fixed inset-0 -z-10 overflow-hidden"
         ref={heroBgRef}
@@ -442,6 +404,6 @@ export default function Hero() {
           </main>
         </div>
       </div>
-    </>
+    </div>
   );
 }
