@@ -17,11 +17,11 @@ export default function Header() {
 
   React.useEffect(() => {
 
-    if (currentScrollY < 300) {
+    if (currentScrollY < 2500) {
       setIsNavVisible(true);
       navContainer.current.classList.remove("floating-nav")
       navContainer.current.style.color="white"
-    }else if (currentScrollY > lastScrolled && currentScrollY > 300) {
+    }else if (currentScrollY > lastScrolled && currentScrollY > 2500) {
       setIsNavVisible(false);
     } else if(currentScrollY < lastScrolled ) {
       setIsNavVisible(false);

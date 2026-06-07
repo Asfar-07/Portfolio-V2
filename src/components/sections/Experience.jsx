@@ -45,9 +45,9 @@ export default function Experience() {
       <div className='w-100% max-w-[1250px] m-auto '>
         <div className='w-full md:text-center'>
           {/* <p>What I have done so far</p> */}
-          <h2 >Education & Experience</h2>
+          <h2 className=' text-4xl font-black'>Education & Experience</h2>
         </div>
-        <div className="mt-20 flex flex-col">
+        <div className="mt-30 flex flex-col">
           <VerticalTimeline>
             {experiences.map((experience, index) => (
               <ExperienceCard key={index} experience={experience} />

@@ -2,7 +2,7 @@
 
 *{
   /* padding: 0; */
-  /* margin: 0; */
+  /* margin: 0; */ 
   box-sizing: border-box;
 }
 html {
@@ -10,43 +10,42 @@ html {
 } 
 @font-face {
   font-family: 'Outfit';
-  src: url('/fonts/Outfit-Regular.woff2') format('woff2'),
-       url('/fonts/Outfit-Regular.woff') format('woff'); 
+  src: url('/fonts/Outfit-Regular.woff2') format('woff2');
 
   font-style: normal ;
   font-display: swap;
 }
 
 :root {
-  --p-bg-dark:#050818; 
-  --p-bg-deep: #000631;
-  --p-bg-light: #030E51;
-  --s-bg-deep: #8B2FFF;
-  --s-bg-light: #e040fb;
+  --p-bg-dark:#050818;   
+  --p-bg-deep: #120944;
+  --p-bg-light: #030E51; 
+  --s-bg-deep: #6D28D9;  
+  --s-bg-light: #e040fb; 
   --cyan-mark: #00E7FF;
   --neon-blue: #2979ff;
   --p-font: white;
   --s-font: #e8f4f8;
-  --header1-text:clamp(2.7rem,calc(6vw + 1rem),3.3rem); 
-  --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem);
+  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 4.4rem); 
+  --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem); 
 }
 body {
   padding: 0;
-  margin: 0;
-  background-color: #0f0520;
+  margin: 0; 
+  background-color: var(--p-bg-deep); 
   width: 100%;
   height: 100vh; 
-   letter-spacing: 1.2px; 
+  /* letter-spacing: 1.2px; */ 
+  font-family: 'Outfit', sans-serif; 
 }
 h1{
   font-size:var(--header1-text);
    font-weight: 700; 
-   line-height: 3.5rem;
 }
-h2{
+/* h2{
   font-weight: 700;
-  font-size: 36px;
-}
+  font-size: 36px; 
+} */
 h3{
   font-size: 36px; 
 }
@@ -64,5 +63,5 @@ p{
   cursor: pointer;
   transition: all 0.25s ease; 
 }  
-.btn:hover { background: #7a1fef; transform: translateY(-2px); } 
+.btn:hover { background: #7a1fef; transform: translateY(-2px); }  
  

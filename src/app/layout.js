@@ -1,6 +1,5 @@
 import "./globals.css";
 import Header from "@/components/layouts/Header";
-import HeroBg from "@/components/layouts/HeroBg";
 import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
@@ -14,7 +13,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-        <HeroBg />
         <main>{children}</main>
         <Footer />
       </body>
