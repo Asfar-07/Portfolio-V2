@@ -60,7 +60,14 @@ useGSAP(() => {
             width: 0,
             duration: 0.5,
           })
-
+          .to(
+            ".main-portfolio",
+            {
+              backgroundColor: "#6D28D9",
+              duration: 0.1,
+              ease:"power3.out"
+            },
+          )
           .to(
             rightContainerRef.current,
             {
@@ -78,7 +85,7 @@ useGSAP(() => {
   return (
     <div
       id="projects"
-      className="projects bg-(--p-bg-deep) mt-20 text-(--p-font) h-auto overflow-hidden relative  w-full"
+      className="projects text-(--p-font) h-auto overflow-hidden relative w-full"
     >
       <main
         ref={sectionRef}

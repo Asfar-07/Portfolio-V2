@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import SplitType from "split-type";
 import "@/styles/about.css";
 import { Code2, Rocket, Coffee, Target } from "lucide-react";
 
@@ -29,13 +28,9 @@ const stats = [
     label: "Learning Everyday",
   },
 ];
-gsap.registerPlugin(ScrollTrigger);
 
-export default function About() {
+export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectionRef}) {
   const glitchBox = useRef(null);
-  const containerRef = useRef(null);
-  const aboutMeRef = useRef(null);
-  const collectionRef = useRef(null);
   const projectorBeamRef = useRef(null);
 
   useEffect(() => {
@@ -112,56 +107,12 @@ export default function About() {
     drift: `${(Math.random() - 0.5) * 60}px`,
   }));
 
-  useGSAP(() => {
-    const split = new SplitType(aboutMeRef.current, { types: "words" });
-    const words = Array.from(split.words).filter(
-      (el) => !el.closest("[data-nosplit]"),
-    );
-
-    gsap.set(words, {
-      x: 100,
-      opacity: 0,
-    });
-    gsap.set(collectionRef.current, {
-      opacity: 0,
-      y: 50,
-    });
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "0% top",
-        end: "+=1500",
-        scrub: 1.5,
-        pin: true,
-        anticipatePin: true,
-      },
-    });
-
-    tl.to(words, {
-      x: 0,
-      opacity: 1,
-      stagger: {
-        each: 0.2,
-      },
-      ease: "none",
-    });
-    tl.to(
-      collectionRef.current,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 2,
-        ease: "power2.out",
-      },
-      "-=1",
-    );
-  }, []);
-
   return (
+    <div ref={aboutBodyRef} className=" absolute inset-0">
     <div
       id="about"
-      className="about bg-(--p-bg-deep) mt-20 text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-lg:pt-20 max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
-      ref={containerRef}
+      className="about bg-(--p-bg-deep) text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-lg:pt-20 max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
+      ref={mainAboutRef}
     >
       <div className="dot-grid absolute left-15 top-15"></div>
       <svg
@@ -311,6 +262,7 @@ export default function About() {
           </div>
         </section>
       </main>
+    </div>
     </div>
   );
 }
