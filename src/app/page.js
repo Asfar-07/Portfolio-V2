@@ -15,7 +15,7 @@ export default function Home() {
         <main className="main-portfolio w-full relative bg-(--p-bg-deep)">
           <div className="absolute w-full h-full inset-0 z-0"></div>
           <CinemaAnimation />
-          <Experience />
+          {/* <Experience /> */}
           <Projects />
           <Achievement />
           <Contact />

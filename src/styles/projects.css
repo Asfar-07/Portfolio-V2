@@ -1,0 +1,16 @@
+.masked-section {
+  position: absolute;
+  inset: 0;
+
+  mask-image: url("/images/mask.png");
+  -webkit-mask-image: url("/images/mask.png");
+
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+
+  mask-position: top;
+  -webkit-mask-position: top;
+
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
