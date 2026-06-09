@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import SplitType from "split-type";
+import Projects from "./sections/Projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,12 +32,23 @@ export default function CinemaAnimation() {
   const aboutMeRef = useRef(null);
   const collectionRef = useRef(null);
 
+  // Refs for Projects Section
+  const mainProjectsRef = useRef(null);
+  const leftContainerRef = useRef(null);
+  const rightContainerRef = useRef(null);
+  const projectsBodyRef = useRef(null);
+  const bgImage = useRef(null);
+
   useGSAP(() => {
 
+    const isDesktop = window.innerWidth >= 1000;
+
     const split = new SplitType(aboutMeRef.current, { types: "words" });
-        const words = Array.from(split.words).filter(
+    const aboutWords = Array.from(split.words).filter(
           (el) => !el.closest("[data-nosplit]"),
     );
+    const cards = gsap.utils.toArray(".project-card");
+    const headingLetters = gsap.utils.toArray(".work-letter");
 
     gsap.set(heroBodyRef.current, { yPercent: 0 });
     gsap.set(aboutBodyRef.current, { yPercent: 100 });
@@ -51,14 +63,16 @@ export default function CinemaAnimation() {
     gsap.set(heroParagraph.current, { opacity: 0 });
     gsap.set(heroButton.current, { opacity: 0 });
 
-    gsap.set(words, { x: 100, opacity: 0});
+    gsap.set(aboutWords, { x: 100, opacity: 0});
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
+
+    gsap.set(projectsBodyRef.current, { yPercent: 100});
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: "+=4200",
+        end: "+=6200",
         scrub: 1,
         pin: true,
       },
@@ -89,18 +103,58 @@ export default function CinemaAnimation() {
         { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" },
         3.2,
       )
-      .to(
-        heroHeading.current,
-        { y: 0, opacity: 1, duration: 1, ease: "none" },
-        4.2,
-      )
+      .to( heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 4.2)
       .to(heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, 5)
       .to(heroButton.current, { opacity: 1, duration: 1, ease: "none" }, 6)
       .to(heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, 7)
-      .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 7)
 
-      .to(words, { x: 0, opacity: 1,stagger: { each: 0.15 }, direction: 1 , ease: "none" },8)
-      .to(collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" },9);
+      //about section animation
+      .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 7)
+      .to(aboutWords, { x: 0, opacity: 1,stagger: { each: 0.15 }, direction: 1 , ease: "none" },8)
+      .to(collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" },9)
+
+      .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 16)
+      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, 18)
+      .to(aboutBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<")
+      headingLetters.forEach((letter) => {
+        tl.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1 });
+      });
+
+      cards.forEach((card, index) => {
+        tl.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1,});
+
+        // last card fullscreen
+        if (index === cards.length - 1) {
+          tl.to(card, {
+            width: "100vw",
+            height: "100vh",
+            maxWidth: "none",
+            maxHeight: "none",
+            borderRadius: 0,
+            duration: 1,
+          })
+
+            .to(leftContainerRef.current, {
+              width: 0,
+              duration: 0.5,
+            })
+            .to(".main-portfolio", {
+              backgroundColor: "#6D28D9",
+              duration: 0.1,
+              ease: "power3.out",
+            })
+            .to(
+              rightContainerRef.current,
+              {
+                width: "100%",
+                paddingLeft: isDesktop ? 90 : 20,
+                paddingRight: isDesktop ? 90 : 20,
+                duration: 0.5,
+              },
+              "<",
+            );
+        }
+      });
 
   }, []);
   return (
@@ -124,6 +178,13 @@ export default function CinemaAnimation() {
         mainAboutRef={mainAboutRef} 
         aboutMeRef={aboutMeRef} 
         collectionRef={collectionRef} 
+      />
+      <Projects 
+        mainProjectsRef={mainProjectsRef}
+        leftContainerRef={leftContainerRef}
+        rightContainerRef={rightContainerRef}
+        projectsBodyRef={projectsBodyRef}
+        bgImage={bgImage}
       />
     </div>
   );

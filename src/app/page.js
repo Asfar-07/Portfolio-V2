@@ -16,7 +16,6 @@ export default function Home() {
           <div className="absolute w-full h-full inset-0 z-0"></div>
           <CinemaAnimation />
           {/* <Experience /> */}
-          <Projects />
           <Achievement />
           <Contact />
         </main>
