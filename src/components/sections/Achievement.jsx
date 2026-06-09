@@ -44,23 +44,14 @@ export default function Achievement() {
         trigger: wordSectionRef.current,
         start: "20% bottom",
         end: "110% bottom",
-        scrub: 3,
+        scrub: 3.5,
       },
     });
     
      letters.forEach((letter, index) => {
-       tl.fromTo(
-         letter,
-         {
-           y: index * 100 + 20,
-         },
-         {
-           y: 0,
-           duration: 1,
-         },
-         index === 0 ? 0 : "<0.04",
-       );
+       tl.fromTo( letter, {  y: index * 100 + 20 }, { y: 0, duration: 1}, index === 0 ? 0 : "<0.04" );
      });
+     
   },[]);
 
   useGSAP(() => {
@@ -69,34 +60,21 @@ export default function Achievement() {
     growthItems.forEach((item, index) => {
       const count = item.querySelector(".growth-count");
 
-      gsap.set(item, {
-        y: 80,
-      });
-
-      gsap.set(count, {
-        y: 100,
-      });
+      gsap.set(item, { y: 80 });
+      gsap.set(count, { y: 100 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "-10% bottom",
-          end: "+=140 bottom",
-          scrub: 4,
+          start: "-50% bottom",
+          end: "120% bottom",
+          scrub: 3.5,
         },
       });
 
-      tl.to(item, {
-        y: 0,
-        duration: 1,
-      }).to(
-        count,
-        {
-          y: 0,
-          duration: 1,
-        },
-        "<", // same time
-      );
+      tl.to( item, { y: 0, duration: 1 })
+        .to( count, { y: 0, duration: 1 }, "<=+0.8")
+
     });
   }, []);
 
