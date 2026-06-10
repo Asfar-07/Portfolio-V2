@@ -1,8 +1,5 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import "@/styles/about.css";
 import { Code2, Rocket, Coffee, Target } from "lucide-react";
 

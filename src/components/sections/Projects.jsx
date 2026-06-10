@@ -1,10 +1,7 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import projects from "../../store/db/projectData";
 import "../../styles/projects.css";
 

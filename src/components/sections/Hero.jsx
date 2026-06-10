@@ -3,10 +3,6 @@ import React, { useEffect, useState, useRef, useMemo } from "react";
 import { ArrowRight } from "lucide-react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
-import { RevealWrapper } from "../ui/RevealWrapper";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import Welcome from "./Welcome";
 import "../../styles/hero.css";
 

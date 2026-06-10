@@ -1,10 +1,3 @@
-import Hero from "@/components/sections/Hero";
-import Contact from "@/components/sections/Contact";
-import Experience from "@/components/sections/Experience";
-import About from "@/components/sections/About";
-import Projects from "@/components/sections/Projects";
-import Achievement from "@/components/sections/Achievement";
-import Education from "@/components/sections/Education";
 import PortfolioShell from "@/components/PortfolioShell";
 import CinemaAnimation from "@/components/CinemaAnimation";
 
@@ -15,7 +8,6 @@ export default function Home() {
         <main className=" w-full relative">
           <div className="absolute w-full h-full inset-0 z-0"></div>
           <CinemaAnimation />
-          {/* <Experience /> */}
         </main>
       </div>
     </PortfolioShell>
