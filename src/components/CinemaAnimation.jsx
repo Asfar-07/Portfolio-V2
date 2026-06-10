@@ -7,6 +7,9 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import SplitType from "split-type";
 import Projects from "./sections/Projects";
+import Achievement from "./sections/Achievement";
+import Contact from "./sections/Contact";
+import Footer from "./layouts/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +42,15 @@ export default function CinemaAnimation() {
   const projectsBodyRef = useRef(null);
   const bgImage = useRef(null);
 
+  // Refs for achievement Section
+  const achievementBodyRef = useRef(null);
+
+  // Refs for contact Section
+  const contactBodyRef = useRef(null);
+
+  // Refs for footer Section
+  const footerBodyRef = useRef(null);
+
   useGSAP(() => {
 
     const isDesktop = window.innerWidth >= 1000;
@@ -52,6 +64,12 @@ export default function CinemaAnimation() {
 
     gsap.set(heroBodyRef.current, { yPercent: 0 });
     gsap.set(aboutBodyRef.current, { yPercent: 100 });
+    gsap.set(projectsBodyRef.current, { yPercent: 100 });
+    gsap.set(achievementBodyRef.current, { yPercent: 100 })
+    gsap.set(contactBodyRef.current, { yPercent: 100 })
+    gsap.set(footerBodyRef.current, { yPercent: 100 })
+
+
     gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
     gsap.set(groundRef.current, { y: 300 });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
@@ -66,13 +84,12 @@ export default function CinemaAnimation() {
     gsap.set(aboutWords, { x: 100, opacity: 0});
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
 
-    gsap.set(projectsBodyRef.current, { yPercent: 100});
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: "+=6200",
+        end: "+=9000",
         scrub: 1,
         pin: true,
       },
@@ -110,14 +127,16 @@ export default function CinemaAnimation() {
 
       //about section animation
       .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 7)
-      .to(aboutWords, { x: 0, opacity: 1,stagger: { each: 0.15 }, direction: 1 , ease: "none" },8)
+      .to(aboutWords, { x: 0, opacity: 1,stagger: { each: 0.12 }, direction: 1 , ease: "none" },8)
       .to(collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" },9)
 
-      .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 16)
+      //project section animation
+      .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 15)
       .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, 18)
-      .to(aboutBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<")
+      .to(aboutBodyRef.current, { yPercent: -500, duration: 2, ease: "none" }, "<")
+      .to(heroBodyRef.current, { yPercent: -500, duration: 2, ease: "none" }, "<")
       headingLetters.forEach((letter) => {
-        tl.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1 });
+        tl.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
       });
 
       cards.forEach((card, index) => {
@@ -138,7 +157,7 @@ export default function CinemaAnimation() {
               width: 0,
               duration: 0.5,
             })
-            .to(".main-portfolio", {
+            .to(document.body , {
               backgroundColor: "#6D28D9",
               duration: 0.1,
               ease: "power3.out",
@@ -155,6 +174,14 @@ export default function CinemaAnimation() {
             );
         }
       });
+
+      tl.to(projectsBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
+      .to(achievementBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
+      .to(achievementBodyRef.current, { yPercent: -50, duration: 2, ease: "none" })
+      .to(achievementBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
+      .to(contactBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
+      .to(contactBodyRef.current, { yPercent: -120, duration: 2, ease: "none" })
+      .to(footerBodyRef.current, { yPercent: 0, duration: .1, ease: "none" }, "<")
 
   }, []);
   return (
@@ -186,6 +213,11 @@ export default function CinemaAnimation() {
         projectsBodyRef={projectsBodyRef}
         bgImage={bgImage}
       />
+      <Achievement 
+       achievementBodyRef={achievementBodyRef}
+      />
+      <Contact contactBodyRef={contactBodyRef} />
+      <Footer footerBodyRef={footerBodyRef}/>
     </div>
   );
 }

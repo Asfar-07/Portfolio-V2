@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import "../../styles/footer.css";
 
-export default function Footer() {
+export default function Footer({footerBodyRef}) {
   const marqueeRef = useRef(null);
 
   const navLinks = ["HOME", "ABOUT", "PROJECT", "EDUCATION", "CONTACT"];
@@ -19,7 +19,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full text-[#ffffff] overflow-hidden bg-[#000000] p-[3rem_4rem] max-sm:p-[2rem_1rem]  max-md:p-[2rem_1.5rem] max-lg:p-[2rem_2rem] ">
+    <footer ref={footerBodyRef} className="w-full absolute bottom-0 left-0 -z-2 text-[#ffffff] overflow-hidden bg-[#000000] p-[3rem_4rem] max-sm:p-[2rem_1rem]  max-md:p-[2rem_1.5rem] max-lg:p-[2rem_2rem] ">
       <main className="flex relative max-sm:flex-col max-sm:gap-8">
         <section className="flex flex-col flex-2 gap-15 max-sm:gap-6">
           <h4 className="uppercase font-bold flex items-end  leading-none text-8xl tracking-wider max-md:text-6xl">

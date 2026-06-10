@@ -12,12 +12,10 @@ export default function Home() {
   return (
     <PortfolioShell>
       <div>
-        <main className="main-portfolio w-full relative bg-(--p-bg-deep)">
+        <main className=" w-full relative">
           <div className="absolute w-full h-full inset-0 z-0"></div>
           <CinemaAnimation />
           {/* <Experience /> */}
-          <Achievement />
-          <Contact />
         </main>
       </div>
     </PortfolioShell>
