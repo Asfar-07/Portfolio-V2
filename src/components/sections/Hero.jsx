@@ -385,10 +385,10 @@ export default function Hero({
               </div>
 
               <div
-                ref={heroButton}
                 className="flex gap-5 relative z-100 uppercase"
               >
                 <button
+                  ref={heroButton}
                   onClick={() => ScrollMove("projects", timelineRef)}
                   className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
                 >
