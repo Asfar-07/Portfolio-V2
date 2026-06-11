@@ -205,6 +205,7 @@ export default function CinemaAnimation() {
           heroButton={heroButton}
           heroParagraph={heroParagraph}
           heroBgRef={heroBgRef}
+          timelineRef={timelineRef}
         />
         <About
           aboutBodyRef={aboutBodyRef}
