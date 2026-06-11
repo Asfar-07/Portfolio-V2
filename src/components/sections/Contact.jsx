@@ -35,9 +35,9 @@ export default function Contact({contactBodyRef}) {
             {/* ── LEFT: contact info ── */}
             <div>
               <RevealWrapper type="fadeIn">
-                <h3
-                  className="font-[Syne,sans-serif] text-[1.55rem] font-extrabold leading-[1.2]
-                         tracking-tight text-(--p-font) mb-4"
+                <h4
+                  className=" text-[2.5rem] font-extrabold leading-[1.2]
+                         tracking-wide text-(--p-font) mb-4"
                 >
                   Let&rsquo;s build something
                   <br />
@@ -47,7 +47,7 @@ export default function Contact({contactBodyRef}) {
                   >
                     amazing together.
                   </span>
-                </h3>
+                </h4>
                 <p className="text-[#ffffff] text-[0.92rem] font-light mb-7 leading-relaxed max-w-xs">
                   Whether you have a project in mind, a job opportunity, or just
                   want to say hi — my inbox is always open.

@@ -1,19 +1,21 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import ScrollMove from "@/utils/ScrollMove";
 import "../../styles/footer.css";
 
-export default function Footer({footerBodyRef}) {
+
+export default function Footer({footerBodyRef, timelineRef}) {
   const marqueeRef = useRef(null);
 
-  const navLinks = ["HOME", "ABOUT", "PROJECT", "EDUCATION", "CONTACT"];
+  const navLinks = [ "hero", "about","experience", "projects", "contact"];
   const socialLinks = [
-    { label: "[ @Linkedin ]", href: "#" },
-    { label: "[ @Instagram ]", href: "#" },
-    { label: "[ @Github ]", href: "#" },
-    { label: "[ @Linkedin ]", href: "#" },
+    { label: "[ @LinkedIn ]", href: "https://www.linkedin.com/in/asfar2003" },
+    { label: "[ @Instagram ]", href: "/" },
+    { label: "[ @GitHub ]", href: "https://github.com/Asfar-07" },
+    { label: "[ @Portfolio ]", href: "/" },
     {
-      label: "[ asasfarmuhammedns@gmail.com ]",
+      label: "[ asfarmuhammedns@gmail.com ]",
       href: "mailto:asfarmuhammedns@gmail.com",
     },
   ];
@@ -36,16 +38,16 @@ export default function Footer({footerBodyRef}) {
         <section className="flex flex-4 flex-col">
           <div className="flex ml-30 max-lg:gap-4 max-lg:ml-10 max-md:ml-5 max-sm:ml-0">
             <div className="flex flex-1">
-              <ul className="flex flex-col font-medium gap-6 text-sm ">
+              <ul className="flex uppercase flex-col font-medium gap-6 tracking-wider text-sm ">
                 {navLinks.map((navLink, index) => (
                   <li key={index}>
-                    <a href={"#" + navLink.toLowerCase()}>{navLink}</a>
+                    <button className="hover:underline uppercase cursor-pointer" onClick={() => ScrollMove(navLink.toLowerCase(), timelineRef)}>{navLink}</button>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="flex flex-1 justify-end">
-              <ul className="flex capitalize flex-col font-extralight gap-6 text-sm max-md:items-end max-lg:items-end">
+              <ul className="flex flex-col uppercase font-extralight gap-6 text-sm max-md:items-end max-lg:items-end">
                 {socialLinks.map((socialLink, index) => (
                   <li key={index}>
                     <a href={socialLink.href}>{socialLink.label}</a>

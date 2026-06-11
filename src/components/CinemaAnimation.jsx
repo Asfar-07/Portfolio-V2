@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Header from "./layouts/Header";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import SplitType from "split-type";
@@ -14,6 +15,9 @@ import Footer from "./layouts/Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CinemaAnimation() {
+
+  const timelineRef = useRef(null);
+
   // Refs for Hero Section
   const mainCinemaRef = useRef(null);
   const heroBodyRef = useRef(null);
@@ -85,7 +89,7 @@ export default function CinemaAnimation() {
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
 
 
-    const tl = gsap.timeline({
+    timelineRef.current = gsap.timeline({
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
@@ -96,7 +100,7 @@ export default function CinemaAnimation() {
     });
 
 
-    tl.to(
+    timelineRef.current.to(
       heroBgRef.current,
       { backgroundColor: "#000027", duration: 1, ease: "none" },
       0,
@@ -136,15 +140,15 @@ export default function CinemaAnimation() {
       .to(aboutBodyRef.current, { yPercent: -500, duration: 2, ease: "none" }, "<")
       .to(heroBodyRef.current, { yPercent: -500, duration: 2, ease: "none" }, "<")
       headingLetters.forEach((letter) => {
-        tl.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
+        timelineRef.current.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
       });
 
       cards.forEach((card, index) => {
-        tl.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1,});
+        timelineRef.current.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1,});
 
         // last card fullscreen
         if (index === cards.length - 1) {
-          tl.to(card, {
+          timelineRef.current.to(card, {
             width: "100vw",
             height: "100vh",
             maxWidth: "none",
@@ -175,7 +179,7 @@ export default function CinemaAnimation() {
         }
       });
 
-      tl.to(projectsBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
+      timelineRef.current.to(projectsBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
       .to(achievementBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
       .to(achievementBodyRef.current, { yPercent: -50, duration: 2, ease: "none" })
       .to(achievementBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
@@ -185,39 +189,40 @@ export default function CinemaAnimation() {
 
   }, []);
   return (
-    <div ref={mainCinemaRef} className=" relative w-full min-h-screen">
-      <Hero 
-        heroBodyRef={heroBodyRef}
-        heroRef={heroRef}
-        groundRef={groundRef}
-        rightRockRef={rightRockRef}
-        rightRockHubRef={rightRockHubRef}
-        moonRef={moonRef}
-        mainHeroRef={mainHeroRef}
-        heroHeading={heroHeading}
-        heroBadge={heroBadge}
-        heroButton={heroButton}
-        heroParagraph={heroParagraph}
-        heroBgRef={heroBgRef}
-      />
-      <About 
-        aboutBodyRef={aboutBodyRef} 
-        mainAboutRef={mainAboutRef} 
-        aboutMeRef={aboutMeRef} 
-        collectionRef={collectionRef} 
-      />
-      <Projects 
-        mainProjectsRef={mainProjectsRef}
-        leftContainerRef={leftContainerRef}
-        rightContainerRef={rightContainerRef}
-        projectsBodyRef={projectsBodyRef}
-        bgImage={bgImage}
-      />
-      <Achievement 
-       achievementBodyRef={achievementBodyRef}
-      />
-      <Contact contactBodyRef={contactBodyRef} />
-      <Footer footerBodyRef={footerBodyRef}/>
-    </div>
+    <>
+      <Header timelineRef={timelineRef} />
+      <div ref={mainCinemaRef} className=" relative w-full min-h-screen">
+        <Hero
+          heroBodyRef={heroBodyRef}
+          heroRef={heroRef}
+          groundRef={groundRef}
+          rightRockRef={rightRockRef}
+          rightRockHubRef={rightRockHubRef}
+          moonRef={moonRef}
+          mainHeroRef={mainHeroRef}
+          heroHeading={heroHeading}
+          heroBadge={heroBadge}
+          heroButton={heroButton}
+          heroParagraph={heroParagraph}
+          heroBgRef={heroBgRef}
+        />
+        <About
+          aboutBodyRef={aboutBodyRef}
+          mainAboutRef={mainAboutRef}
+          aboutMeRef={aboutMeRef}
+          collectionRef={collectionRef}
+        />
+        <Projects
+          mainProjectsRef={mainProjectsRef}
+          leftContainerRef={leftContainerRef}
+          rightContainerRef={rightContainerRef}
+          projectsBodyRef={projectsBodyRef}
+          bgImage={bgImage}
+        />
+        <Achievement achievementBodyRef={achievementBodyRef} />
+        <Contact contactBodyRef={contactBodyRef} />
+        <Footer footerBodyRef={footerBodyRef} timelineRef={timelineRef} />
+      </div>
+    </>
   );
 }
