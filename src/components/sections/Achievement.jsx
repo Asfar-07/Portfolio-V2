@@ -42,8 +42,8 @@ export default function Achievement({achievementBodyRef}) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: achievementHeadingRef.current,
-        start: "20% 90%",
-        end: "110% 90%",
+        start: "20% 80%",
+        end: "110% 80%",
         scrub: 3,
       },
     });
@@ -66,8 +66,8 @@ export default function Achievement({achievementBodyRef}) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "-50% bottom",
-          end: "120% bottom",
+          start: "-50% 80%",
+          end: "120% 80%",
           scrub: 3,
         },
       });
