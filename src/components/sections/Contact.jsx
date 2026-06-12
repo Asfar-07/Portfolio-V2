@@ -3,16 +3,19 @@ import "@/styles/contact.css";
 import { Mail, MapPin, DoorOpen } from "lucide-react";
 import { RevealWrapper } from "../ui/RevealWrapper";
 import Maintain from "../layouts/popup/maintain";
-import React from "react";
+import Footer from "../layouts/Footer";
+import React, {useRef} from "react";
 
-export default function Contact({contactBodyRef}) {
+export default function Contact({timelineRef}) {
+  const contactBodyRef = useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div ref={contactBodyRef} className="absolute inset-0">
+    <div className="relative h-auto min-h-[650px] overflow-hidden">
+      <Footer timelineRef={timelineRef} />
       <section
         id="contact"
-        className="relative w-full  text-(--p-font) bg-(--s-bg-deep) z-3 p-[7rem_2rem] max-md:p-[5rem_1.5rem]"
+        className="absolute w-full bg-(--s-bg-deep) text-(--p-font) z-3 p-[5rem_2rem] max-md:p-[5rem_1.5rem]"
       >
         {isOpen && <Maintain setIsOpen={setIsOpen} />}
         <main className="w-[90%] max-w-350 m-auto max-md:w-full">

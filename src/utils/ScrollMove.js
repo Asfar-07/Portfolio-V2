@@ -8,12 +8,16 @@ const sections = {
   hero: 0.2,
   about: 0.42,
   experience: 0.45,
-  projects: 0.61,
-  contact: 0.95
+  projects: 0.75,
 };
 
 export default function ScrollMove(section, timelineRef){
    const progress = sections[section];
+   window.location.hash = "";
+   if(progress == undefined){
+    window.location.hash = section;
+    return;
+   }
    const st = timelineRef.current?.scrollTrigger;
      if (!st) return;
 

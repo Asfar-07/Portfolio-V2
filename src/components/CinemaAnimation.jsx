@@ -8,15 +8,10 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import SplitType from "split-type";
 import Projects from "./sections/Projects";
-import Achievement from "./sections/Achievement";
-import Contact from "./sections/Contact";
-import Footer from "./layouts/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CinemaAnimation() {
-
-  const timelineRef = useRef(null);
+export default function CinemaAnimation({timelineRef}) {
 
   // Refs for Hero Section
   const mainCinemaRef = useRef(null);
@@ -93,7 +88,7 @@ export default function CinemaAnimation() {
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: "+=9000",
+        end: "+=7000",
         scrub: 1,
         pin: true,
       },
@@ -123,7 +118,7 @@ export default function CinemaAnimation() {
 
       //project section animation
       .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 15)
-      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, 18)
+      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, 17)
       
       headingLetters.forEach((letter) => {
         timelineRef.current.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
@@ -165,17 +160,10 @@ export default function CinemaAnimation() {
         }
       });
 
-      timelineRef.current.to(projectsBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
-      .to(achievementBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
-      .to(achievementBodyRef.current, { yPercent: -50, duration: 2, ease: "none" })
-      .to(achievementBodyRef.current, { yPercent: -100, duration: 2, ease: "none" })
-      .to(contactBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
-      .to(contactBodyRef.current, { yPercent: -120, duration: 2, ease: "none" })
-      .to(footerBodyRef.current, { yPercent: 0, duration: .1, ease: "none" }, "<")
 
   }, []);
   return (
-    <>
+    <main className=" w-full relative">
       <Header timelineRef={timelineRef} />
       <div ref={mainCinemaRef} className=" relative w-full min-h-screen">
         <Hero
@@ -206,10 +194,7 @@ export default function CinemaAnimation() {
           projectsBodyRef={projectsBodyRef}
           bgImage={bgImage}
         />
-        <Achievement achievementBodyRef={achievementBodyRef} />
-        <Contact contactBodyRef={contactBodyRef} />
-        <Footer footerBodyRef={footerBodyRef} timelineRef={timelineRef} />
       </div>
-    </>
+    </main>
   );
 }

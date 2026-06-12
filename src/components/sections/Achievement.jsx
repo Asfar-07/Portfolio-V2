@@ -42,9 +42,9 @@ export default function Achievement({achievementBodyRef}) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: achievementHeadingRef.current,
-        start: "20% bottom",
-        end: "110% bottom",
-        scrub: 3.5,
+        start: "20% 90%",
+        end: "110% 90%",
+        scrub: 3,
       },
     });
     
@@ -68,18 +68,17 @@ export default function Achievement({achievementBodyRef}) {
           trigger: item,
           start: "-50% bottom",
           end: "120% bottom",
-          scrub: 3.5,
+          scrub: 3,
         },
       });
 
       tl.to( item, { y: 0, duration: 1 })
-        .to( count, { y: 0, duration: 1 }, "<=+0.8")
+        .to( count, { y: 0, duration: 1 }, "<=+0.5")
 
     });
   }, []);
 
   return (
-    <div ref={achievementBodyRef} className="absolute t-0 l-0 ">
       <div className="achievement bg-(--s-bg-deep)  text-(--p-font) h-auto relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
         <main className="flex flex-col  w-100% m-auto  max-w-[1250px] pt-25  relative text-(--p-font)  max-md:w-full max-md:h-auto">
           <section className=" flex w-full items-center justify-center">
@@ -138,6 +137,5 @@ export default function Achievement({achievementBodyRef}) {
           </section>
         </main>
       </div>
-    </div>
   );
 }
