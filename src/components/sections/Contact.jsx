@@ -5,13 +5,32 @@ import { RevealWrapper } from "../ui/RevealWrapper";
 import Maintain from "../layouts/popup/maintain";
 import Footer from "../layouts/Footer";
 import React, {useRef} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-export default function Contact({timelineRef}) {
-  const contactBodyRef = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Contact({contactBodyRef, timelineRef}) {
+  const mainContactRef = useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
+  useGSAP(() => {
+
+    gsap.to("#contact", {
+      yPercent: -100,
+      scrollTrigger: {
+        trigger: mainContactRef.current,
+        start: "top top",
+        end: "+=1200",
+        pin: true,
+        scrub: true,
+      },
+    });
+  }, []);
+
   return (
-    <div className="relative h-auto min-h-[650px] overflow-hidden">
+    <div ref={mainContactRef} className="relative h-auto min-h-[650px] overflow-hidden">
       <Footer timelineRef={timelineRef} />
       <section
         id="contact"
