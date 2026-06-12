@@ -1,25 +1,25 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import ScrollMove from "@/utils/ScrollMove";
 import "../../styles/footer.css";
 
-export default function Footer() {
-  const marqueeRef = useRef(null);
 
-  const navLinks = ["HOME", "ABOUT", "PROJECT", "EDUCATION", "CONTACT"];
+export default function Footer({footerBodyRef, timelineRef}) {
+
+  const navLinks = [ "hero", "about","experience", "projects", "contact"];
   const socialLinks = [
-    { label: "[ @Linkedin ]", href: "#" },
-    { label: "[ @Instagram ]", href: "#" },
-    { label: "[ @Github ]", href: "#" },
-    { label: "[ @Linkedin ]", href: "#" },
+    { label: "[ @LinkedIn ]", href: "https://www.linkedin.com/in/asfar2003" },
+    { label: "[ @Instagram ]", href: "/" },
+    { label: "[ @GitHub ]", href: "https://github.com/Asfar-07" },
+    { label: "[ @Portfolio ]", href: "/" },
     {
-      label: "[ asasfarmuhammedns@gmail.com ]",
+      label: "[ asfarmuhammedns@gmail.com ]",
       href: "mailto:asfarmuhammedns@gmail.com",
     },
   ];
 
   return (
-    <footer className="w-full text-[#ffffff] overflow-hidden bg-[#000000] p-[3rem_4rem] max-sm:p-[2rem_1rem]  max-md:p-[2rem_1.5rem] max-lg:p-[2rem_2rem] ">
+    <footer ref={footerBodyRef} className="w-full absolute bottom-0 left-0 z-2 text-[#ffffff] overflow-hidden bg-[#000000] p-[3rem_4rem] max-sm:p-[2rem_1rem]  max-md:p-[2rem_1.5rem] max-lg:p-[2rem_2rem] ">
       <main className="flex relative max-sm:flex-col max-sm:gap-8">
         <section className="flex flex-col flex-2 gap-15 max-sm:gap-6">
           <h4 className="uppercase font-bold flex items-end  leading-none text-8xl tracking-wider max-md:text-6xl">
@@ -36,16 +36,16 @@ export default function Footer() {
         <section className="flex flex-4 flex-col">
           <div className="flex ml-30 max-lg:gap-4 max-lg:ml-10 max-md:ml-5 max-sm:ml-0">
             <div className="flex flex-1">
-              <ul className="flex flex-col font-medium gap-6 text-sm ">
+              <ul className="flex uppercase flex-col font-medium gap-6 tracking-wider text-sm ">
                 {navLinks.map((navLink, index) => (
                   <li key={index}>
-                    <a href={"#" + navLink.toLowerCase()}>{navLink}</a>
+                    <button className="hover:underline uppercase cursor-pointer" onClick={() => ScrollMove(navLink.toLowerCase(), timelineRef)}>{navLink}</button>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="flex flex-1 justify-end">
-              <ul className="flex capitalize flex-col font-extralight gap-6 text-sm max-md:items-end max-lg:items-end">
+              <ul className="flex flex-col uppercase font-extralight gap-6 text-sm max-md:items-end max-lg:items-end">
                 {socialLinks.map((socialLink, index) => (
                   <li key={index}>
                     <a href={socialLink.href}>{socialLink.label}</a>

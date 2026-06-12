@@ -1,24 +1,20 @@
-import Hero from "@/components/sections/Hero";
-import Contact from "@/components/sections/Contact";
-import Experience from "@/components/sections/Experience";
-import About from "@/components/sections/About";
-import Projects from "@/components/sections/Projects";
-import Achievement from "@/components/sections/Achievement";
-import Education from "@/components/sections/Education";
+"use client"
+import React from "react";
 import PortfolioShell from "@/components/PortfolioShell";
 import CinemaAnimation from "@/components/CinemaAnimation";
+import Achievement from "@/components/sections/Achievement";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
+  const timelineRef = React.useRef(null);
   return (
     <PortfolioShell>
       <div>
-        <main className="main-portfolio w-full relative bg-(--p-bg-deep)">
+        <main className=" w-full relative">
           <div className="absolute w-full h-full inset-0 z-0"></div>
-          <CinemaAnimation />
-          <Experience />
-          <Projects />
+          <CinemaAnimation timelineRef={timelineRef}/>
           <Achievement />
-          <Contact />
+          <Contact timelineRef={timelineRef}/>
         </main>
       </div>
     </PortfolioShell>

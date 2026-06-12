@@ -3,11 +3,8 @@ import React, { useEffect, useState, useRef, useMemo } from "react";
 import { ArrowRight } from "lucide-react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
-import { RevealWrapper } from "../ui/RevealWrapper";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import Welcome from "./Welcome";
+import ScrollMove from '@/utils/ScrollMove';
 import "../../styles/hero.css";
 
 
@@ -282,6 +279,7 @@ export default function Hero({
   heroButton,
   heroParagraph,
   heroBgRef,
+  timelineRef
 }) {
   const [loaded, setLoaded] = useState(0);
   const [ready, setReady] = useState(false);
@@ -328,7 +326,7 @@ export default function Hero({
       <Hero_Bg moonRef={moonRef} />
       <div className="main-hero relative" ref={heroRef}>
         {!ready && <GeneralLoading />}
-        <Welcome heroRef={heroRef} />
+        <Welcome heroRef={heroRef} timelineRef={timelineRef}/>
         <Hero_Ground
           handleLoad={handleLoad}
           groundRef={groundRef}
@@ -387,18 +385,18 @@ export default function Hero({
               </div>
 
               <div
-                ref={heroButton}
                 className="flex gap-5 relative z-100 uppercase"
               >
-                <a
-                  href="#projects"
+                <button
+                  ref={heroButton}
+                  onClick={() => ScrollMove("projects", timelineRef)}
                   className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
                 >
                   View my work{" "}
                   <span className="ml-4">
                     <ArrowRight />
                   </span>
-                </a>
+                </button>
               </div>
             </aside>
           </main>

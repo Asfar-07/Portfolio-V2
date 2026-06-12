@@ -4,10 +4,11 @@ import '../../styles/welcome.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import ScrollMove from '@/utils/ScrollMove';
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Welcome({heroRef}) {
+export default function Welcome({heroRef, timelineRef}) {
   const topBadgeRef = useRef();
   const mainTitleRef = useRef();
   const rolesRef = useRef();
@@ -102,12 +103,13 @@ export default function Welcome({heroRef}) {
                 transforming ideas into digital experiences that are modern,
                 responsive & user focused.
               </p>
-              <a href='#projects' className="welcome-bottom-button flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
+              <button onClick={() => ScrollMove("projects", timelineRef)}
+              className="welcome-bottom-button flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
                 <span>explore my work</span>
                 <span>
                   <ArrowRight />
                 </span>
-              </a>
+              </button>
             </div>
           </section>
         </main>

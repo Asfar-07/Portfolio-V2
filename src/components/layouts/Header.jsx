@@ -4,14 +4,15 @@ import "@/styles/header.css"
 import { useWindowScroll  } from 'react-use';
 import { Menu } from 'lucide-react';
 import { gsap } from 'gsap';
+import ScrollMove from '@/utils/ScrollMove';
 import Link from 'next/link';
 
-export default function Header() {
+export default function Header({timelineRef}) {
   const [lastScrolled, setLastScrolled] = React.useState(0);
   const [isNavVisible, setIsNavVisible] = React.useState(true);
   const navContainer = useRef(null);
   const navSwitchContainer = useRef(null);
-  const navItems=["Home","About","Services","Contact"];
+  const navItems=["hero","about","projects","contact"];
   
   const { y:currentScrollY } = useWindowScroll();
 
@@ -51,6 +52,8 @@ export default function Header() {
     navContainer.current.classList.add("floating-nav")
     navContainer.current.style.color="black"
   }
+
+
   return (
     <>
       {/* right-switch button for display NAVBAR */}
@@ -75,9 +78,9 @@ export default function Header() {
             <div className="flex h-full item-center">
               <div className="hidden md:block">
                 {navItems.map((item, index) => (
-                  <a key={index} href={`#${item.toLowerCase()}`} className="nav-hover-btn">
+                  <button key={index} onClick={() => ScrollMove(item.toLowerCase(), timelineRef)} className="nav-hover-btn hover:underline">
                     {item}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
