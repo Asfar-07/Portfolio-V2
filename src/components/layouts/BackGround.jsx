@@ -1,21 +1,23 @@
 import React, { useState, useRef, useMemo, useEffect } from "react";
 import Image from "next/image";
 import AcornExperience from "../spaceModel/AcornExperience";
+import "../../styles/background.css"
 
 const TOTAL_FRAMES = 40;
 const FPS = 5;
+const FRAME_DURATION = 1000 / FPS;
+ 
+const SRCS = Array.from(
+  { length: TOTAL_FRAMES },
+  (_, i) => `images/scratframe/frame_${i + 1}.webp`
+);
 
 export default function BackGround({ moonRef }) {
   const animationContainer = useRef(null);
   const mainContainer = useRef(null);
-  const [frame, setFrame] = useState(0);
+  const canvasRef = useRef(null);
 
-  const frames = Array.from(
-    { length: TOTAL_FRAMES },
-    (_, i) => `/images/scratframe/frame_${i + 1}.webp`
-  );
-
-  const stars = useMemo(() => {
+   const stars = useMemo(() => {
       return Array.from({ length: 100 }, (_, i) => ({
         id: i,
         size: Math.random() * 2 + 1,
@@ -26,26 +28,113 @@ export default function BackGround({ moonRef }) {
         opacity: Math.random() * 0.8 + 0.2,
       }));
   }, []);
+ 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+ 
+    let frameIndex = 0;
+    let timer = null;
+    let destroyed = false;
 
-  useEffect(()=>{
-    const container = animationContainer.current;
-    const main = mainContainer.current;
+    const bitmaps= [];
+ 
+    const loadAll = async () => {
+      await Promise.all(
+        SRCS.map((src, i) =>
+          fetch(src)
+            .then((r) => r.blob())
+            .then((blob) => createImageBitmap(blob))
+            .then((bmp) => { bitmaps[i] = bmp; })
+        )
+      );
+ 
+      if (destroyed) return;
+ 
+      ctx.drawImage(bitmaps[0], 0, 0, 120, 120);
+ 
+      timer = setInterval(() => {
+        frameIndex = (frameIndex + 1) % TOTAL_FRAMES;
+        ctx.clearRect(0, 0, 120, 120);
+        ctx.drawImage(bitmaps[frameIndex], 0, 0, 120, 120);
+      }, FRAME_DURATION);
+    };
+ 
+    loadAll();
+ 
+    return () => {
+      destroyed = true;
+      if (timer) clearInterval(timer);
+      bitmaps.forEach((bmp) => bmp?.close());
+    };
+  }, []);
+  
+ useEffect(() => {
+   let fromLeft = true;
 
-    frames.forEach((src) => {
-      const img = new window.Image();
-      img.src = src;
-    });
+   const mainContainer = animationContainer.current;
+   if (!mainContainer) return;
 
-    let currentFrame = 0;
-    const interval = setInterval(() => {
-      currentFrame = (currentFrame + 1) % TOTAL_FRAMES;
-      console.log(currentFrame)
-      setFrame(currentFrame);
-    }, 1000 / FPS);
+   const boxWidth = mainContainer.offsetWidth;
 
-    return () => clearInterval(interval);
+   let timeoutId;
+   let animationResetId;
 
-  },[])
+   function animeScrat() {
+     const windowWidth = window.innerWidth;
+     const windowHeight = window.innerHeight;
+
+     const duration = windowWidth / 35; // adjust speed
+
+     const startY = Math.random() * (windowHeight/1.1 - boxWidth);
+
+     const endY = Math.random() * 100;
+
+     mainContainer.style.animation = "none";
+
+     void mainContainer.offsetWidth; // force reflow
+
+     if (fromLeft) {
+       mainContainer.style.left = `-${boxWidth}px`;
+       mainContainer.style.right = "auto";
+       mainContainer.style.top = `${startY}px`;
+
+       mainContainer.style.setProperty("--scrat-end-x", `${windowWidth + boxWidth}px`);
+       mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
+
+       fromLeft = false;
+     } else {
+       mainContainer.style.right = "auto";
+       mainContainer.style.left = `${windowWidth + boxWidth}px`;
+       mainContainer.style.top = `${startY}px`;
+
+       mainContainer.style.setProperty( "--scrat-end-x", `-${windowWidth + (boxWidth * 2)}px`);
+       mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
+
+       fromLeft = true;
+     }
+
+     mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
+     mainContainer.style.setProperty("--scrat-end-scale", (0.5 + Math.random()).toFixed(2));
+     mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
+
+     animationResetId = setTimeout(() => {
+
+       mainContainer.style.animation = "none";
+       const randomDelay = 1000 + Math.random() * 3000;
+       timeoutId = setTimeout(animeScrat, randomDelay);
+     }, duration * 1000);
+   }
+
+   animeScrat();
+
+   return () => {
+     clearTimeout(timeoutId);
+     clearTimeout(animationResetId);
+   };
+ }, []);
     return (
       <section
         ref={mainContainer}
@@ -53,15 +142,16 @@ export default function BackGround({ moonRef }) {
       >
         <div
           ref={animationContainer}
-          className="flex items-end gap-3 max-w-70 max-h-50 z-2  absolute top-20"
+          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2"
         >
           <div className="w-30 h-30">
-            <img
-              src={frames[frame]}
-              alt="animation"
+            <canvas
+              ref={canvasRef}
               width={120}
               height={120}
-              draggable={false}
+              style={{
+                display: "block",
+              }}
             />
           </div>
           <div className="w-8 h-8 -translate-y-8">
