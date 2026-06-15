@@ -2,7 +2,7 @@
 import React from 'react'
 import * as THREE from 'three'
 
-export default function DroneLight() {
+export default function AcornLight() {
   return (
     <>
       <ambientLight intensity={1} color="#ffffff"/>
