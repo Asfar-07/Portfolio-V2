@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import GeneralLoading from "../loader/GeneralLoading";
 import Image from "next/image";
 import Welcome from "./Welcome";
+import BackGround from "../layouts/BackGround";
 import ScrollMove from '@/utils/ScrollMove';
 import "../../styles/hero.css";
 
@@ -100,7 +101,6 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
     const widthMain = 1000;
     var startingPoint = 0;
     const clouds = [];
-    console.log(cloud.id, "cloud id");
     while (startingPoint < widthMain) {
       const styleClouds = {
         left: startingPoint + "px",
@@ -222,49 +222,6 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
   );
 }
 
-function Hero_Bg({ moonRef }) {
-  const stars = useMemo(() => {
-    return Array.from({ length: 100 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 2 + 1,
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: Math.random() * 3 + 2,
-      opacity: Math.random() * 0.8 + 0.2,
-    }));
-  }, []);
-
-  return (
-    <section className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none">
-      {stars.map((star) => (
-        <span
-          key={star.id}
-          className="absolute rounded-full star"
-          style={{
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            top: `${star.top}%`,
-            left: `${star.left}%`,
-            opacity: star.opacity,
-            animationDelay: `${star.delay}s`,
-            animationDuration: `${star.duration}s`,
-          }}
-        />
-      ))}
-
-      <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
-        <Image
-          src="/images/hero/planet.webp"
-          alt="Moon Image"
-          fill
-          priority
-          className="moon-img-main"
-        />
-      </div>
-    </section>
-  );
-}
 
 export default function Hero({
   heroBodyRef,
@@ -319,12 +276,12 @@ export default function Hero({
 
   return (
     <div ref={heroBodyRef} className="absolute inset-0">
-      <div
-        className="fixed inset-0 -z-10 overflow-hidden"
-        ref={heroBgRef}
-      ></div>
-      <Hero_Bg moonRef={moonRef} />
+      <div className="fixed inset-0 -z-10 overflow-hidden" ref={heroBgRef} ></div>
+
+      <BackGround moonRef={moonRef} />
+
       <div className="main-hero relative" ref={heroRef}>
+
         {!ready && <GeneralLoading />}
         <Welcome heroRef={heroRef} timelineRef={timelineRef}/>
         <Hero_Ground
@@ -333,6 +290,7 @@ export default function Hero({
           rightRockRef={rightRockRef}
           rightRockHubRef={rightRockHubRef}
         />
+
         <div
           className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
           id="home"
