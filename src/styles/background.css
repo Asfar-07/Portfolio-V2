@@ -1,0 +1,22 @@
+.bg-scrat-animation{
+  --scrat-end-x: 800px;
+  --scrat-end-y: 50px;
+  --scrat-end-scale: 0.9;
+  --scrat-end-rotate: 0deg;
+  position: fixed;
+  will-change: transform;
+}
+@keyframes animateScrat {
+  from {
+    transform: translateX(0) scale(1)
+      rotateY(var(--scrat-end-rotate));
+  }
+
+  to {
+    transform:
+      translateX(var(--scrat-end-x))
+      translateY(var(--scrat-end-y))
+      scale(var(--scrat-end-scale))
+      rotateY(var(--scrat-end-rotate));
+  }
+}
