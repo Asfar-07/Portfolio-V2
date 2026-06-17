@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "@/styles/about.css";
 import { Code2, Rocket, Coffee, Target } from "lucide-react";
 
@@ -79,15 +79,21 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
     return () => clearInterval(interval);
   }, []);
 
-  const particlesFloating = Array.from({ length: 22 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 2.5 + 0.5,
-    left: `calc(50% + ${(Math.random() - 0.5) * 160 * (i / 22)}px)`,
-    bottom: `${Math.random() * 40}px`,
-    duration: `${Math.random() * 4 + 3}s`,
-    delay: `${Math.random() * 5}s`,
-    drift: `${(Math.random() - 0.5) * 60}px`,
-  }));
+ const [particlesFloating, setParticlesFloating] = useState([]);
+
+ useEffect(() => {
+   setParticlesFloating(
+     Array.from({ length: 22 }, (_, i) => ({
+       id: i,
+       size: Math.random() * 2.5 + 0.5,
+       left: `calc(50% + ${(Math.random() - 0.5) * 160 * (i / 22)}px)`,
+       bottom: `${Math.random() * 40}px`,
+       duration: `${Math.random() * 4 + 3}s`,
+       delay: `${Math.random() * 5}s`,
+       drift: `${(Math.random() - 0.5) * 60}px`,
+     })),
+   );
+ }, []);
 
   return (
     <div ref={aboutBodyRef} className=" absolute inset-0">
@@ -118,8 +124,8 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
           />
         </svg>
         <main
-          className="flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px] max-lg:h-auto  relative z-3 text-(--p-font) 
-      max-lg:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto"
+          className={`flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px] max-lg:h-auto  relative z-3 text-(--p-font) 
+      max-lg:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto`}
         >
           <section className="left-about flex-1 flex justify-center items-center max-md:w-full">
             <div className="w-full h-full  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
@@ -152,6 +158,7 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
                         }}
                       />
                     ))}
+
                     {particlesFloating.map((p) => (
                       <div
                         key={p.id}

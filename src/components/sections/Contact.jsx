@@ -40,8 +40,7 @@ export default function Contact({contactBodyRef, timelineRef}) {
         <main className="w-[90%] max-w-350 m-auto max-md:w-full">
           {/* section label */}
           <div
-            className="relative z-10 flex items-center gap-3 text-(--s-bg-light) mb-3
-                      text-[0.72rem] font-semibold tracking-[0.12em] uppercase"
+            className="relative z-10 flex items-center gap-3 text-(--s-bg-light) mb-3 text-[0.72rem] font-semibold tracking-[0.12em] uppercase"
           >
             <RevealWrapper type="wipe">
               <span className="w-6 h-px bg-(--s-bg-light)" />
@@ -51,21 +50,18 @@ export default function Contact({contactBodyRef, timelineRef}) {
 
           {/* two-column layout */}
           <div
-            className="relative z-10 grid grid-cols-[1fr_1.4fr] gap-16 mt-2
-                      items-start max-lg:grid-cols-1 max-lg:gap-10"
+            className="relative z-10 grid grid-cols-[1fr_1.4fr] gap-16 mt-2 items-start max-lg:grid-cols-1 max-lg:gap-10"
           >
             {/* ── LEFT: contact info ── */}
             <div>
               <RevealWrapper type="fadeIn">
                 <h4
-                  className=" text-[2.5rem] font-extrabold leading-[1.2]
-                         tracking-wide text-(--p-font) mb-4"
+                  className=" text-[2.5rem] font-extrabold leading-[1.2] tracking-wide text-(--p-font) mb-4"
                 >
                   Let&rsquo;s build something
                   <br />
                   <span
-                    className="bg-gradient-to-r from-(--s-bg-light) to-(--cyan-mark)
-                             bg-clip-text text-transparent"
+                    className="bg-gradient-to-r from-(--s-bg-light) to-(--cyan-mark) bg-clip-text text-transparent"
                   >
                     amazing together.
                   </span>
@@ -79,14 +75,14 @@ export default function Contact({contactBodyRef, timelineRef}) {
                 <div className="flex flex-col">
                   <a
                     href="mailto:asfarmuhammedns@gmail.com"
-                    className="flex items-center gap-4 py-[0.85rem] border-b border-white/[0.07]
+                    className={`flex items-center gap-4 py-[0.85rem] border-b border-white/[0.07]
                          text-[#f0f0f8] text-[0.88rem] transition-colors duration-200
-                         hover:text-(--cyan-mark) group"
+                         hover:text-(--cyan-mark) group`}
                   >
                     <span
-                      className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
+                      className={`w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
                                flex items-center justify-center text-base flex-shrink-0
-                               group-hover:border-(--cyan-mark)/40 transition-colors duration-200"
+                               group-hover:border-(--cyan-mark)/40 transition-colors duration-200`}
                     >
                       <Mail />
                     </span>
@@ -94,12 +90,12 @@ export default function Contact({contactBodyRef, timelineRef}) {
                   </a>
 
                   <div
-                    className="flex items-center gap-4 py-[0.85rem] border-b border-white/[0.07]
-                            text-[#f0f0f8] text-[0.88rem]"
+                    className={`flex items-center gap-4 py-[0.85rem] border-b border-white/[0.07]
+                            text-[#f0f0f8] text-[0.88rem]`}
                   >
                     <span
-                      className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
-                               flex items-center justify-center text-base flex-shrink-0"
+                      className={`w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
+                               flex items-center justify-center text-base flex-shrink-0`}
                     >
                       <MapPin />
                     </span>
@@ -108,8 +104,8 @@ export default function Contact({contactBodyRef, timelineRef}) {
 
                   <div className="flex items-center gap-4 py-[0.85rem] text-[#f0f0f8] text-[0.88rem]">
                     <span
-                      className="w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
-                               flex items-center justify-center text-base flex-shrink-0"
+                      className={`w-9 h-9 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[10px]
+                               flex items-center justify-center text-base flex-shrink-0`}
                     >
                       <DoorOpen />
                     </span>
@@ -123,10 +119,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     href="https://github.com/Asfar-07"
                     target="_black"
                     title="GitHub"
-                    className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                    className={`w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#ffffff]
                          transition-all duration-200
-                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
+                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5`}
                   >
                     <svg
                       width="18"
@@ -141,10 +137,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     href="https://www.linkedin.com/in/asfar2003"
                     target="_black"
                     title="LinkedIn"
-                    className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                    className={`w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#ffffff]
                          transition-all duration-200
-                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
+                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5`}
                   >
                     <svg
                       width="18"
@@ -159,10 +155,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     href="mailto:asfarmuhammedns@gmail.com"
                     target="_black"
                     title="Email"
-                    className="w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
+                    className={`w-11 h-11 bg-[#ffffff0d] backdrop-blur-xs shadow-xl border border-white/[0.07] rounded-[12px]
                          flex items-center justify-center text-[#ffffff] text-[1.1rem]
                          transition-all duration-200
-                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5"
+                         hover:border-(--cyan-mark) hover:text-(--cyan-mark) hover:-translate-y-0.5`}
                   >
                     <Mail />
                   </a>
@@ -182,10 +178,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     <input
                       type="text"
                       placeholder="First Name"
-                      className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
+                      className={`bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
                            placeholder:text-[#e0e0ff] transition-all duration-200
-                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
+                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]`}
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -195,10 +191,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     <input
                       type="text"
                       placeholder="Last Name"
-                      className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
+                      className={`bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
                            placeholder:text-[#e0e0ff] transition-all duration-200
-                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
+                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]`}
                     />
                   </div>
                 </div>
@@ -212,10 +208,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     <input
                       type="email"
                       placeholder="Email"
-                      className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
+                      className={`bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
                            placeholder:text-[#e0e0ff] transition-all duration-200
-                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
+                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]`}
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -225,10 +221,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                     <input
                       type="text"
                       placeholder="Subject"
-                      className="bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
+                      className={`bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                            text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
                            placeholder:text-[#e0e0ff] transition-all duration-200
-                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
+                           focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]`}
                     />
                   </div>
                 </div>
@@ -241,10 +237,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                   <textarea
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="resize-y bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
+                    className={`resize-y bg-white/[0.04] shadow-lg border border-white/[0.07] rounded-xl px-4 py-3
                          text-[#f0f0f8] text-[0.88rem] font-light outline-none w-full
                          placeholder:text-[#e0e0ff] transition-all duration-200
-                         focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]"
+                         focus:border-(--cyan-mark) focus:bg-(--cyan-mark)/[0.06]`}
                   />
                 </div>
 
@@ -252,10 +248,10 @@ export default function Contact({contactBodyRef, timelineRef}) {
                 <button
                   onClick={() => setIsOpen(true)}
                   type="submit"
-                  className="w-full shadow-lg mt-4 bg-(--s-bg-deep) text-white rounded-xl py-4 text-[0.92rem]
+                  className={`w-full shadow-lg mt-4 bg-(--s-bg-deep) text-white rounded-xl py-4 text-[0.92rem]
                        font-semibold tracking-wide transition-all duration-200
                        hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(108,99,255,0.45)]
-                       cursor-pointer"
+                       cursor-pointer`}
                 >
                   Send Message →
                 </button>

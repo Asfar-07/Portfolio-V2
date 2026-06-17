@@ -65,69 +65,69 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
   const sectionRef = useRef(null);
   const cloudsRef = useRef(null);
 
-  function displayClouds(cloud) {
-    if (cloud.count <= 0) return null;
+  const [randomClouds, setRandomClouds] = useState([]);
+  const [orderedClouds, setOrderedClouds] = useState([]);
 
-    return Array.from({ length: cloud.count }).map((_, index) => {
-      const styleClouds = {
-        left: Math.floor(Math.random() * 101) + "%",
-        top: Math.floor(Math.random() * (85 - 60 + 1)) + 60 + "%",
-        width:
-          Math.floor(Math.random() * (cloud.maxW - cloud.minW + 1)) +
-          cloud.minW +
-          "px",
-        height:
-          Math.floor(Math.random() * (cloud.maxH - cloud.minH + 1)) +
-          cloud.minH +
-          "px",
-      };
+  useEffect(() => {
+    const generatedRandom = [];
+    const generatedOrdered = [];
 
-      return (
-        <div
-          key={index}
-          className="sky-cloud absolute object-fill object-center -translate-x-1/2 -translate-y-1/2"
-          style={styleClouds}
-        >
-          <Image src={cloud.src} alt={cloud.alt} className="size-full" fill />
-        </div>
-      );
+    clouds.forEach((cloud) => {
+      // displayClouds()
+      if (cloud.count > 0) {
+        for (let i = 0; i < cloud.count; i++) {
+          generatedRandom.push({
+            key: `random-${cloud.id}-${i}`,
+            src: cloud.src,
+            alt: cloud.alt,
+            style: {
+              left: Math.floor(Math.random() * 101) + "%",
+              top: Math.floor(Math.random() * 26) + 60 + "%",
+              width:
+                Math.floor(Math.random() * (cloud.maxW - cloud.minW + 1)) +
+                cloud.minW +
+                "px",
+              height:
+                Math.floor(Math.random() * (cloud.maxH - cloud.minH + 1)) +
+                cloud.minH +
+                "px",
+            },
+          });
+        }
+      }
+
+      // displayCloudsOrder()
+      if (cloud.id !== 1 && cloud.id !== 4) {
+        let startingPoint = 0;
+
+        while (startingPoint < 1000) {
+          const width =
+            Math.floor(Math.random() * (cloud.maxW - cloud.minW + 1)) +
+            cloud.minW;
+
+          generatedOrdered.push({
+            key: `ordered-${cloud.id}-${startingPoint}`,
+            src: cloud.src,
+            alt: cloud.alt,
+            style: {
+              left: startingPoint + "px",
+              top: Math.floor(Math.random() * 26) + 60 + "%",
+              width: width + "px",
+              height:
+                Math.floor(Math.random() * (cloud.maxH - cloud.minH + 1)) +
+                cloud.minH +
+                "px",
+            },
+          });
+
+          startingPoint += width * 1.5;
+        }
+      }
     });
-  }
 
-  function displayCloudsOrder(cloud) {
-    // if (!cloudsRef.current) return null;
-    if (cloud.id === 1 || cloud.id === 4) return;
-
-    const widthMain = 1000;
-    var startingPoint = 0;
-    const clouds = [];
-    while (startingPoint < widthMain) {
-      const styleClouds = {
-        left: startingPoint + "px",
-        top: Math.floor(Math.random() * (85 - 60 + 1)) + 60 + "%",
-        width:
-          Math.floor(Math.random() * (cloud.maxW - cloud.minW + 1)) +
-          cloud.minW +
-          "px",
-        height:
-          Math.floor(Math.random() * (cloud.maxH - cloud.minH + 1)) +
-          cloud.minH +
-          "px",
-      };
-      clouds.push(
-        <div
-          key={startingPoint}
-          className="sky-cloud absolute object-fill object-center -translate-x-1/2 -translate-y-1/2"
-          style={styleClouds}
-        >
-          <Image src={cloud.src} alt={cloud.alt} className="size-full" fill />
-        </div>,
-      );
-      startingPoint += styleClouds.width.replace("px", "") * 1.5;
-    }
-    return clouds;
-  }
-
+    setRandomClouds(generatedRandom);
+    setOrderedClouds(generatedOrdered);
+  }, []);
   return (
     <div className="hero-ground absolute bottom-0 h-full w-full ">
       <section
@@ -142,19 +142,43 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             ref={cloudsRef}
             className="sky-clouds absolute w-full h-[10%] bottom-[30%] left-0"
           >
-            {clouds.map((cloud, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {displayClouds(cloud)}
-                  {displayCloudsOrder(cloud)}
-                </React.Fragment>
-              );
-            })}
+            {randomClouds.map((cloud) => (
+              <div
+                key={cloud.key}
+                className="sky-cloud absolute object-fill object-center -translate-x-1/2 -translate-y-1/2"
+                style={cloud.style}
+              >
+                <Image
+                  src={cloud.src}
+                  alt={cloud.alt}
+                  fill
+                  className="size-full"
+                  sizes="(max-width: 768px) 30vw, 80px"
+                />
+              </div>
+            ))}
+
+            {orderedClouds.map((cloud) => (
+              <div
+                key={cloud.key}
+                className="sky-cloud absolute object-fill object-center -translate-x-1/2 -translate-y-1/2"
+                style={cloud.style}
+              >
+                <Image
+                  src={cloud.src}
+                  alt={cloud.alt}
+                  fill
+                  className="size-full"
+                  sizes="(max-width: 768px) 30vw, 80px"
+                />
+              </div>
+            ))}
           </div>
           <Image
             src="/images/hero/ground.webp"
             alt="Ground Image"
             fill
+            sizes="(max-width: 768px) 70vw, 800px"
             onLoad={handleLoad}
             className="size-full max-md:object-cover max-md:object-center"
             priority
@@ -165,7 +189,10 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
           ref={rightRockRef}
           className="right-rock absolute z-6 right-0 bottom-10 w-[55%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
         >
-          <div ref={rightRockHubRef} className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 ">
+          <div
+            ref={rightRockHubRef}
+            className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 "
+          >
             <div className="relative  w-[100%]  h-[55%]  flex justify-center items-center">
               <svg
                 className="size-full absolute inset-0"
@@ -189,7 +216,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             </div>
             <div className="w-full h-[40%]  pl-2">
               <main className="w-1/2 h-full flex items-center  border border-[#9f67ffc2] bg-[#ffffff0d] rounded-lg overflow-hidden">
-                 <img
+                <img
                   src="/images/hero/hub_container2.webp"
                   alt="hub container"
                   className="size-full object-contain object-left-bottom"
@@ -202,6 +229,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             src="/images/hero/hero_rightRock.webp"
             alt="Rocks Image"
             fill
+            sizes="(max-width: 768px) 60vw, 600px"
             className="rocks-img size-full object-cover object-center"
             priority
           />
@@ -301,8 +329,8 @@ export default function Hero({
             style={{ margin: "auto" }}
           >
             <aside
-              className=" relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
-           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40"
+              className={`relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
+           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40`}
             >
               <div
                 ref={heroBadge}
@@ -312,6 +340,7 @@ export default function Hero({
                   <Image
                     src="/images/hero/planeticon.webp"
                     alt="Planet Icon"
+                    sizes="(max-width: 768px) 10vw, 20px"
                     fill
                     priority
                   />
@@ -324,16 +353,16 @@ export default function Hero({
               </div>
               <h1
                 ref={heroHeading}
-                className=" font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
-              [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]"
+                className={` font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]`}
               >
                 Crafting <span className="grad">Engaging</span> User Experiences
                 <span className="grad">.</span>
               </h1>
               <div
                 ref={heroParagraph}
-                className="w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
-              [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]"
+                className={`w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
+              [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]`}
               >
                 <p className=" w-full font-light leading-relaxed text-[18px]   max-sm:text-sm ">
                   I am Asfar Muhammed N S, a passionate software developer

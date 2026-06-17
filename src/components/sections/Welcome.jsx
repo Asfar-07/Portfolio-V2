@@ -66,11 +66,12 @@ export default function Welcome({heroRef, timelineRef}) {
   return (
       <div
         id="welcome"
-        className="welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-50 p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
+        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-50 
+          p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
         <main
-          className="flex w-100%  h-screen  max-w-[1250px] m-auto   relative z-3 text-(--p-font) 
-        max-md:w-full"
+          className={`flex w-100%  h-screen  max-w-[1250px] m-auto   relative z-3 text-(--p-font) 
+        max-md:w-full`}
         >
           <section className=" relative size-full flex gap-4 flex-col justify-center items-center">
             <div ref={topBadgeRef} className="text-sm grad uppercase border px-6 py-1.5 border-[#2395ff75] rounded-3xl">
