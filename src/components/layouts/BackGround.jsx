@@ -146,7 +146,7 @@ useEffect(() => {
       >
         <div
           ref={animationContainer}
-          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2"
+          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2 overflow-hidden"
         >
           <div className="w-30 h-30">
             <canvas

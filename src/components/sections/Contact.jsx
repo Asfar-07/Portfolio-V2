@@ -4,18 +4,30 @@ import { Mail, MapPin, DoorOpen } from "lucide-react";
 import { RevealWrapper } from "../ui/RevealWrapper";
 import Maintain from "../layouts/popup/maintain";
 import Footer from "../layouts/Footer";
-import React, {useRef} from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact({contactBodyRef, timelineRef}) {
   const mainContactRef = useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [gsapReady, setGsapReady] = useState(false);
+  const gsapRef = useRef(null);
+
+  useEffect(() => {
+    const load = async () => {
+      const { default: gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+      gsapRef.current = { gsap };
+      setGsapReady(true);
+    };
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
+  }, []);
 
   useGSAP(() => {
+    if (!gsapReady || !gsapRef.current) return;
+    const { gsap } = gsapRef.current;
 
     gsap.to("#contact", {
       yPercent: -100,
@@ -27,7 +39,7 @@ export default function Contact({contactBodyRef, timelineRef}) {
         scrub: true,
       },
     });
-  }, []);
+  }, [gsapReady]);
 
   return (
     <div ref={mainContactRef} className="relative h-auto min-h-[650px] overflow-hidden">

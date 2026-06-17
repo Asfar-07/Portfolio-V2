@@ -1,10 +1,7 @@
 "use client";
-import React,{useRef} from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
 const growths = [
   {
     name: "3D UI/UX",
@@ -33,10 +30,26 @@ const growths = [
 ];
 export default function Achievement({achievementBodyRef}) {
   const achievementHeadingRef = useRef(null);
+  const [gsapReady, setGsapReady] = useState(false);
+  const gsapRef = useRef(null);
 
   const word = "GROWTH".split("");
 
+  useEffect(() => {
+    const load = async () => {
+      const { default: gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+      gsapRef.current = { gsap };
+      setGsapReady(true);
+    };
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
+  }, []);
+
   useGSAP(() => {
+    if (!gsapReady || !gsapRef.current) return;
+    const { gsap } = gsapRef.current;
     const letters = gsap.utils.toArray(".achievement-heading");
 
     const tl = gsap.timeline({
@@ -52,9 +65,11 @@ export default function Achievement({achievementBodyRef}) {
        tl.fromTo( letter, {  y: index * 100 + 20 }, { y: 0, duration: 1}, index === 0 ? 0 : "<0.04" );
      });
 
-  },[]);
+  },[gsapReady]);
 
   useGSAP(() => {
+    if (!gsapReady || !gsapRef.current) return;
+    const { gsap } = gsapRef.current;
     const growthItems = gsap.utils.toArray(".growth");
 
     growthItems.forEach((item, index) => {
@@ -68,7 +83,7 @@ export default function Achievement({achievementBodyRef}) {
           trigger: item,
           start: "-50% 80%",
           end: "120% 80%",
-          scrub: 3,
+          scrub: 3
         },
       });
 
@@ -76,7 +91,7 @@ export default function Achievement({achievementBodyRef}) {
         .to( count, { y: 0, duration: 1 }, "<=+0.5")
 
     });
-  }, []);
+  }, [gsapReady]);
 
 return (
   <div
