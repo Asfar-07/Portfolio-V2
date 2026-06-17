@@ -1,10 +1,7 @@
 "use client"
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
-
-const CinemaAnimation = dynamic(() => import('./CinemaAnimation'), {
-  ssr: false,
-})
+import CinemaAnimation from './CinemaAnimation'
 
 const Achievement = dynamic(() => import('./sections/Achievement'), {
   ssr: false,
