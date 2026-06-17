@@ -1,10 +1,7 @@
 "use client";
-import React,{useRef} from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
 const growths = [
   {
     name: "3D UI/UX",
@@ -33,10 +30,26 @@ const growths = [
 ];
 export default function Achievement({achievementBodyRef}) {
   const achievementHeadingRef = useRef(null);
+  const [gsapReady, setGsapReady] = useState(false);
+  const gsapRef = useRef(null);
 
   const word = "GROWTH".split("");
 
+  useEffect(() => {
+    const load = async () => {
+      const { default: gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+      gsapRef.current = { gsap };
+      setGsapReady(true);
+    };
+    const t = setTimeout(load, 0);
+    return () => clearTimeout(t);
+  }, []);
+
   useGSAP(() => {
+    if (!gsapReady || !gsapRef.current) return;
+    const { gsap } = gsapRef.current;
     const letters = gsap.utils.toArray(".achievement-heading");
 
     const tl = gsap.timeline({
@@ -52,9 +65,11 @@ export default function Achievement({achievementBodyRef}) {
        tl.fromTo( letter, {  y: index * 100 + 20 }, { y: 0, duration: 1}, index === 0 ? 0 : "<0.04" );
      });
 
-  },[]);
+  },[gsapReady]);
 
   useGSAP(() => {
+    if (!gsapReady || !gsapRef.current) return;
+    const { gsap } = gsapRef.current;
     const growthItems = gsap.utils.toArray(".growth");
 
     growthItems.forEach((item, index) => {
@@ -68,7 +83,7 @@ export default function Achievement({achievementBodyRef}) {
           trigger: item,
           start: "-50% 80%",
           end: "120% 80%",
-          scrub: 3,
+          scrub: 3
         },
       });
 
@@ -76,66 +91,114 @@ export default function Achievement({achievementBodyRef}) {
         .to( count, { y: 0, duration: 1 }, "<=+0.5")
 
     });
-  }, []);
+  }, [gsapReady]);
 
-  return (
-      <div className="achievement bg-(--s-bg-deep)  text-(--p-font) h-auto relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
-        <main className="flex flex-col  w-100% m-auto  max-w-[1250px] pt-25  relative text-(--p-font)  max-md:w-full max-md:h-auto">
-          <section className=" flex w-full items-center justify-center">
-            <div
-              ref={achievementHeadingRef}
-              className=" inline-block relative uppercase text-[15rem] whitespace-nowrap font-semibold leading-[1em] scale-y-[1.15] tracking-normal text-white
-            max-xl:text-[13rem] max-lg:text-[10rem] max-md:text-[8rem] max-sm:text-[6rem] [@media(max-width:448px)]:text-[4rem]"
+return (
+  <div
+    className="achievement bg-(--s-bg-deep) text-(--p-font) h-auto relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
+  >
+    <main
+      className="flex flex-col w-100% m-auto max-w-[1250px] pt-25 relative text-(--p-font) max-md:w-full max-md:h-auto"
+    >
+      <section className="flex w-full items-center justify-center">
+        <div
+          ref={achievementHeadingRef}
+          className={`
+            inline-block relative uppercase text-[15rem]
+            whitespace-nowrap font-semibold leading-[1em]
+            scale-y-[1.15] tracking-normal text-white
+            max-xl:text-[13rem] max-lg:text-[10rem]
+            max-md:text-[8rem] max-sm:text-[6rem]
+            [@media(max-width:448px)]:text-[4rem]
+          `}
+        >
+          {word.map((letter, index) => (
+            <span
+              key={index}
+              className="achievement-heading relative inline-block text-white"
             >
-              {word.map((letter, index) => (
-                <span
-                  key={index}
-                  className="achievement-heading relative inline-block text-white"
-                >
-                  {letter}
+              {letter}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col w-full">
+        <ul className="flex flex-col mt-25 pb-10">
+          {growths.map((growth, index) => (
+            <li
+              key={index}
+              className={`
+                growth relative bg-(--s-bg-deep)
+                flex flex-wrap h-45
+                tracking-normal border-t border-t-white
+                pt-10
+                max-lg:h-auto max-lg:pb-10
+              `}
+            >
+              <div
+                className={`
+                  flex items-center uppercase
+                  text-6xl font-semibold
+                  pl-[2rem]
+                  w-[33.3333%] h-full
+                  max-lg:w-1/2 max-lg:pl-0
+                  max-sm:text-5xl
+                `}
+              >
+                {growth.name}
+              </div>
+
+              <div
+                className={`
+                  growth-count
+                  flex items-center justify-start
+                  pl-[4rem]
+                  w-[33.3333%] h-full
+                  max-lg:w-1/2
+                  max-lg:justify-end
+                `}
+              >
+                <span className="uppercase text-2xl max-lg:mr-3">
+                  plus
                 </span>
-              ))}
-            </div>
-          </section>
-          <section className=" flex flex-col w-full">
-            <ul className="flex flex-col  mt-25 pb-10">
-              {growths.map((growth, index) => (
-                <li
-                  key={index}
-                  className="growth relative bg-(--s-bg-deep) flex flex-wrap h-45 tracking-normal border-t border-t-white pt-10 
-                max-lg:pb-10 max-lg:h-auto"
+
+                <span
+                  className={`
+                    text-[10rem]
+                    scale-y-[1.2]
+                    font-semibold
+                    leading-[1em]
+                    tracking-normal
+                    text-white
+                    max-lg:text-[8rem]
+                    max-lg:leading-[.8]
+                    max-sm:text-[6rem]
+                  `}
                 >
-                  <div
-                    className="flex items-center uppercase text-6xl pl-[2rem] font-semibold w-[33.3333%] h-full
-                 max-lg:w-1/2 max-lg:pl-0 max-sm:text-5xl"
-                  >
-                    {growth.name}
-                  </div>
-                  <div
-                    className="growth-count flex items-center justify-start pl-[4rem] w-[33.3333%] h-full
-                max-lg:w-1/2 max-lg:justify-end"
-                  >
-                    <span className=" uppercase text-2xl max-lg:mr-3">
-                      plus
-                    </span>
-                    <span
-                      className=" text-[10rem] scale-y-[1.2] font-semibold leading-[1em] tracking-normal text-white
-                  max-lg:text-[8rem] max-lg:leading-[.8] max-sm:text-[6rem]"
-                    >
-                      {growth.count}
-                    </span>
-                  </div>
-                  <div
-                    className="flex items-center text-xl justify-center w-[33.3333%] h-full
-                max-lg:w-full max-lg:justify-start max-lg:max-w-150 max-sm:pt-4 max-sm:text-xl"
-                  >
-                    {growth.point}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </main>
-      </div>
-  );
+                  {growth.count}
+                </span>
+              </div>
+
+              <div
+                className={`
+                  flex items-center justify-center
+                  text-xl
+                  w-[33.3333%] h-full
+                  max-lg:w-full
+                  max-lg:max-w-150
+                  max-lg:justify-start
+                  max-sm:pt-4
+                  max-sm:text-xl
+                `}
+              >
+                {growth.point}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </div>
+);
 }

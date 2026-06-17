@@ -17,17 +17,21 @@ export default function BackGround({ moonRef }) {
   const mainContainer = useRef(null);
   const canvasRef = useRef(null);
 
-   const stars = useMemo(() => {
-      return Array.from({ length: 100 }, (_, i) => ({
-        id: i,
-        size: Math.random() * 2 + 1,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
-        opacity: Math.random() * 0.8 + 0.2,
-      }));
-  }, []);
+const [stars, setStars] = useState([]);
+
+useEffect(() => {
+  const generatedStars = Array.from({ length: 100 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 2 + 1,
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    delay: Math.random() * 5,
+    duration: Math.random() * 3 + 2,
+    opacity: Math.random() * 0.8 + 0.2,
+  }));
+
+  setStars(generatedStars);
+}, []);
  
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -142,7 +146,7 @@ export default function BackGround({ moonRef }) {
       >
         <div
           ref={animationContainer}
-          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2"
+          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2 overflow-hidden"
         >
           <div className="w-30 h-30">
             <canvas
@@ -181,6 +185,7 @@ export default function BackGround({ moonRef }) {
           <Image
             src="/images/hero/planet.webp"
             alt="Moon Image"
+            sizes="(max-width: 768px) 60vw, 400px"
             fill
             priority
             className="moon-img-main"

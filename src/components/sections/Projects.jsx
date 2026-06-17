@@ -19,7 +19,7 @@ const headingWord = "WORKS".split("");
       >
         <section className="absolute inset-0 w-full h-screen overflow-hidden">
           <div ref={bgImage} className="masked-section w-full  h-[130%] ">
-            <div className="for-bg-image  size-full">
+            <div className="for-bg-image relative size-full">
               <Image
                 src="/images/projectBg.webp"
                 alt="project background"
@@ -34,8 +34,8 @@ const headingWord = "WORKS".split("");
           <section className="w-full relative p-[0rem_4rem] max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
             <main className="flex justify-center items-center h-screen  max-w-[1250px] m-auto ">
               <div
-                className="inline-block relative uppercase text-[15rem] whitespace-nowrap font-semibold leading-[1em] scale-y-[1.15] tracking-normal text-white
-            max-xl:text-[13rem] max-lg:text-[10rem] max-md:text-[8rem] max-sm:text-[6rem] [@media(max-width:448px)]:text-[4rem]"
+                className={`inline-block relative uppercase text-[15rem] whitespace-nowrap font-semibold leading-[1em] scale-y-[1.15] tracking-normal text-white
+            max-xl:text-[13rem] max-lg:text-[10rem] max-md:text-[8rem] max-sm:text-[6rem] [@media(max-width:448px)]:text-[4rem]`}
               >
                 {headingWord.map((letter, index) => (
                   <span
@@ -55,13 +55,13 @@ const headingWord = "WORKS".split("");
             return (
               <div
                 key={index}
-                className="project-card flex absolute w-[95%] max-w-280 left-1/2 top-1/2 -translate-y-1/2  -translate-x-1/2 inset-0 h-[95%] 
-            min-h-140  max-h-160 max-lg:max-h-full  bg-(--s-bg-deep) rounded-2xl overflow-hidden"
+                className={`project-card flex absolute w-[95%] max-w-280 left-1/2 top-1/2 -translate-y-1/2  -translate-x-1/2 inset-0 h-[95%] 
+            min-h-140  max-h-160 max-lg:max-h-full  bg-(--s-bg-deep) rounded-2xl overflow-hidden`}
               >
                 <section
                   ref={leftContainerRef}
-                  className="flex flex-col justify-between w-[6%] h-full bg-[#4C1D95] overflow-hidden 
-            max-md:hidden"
+                  className={`flex flex-col justify-between w-[6%] h-full bg-[#4C1D95] overflow-hidden 
+            max-md:hidden`}
                 >
                   <header className="flex flex-col">
                     <div className="w-full h-15 border-b-2 border-(--s-bg-deep)"></div>
@@ -85,8 +85,8 @@ const headingWord = "WORKS".split("");
 
                 <section
                   ref={rightContainerRef}
-                  className="flex w-[94%] p-10 max-md:p-7 gap-10 max-md:gap-5 max-sm:w-full max-sm:p-4
-            [@media(max-width:1024px)_and_(min-height:650px)]:flex-col"
+                  className={`flex w-[94%] p-10 max-md:p-7 gap-10 max-md:gap-5 max-sm:w-full max-sm:p-4
+            [@media(max-width:1024px)_and_(min-height:650px)]:flex-col`}
                 >
                   <div className="flex flex-col justify-center gap-4 flex-1 max-sm:w-full [@media(max-height:700px)]:gap-3">
                     <div className=" uppercase flex items-center tracking-normal gap-2 text-xs text-[#4C1D95] font-bold px-3 py-1   border border-[#ffffff47] w-fit rounded-lg">
@@ -149,8 +149,8 @@ const headingWord = "WORKS".split("");
                   <aside className=" relative flex items-center flex-1 [@media_screen_and_(max-width:768px)_and_(max-height:768px)]:hidden">
                     <div className=" relative w-full h-[75%]  max-h-160 [@media(max-width:1024px)_and_(min-height:768px)]:h-full">
                       <div
-                        className=" absolute left-0 top-0 w-[85%] h-[70%] max-w-100 max-h-80 bg-amber-200 rounded-2xl overflow-hidden border border-white
-                  max-lg:max-h-50 [@media(max-width:1024px)_and_(min-height:768px)]:hidden [@media(max-width:1024px)_and_(min-height:768px)]:max-h-120"
+                        className= {`absolute left-0 top-0 w-[85%] h-[70%] max-w-100 max-h-80 bg-amber-200 rounded-2xl overflow-hidden border border-white
+                  max-lg:max-h-50 [@media(max-width:1024px)_and_(min-height:768px)]:hidden [@media(max-width:1024px)_and_(min-height:768px)]:max-h-120`}
                       >
                         <img
                           className="size-full "
@@ -160,9 +160,9 @@ const headingWord = "WORKS".split("");
                         />
                       </div>
                       <div
-                        className=" absolute  right-0 bottom-0 w-[85%] h-[70%] max-w-100 max-h-80 bg-emerald-700 rounded-2xl overflow-hidden border border-white
+                        className= {`absolute  right-0 bottom-0 w-[85%] h-[70%] max-w-100 max-h-80 bg-emerald-700 rounded-2xl overflow-hidden border border-white
                   max-lg:max-h-50 [@media(max-width:1024px)_and_(min-height:768px)]:w-full [@media(max-width:1024px)_and_(min-height:768px)]:max-w-none
-                  [@media(max-width:1024px)_and_(min-height:768px)]:h-full [@media(max-width:1024px)_and_(min-height:768px)]:max-h-none"
+                  [@media(max-width:1024px)_and_(min-height:768px)]:h-full [@media(max-width:1024px)_and_(min-height:768px)]:max-h-none`}
                       >
                         <img
                           className="size-full "

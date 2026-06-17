@@ -57,8 +57,9 @@ export default function Header({timelineRef}) {
   return (
     <>
       {/* right-switch button for display NAVBAR */}
-      <div ref={navSwitchContainer} onClick={showNavBar}  className=" fixed flex items-center z-50 right-0 top-0 w-28 h-28 rounded-b-full translate-x-1/2 p-4 -translate-y-1/2 -rotate-45  bg-white cursor-pointer
-       hover:border hover:border-cyan-400">
+      <div ref={navSwitchContainer} onClick={showNavBar}  
+      className={` fixed flex items-center z-50 right-0 top-0 w-28 h-28 rounded-b-full translate-x-1/2 p-4 -translate-y-1/2 -rotate-45  bg-white cursor-pointer
+       hover:border hover:border-cyan-400`}>
           <Menu className='text-black rotate-45'/>
       </div>
 
