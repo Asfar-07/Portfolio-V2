@@ -178,7 +178,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             src="/images/hero/ground.webp"
             alt="Ground Image"
             fill
-            sizes="(max-width: 768px) 70vw, 800px"
+            sizes="(max-width: 768px) 100vw, 1500px"
             onLoad={handleLoad}
             className="size-full max-md:object-cover max-md:object-center"
             priority
@@ -206,21 +206,29 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
                   strokeWidth="1"
                 />
               </svg>
-              <main className="pt-2 overflow-hidden flex justify-center">
-                <img
+              <main className=" overflow-hidden flex justify-center">
+                <div className=" absolute top-[12%] h-[70%] w-[85%] ">
+                  <Image
                   src="/images/hero/hub_container1.webp"
+                  fill
+                  sizes="(max-width: 768px) 40vw, 80px"
+                  className="size-full object-contain"
                   alt="hub container"
-                  className="h-[70%] w-[85%] "
                 />
+                </div>
               </main>
             </div>
             <div className="w-full h-[40%]  pl-2">
               <main className="w-1/2 h-full flex items-center  border border-[#9f67ffc2] bg-[#ffffff0d] rounded-lg overflow-hidden">
-                <img
+                <div className="relative size-full">
+                  <Image
                   src="/images/hero/hub_container2.webp"
+                  sizes="(max-width: 768px) 40vw, 80px"
+                  fill
                   alt="hub container"
                   className="size-full object-contain object-left-bottom"
                 />
+                </div>
               </main>
             </div>
           </div>
@@ -229,7 +237,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             src="/images/hero/hero_rightRock.webp"
             alt="Rocks Image"
             fill
-            sizes="(max-width: 768px) 60vw, 600px"
+            sizes="(max-width: 768px) 100vw, 1000px"
             className="rocks-img size-full object-cover object-center"
             priority
           />

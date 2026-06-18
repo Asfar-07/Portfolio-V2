@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "@/styles/about.css";
 import { Code2, Rocket, Coffee, Target } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
   {
@@ -130,14 +131,35 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
           <section className="left-about flex-1 flex justify-center items-center max-md:w-full">
             <div className="w-full h-full  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
               <div className="glitch-box" ref={glitchBox}>
-                <img src="/images/about-me-red.png" className="layer red" />
-                <img src="/images/about-me-green.png" className="layer green" />
-                <img src="/images/about-me-blue.png" className="layer blue" />
-                <img
-                  src="/images/about-me-original.png"
-                  className="layer original"
+                <Image src="/images/about/about-me-red.webp"
+                 fill
+                 sizes="(max-width: 768px) 20vw, 100px"
+                 className="layer red" 
+                 loading="lazy"
+                 alt="about-me"
+                 />
+                <Image src="/images/about/about-me-green.webp"
+                 fill
+                 sizes="(max-width: 768px) 20vw, 100px"
+                 className="layer green" 
+                 loading="lazy"
+                 alt="about-me"
+                 />
+                <Image src="/images/about/about-me-blue.webp"
+                 fill
+                 sizes="(max-width: 768px) 20vw, 100px"
+                 className="layer blue" 
+                 loading="lazy"
+                 alt="about-me"
+                 />
+                <Image
+                 src="/images/about/about-me-original.webp"
+                 fill
+                 sizes="(max-width: 768px) 80vw, 100px"
+                 className="layer original"
+                 loading="lazy"
+                 alt="about-me"
                 />
-                {/* <AstronautImageTiles src="/images/about-me-original.png"  /> */}
               </div>
               <div className="w-full h-[25%] absolute bottom-[2%] left-0 flex items-center justify-center">
                 <section className="beam-main" ref={projectorBeamRef}>
@@ -177,9 +199,12 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
                   </div>
                 </section>
 
-                <img
-                  src="/images/about-projector.png"
+                <Image
+                  src="/images/about/about-projector.webp"
+                  fill
+                  sizes="(max-width: 768px) 80vw, 100px"
                   className="projector size-full"
+                  loading="lazy"
                   alt="Projector"
                 />
               </div>

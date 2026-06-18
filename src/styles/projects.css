@@ -2,8 +2,8 @@
   position: absolute;
   inset: 0;
 
-  mask-image: url("/images/mask.png");
-  -webkit-mask-image: url("/images/mask.png");
+  mask-image: url("/images/mask.webp");
+  -webkit-mask-image: url("/images/mask.webp");
 
   mask-size: 100% 100%;
   -webkit-mask-size: 100% 100%;
