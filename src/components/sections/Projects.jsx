@@ -75,6 +75,7 @@ const headingWord = "WORKS".split("");
                           <img
                             className="w-8 h-8"
                             src={`/images/icons/${tool.toLowerCase().replaceAll(" ", "")}.svg`}
+                            loading="lazy"
                             alt="skills icon"
                           />
                         </li>
@@ -152,10 +153,12 @@ const headingWord = "WORKS".split("");
                         className= {`absolute left-0 top-0 w-[85%] h-[70%] max-w-100 max-h-80 bg-amber-200 rounded-2xl overflow-hidden border border-white
                   max-lg:max-h-50 [@media(max-width:1024px)_and_(min-height:768px)]:hidden [@media(max-width:1024px)_and_(min-height:768px)]:max-h-120`}
                       >
-                        <img
+                        <Image
                           className="size-full "
+                          fill
                           loading="lazy"
                           src={project.image[1]}
+                          sizes="(max-width: 768px) 80vw, 400px"
                           alt="prof"
                         />
                       </div>
@@ -164,10 +167,12 @@ const headingWord = "WORKS".split("");
                   max-lg:max-h-50 [@media(max-width:1024px)_and_(min-height:768px)]:w-full [@media(max-width:1024px)_and_(min-height:768px)]:max-w-none
                   [@media(max-width:1024px)_and_(min-height:768px)]:h-full [@media(max-width:1024px)_and_(min-height:768px)]:max-h-none`}
                       >
-                        <img
+                        <Image
                           className="size-full "
                           loading="lazy"
                           src={project.image[0]}
+                          fill
+                          sizes="(max-width: 768px) 80vw, 400px"
                           alt="prof"
                         />
                       </div>

@@ -116,7 +116,7 @@ export default projectData = [
       icon: BookMarked,
     }
     ],
-    image: ["/images/projects/socialmedia1.png","/images/projects/socialmedia2.png"],
+    image: ["/images/projects/socialmedia1.webp","/images/projects/socialmedia2.webp"],
     tool: ["Node js", "Express js", "SocketIO", "Handlebars", "MongoDB", "CSS"]
   },
   // {
