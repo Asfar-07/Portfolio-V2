@@ -187,11 +187,11 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
         <div className="left-rock"></div>
         <div
           ref={rightRockRef}
-          className="right-rock absolute z-6 right-0 bottom-10 w-[55%] h-full max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
+          className="right-rock absolute z-6 right-0 bottom-0 w-[55%] h-full max-h-[650px] max-md:w-120 max-md:h-130 max-sm:w-100 max-sm:h-100"
         >
           <div
             ref={rightRockHubRef}
-            className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[24%] z-500 "
+            className="hub flex flex-col gap-0  h-[36%] w-[28%] absolute left-[25%] top-[12%] z-500 "
           >
             <div className="relative  w-[100%]  h-[55%]  flex justify-center items-center">
               <svg
@@ -232,12 +232,12 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
               </main>
             </div>
           </div>
-
           <Image
             src="/images/hero/hero_rightRock.webp"
             alt="Rocks Image"
             fill
             sizes="(max-width: 768px) 100vw, 1000px"
+            onLoad={handleLoad}
             className="rocks-img size-full object-cover object-center"
             priority
           />
@@ -311,10 +311,10 @@ export default function Hero({
   }, [loaded]);
 
   return (
-    <div ref={heroBodyRef} className="absolute inset-0">
+    <div ref={heroBodyRef} className="absolute  min-h-[650px] inset-0">
       <div className="fixed inset-0 -z-10 overflow-hidden" ref={heroBgRef} ></div>
 
-      <BackGround moonRef={moonRef} />
+      <BackGround moonRef={moonRef} handleLoad={handleLoad} />
 
       <div className="main-hero relative" ref={heroRef}>
 
@@ -328,7 +328,7 @@ export default function Hero({
         />
 
         <div
-          className="home block w-full h-dvh min-h-[600px] text-(--p-font) relative"
+          className="home block w-full h-dvh min-h-[650px] text-(--p-font) relative"
           id="home"
           ref={mainHeroRef}
         >

@@ -97,7 +97,7 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
  }, []);
 
   return (
-    <div ref={aboutBodyRef} className=" absolute inset-0">
+    <div ref={aboutBodyRef} className=" absolute min-h-[650px] inset-0">
       <div
         id="about"
         className="about bg-(--p-bg-deep) text-(--p-font) h-auto min-h-[650px] relative p-[0rem_4rem] w-full max-lg:pt-20 max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]"
@@ -125,7 +125,7 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
           />
         </svg>
         <main
-          className={`flex flex-row gap-8 w-100% m-auto   h-screen  max-w-[1250px] max-lg:h-auto  relative z-3 text-(--p-font) 
+          className={`flex flex-row gap-8 w-100% m-auto  min-h-[650px]  h-screen  max-w-[1250px] max-lg:h-auto  relative z-3 text-(--p-font) 
       max-lg:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto`}
         >
           <section className="left-about flex-1 flex justify-center items-center max-md:w-full">

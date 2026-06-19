@@ -70,7 +70,7 @@ export default function Welcome({heroRef, timelineRef}) {
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
         <main
-          className={`flex w-100%  h-screen  max-w-[1250px] m-auto   relative z-3 text-(--p-font) 
+          className={`flex w-100% min-h-[650px]  h-screen  max-w-[1250px] m-auto   relative z-3 text-(--p-font) 
         max-md:w-full`}
         >
           <section className=" relative size-full flex gap-4 flex-col justify-center items-center">

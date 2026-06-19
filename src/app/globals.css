@@ -8,13 +8,6 @@
 html {
   scroll-behavior: smooth;
 } 
-@font-face {
-  font-family: 'Outfit';
-  src: url('/fonts/Outfit-Regular.woff2') format('woff2');
-
-  font-style: normal ;
-  font-display: swap;
-}
 
 :root {
   --p-bg-dark:#050818;   
@@ -36,7 +29,7 @@ body {
   width: 100%;
   height: 100vh; 
   /* letter-spacing: 1.2px; */ 
-  font-family: 'Outfit', sans-serif; 
+   font-family: 'Outfit', sans-serif;  
 }
 h1{
   font-size:var(--header1-text);
