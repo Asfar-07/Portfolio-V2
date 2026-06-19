@@ -1,7 +1,13 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import dynamic from 'next/dynamic'
 import Image from "next/image";
-import AcornExperience from "../spaceModel/AcornExperience";
 import "../../styles/background.css"
+
+const AcornExperience = dynamic(
+  () => import('../spaceModel/AcornExperience'),
+  { ssr: false, loading: () => <div className="size-full" /> }
+)
 
 const TOTAL_FRAMES = 40;
 const FPS = 5;
@@ -12,8 +18,7 @@ const SRCS = Array.from(
   (_, i) => `images/scratframe/frame_${i + 1}.webp`
 );
 
-export default function BackGround({ moonRef }) {
-  const animationContainer = useRef(null);
+export default function BackGround({ moonRef, handleLoad, IceAgeScrat }) {
   const mainContainer = useRef(null);
   const canvasRef = useRef(null);
 
@@ -78,7 +83,7 @@ useEffect(() => {
  useEffect(() => {
    let fromLeft = true;
 
-   const mainContainer = animationContainer.current;
+   const mainContainer = IceAgeScrat.current;
    if (!mainContainer) return;
 
    const boxWidth = mainContainer.offsetWidth;
@@ -89,43 +94,43 @@ useEffect(() => {
    function animeScrat() {
      const windowWidth = window.innerWidth;
      const windowHeight = window.innerHeight;
-
-     const duration = windowWidth / 35; // adjust speed
-
-     const startY = Math.random() * (windowHeight/1.1 - boxWidth);
-
+     const duration = windowWidth / 35;
+     const startY = Math.random() * (windowHeight / 1.1 - boxWidth);
      const endY = Math.random() * 100;
 
-     mainContainer.style.animation = "none";
-
-     void mainContainer.offsetWidth; // force reflow
+     // ✅ Cancel running animations without forcing reflow
+     mainContainer.getAnimations().forEach((a) => a.cancel());
 
      if (fromLeft) {
        mainContainer.style.left = `-${boxWidth}px`;
        mainContainer.style.right = "auto";
        mainContainer.style.top = `${startY}px`;
-
-       mainContainer.style.setProperty("--scrat-end-x", `${windowWidth + boxWidth}px`);
+       mainContainer.style.setProperty(
+         "--scrat-end-x",
+         `${windowWidth + boxWidth}px`,
+       );
        mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
-
        fromLeft = false;
      } else {
        mainContainer.style.right = "auto";
        mainContainer.style.left = `${windowWidth + boxWidth}px`;
        mainContainer.style.top = `${startY}px`;
-
-       mainContainer.style.setProperty( "--scrat-end-x", `-${windowWidth + (boxWidth * 2)}px`);
+       mainContainer.style.setProperty(
+         "--scrat-end-x",
+         `-${windowWidth + boxWidth * 2}px`,
+       );
        mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
-
        fromLeft = true;
      }
 
      mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
-     mainContainer.style.setProperty("--scrat-end-scale", (0.5 + Math.random()).toFixed(2));
+     mainContainer.style.setProperty(
+       "--scrat-end-scale",
+       (0.5 + Math.random()).toFixed(2),
+     );
      mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
 
      animationResetId = setTimeout(() => {
-
        mainContainer.style.animation = "none";
        const randomDelay = 1000 + Math.random() * 3000;
        timeoutId = setTimeout(animeScrat, randomDelay);
@@ -145,7 +150,7 @@ useEffect(() => {
         className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none"
       >
         <div
-          ref={animationContainer}
+          ref={IceAgeScrat}
           className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2 overflow-hidden"
         >
           <div className="w-30 h-30">
@@ -185,9 +190,10 @@ useEffect(() => {
           <Image
             src="/images/hero/planet.webp"
             alt="Moon Image"
-            sizes="(max-width: 768px) 60vw, 400px"
             fill
             priority
+            onLoad={handleLoad}
+            sizes="(max-width: 768px) 60vw, 800px"
             className="moon-img-main"
           />
         </div>

@@ -20,13 +20,6 @@
   box-shadow: 0px -20px 50px #d14be6, 0 -130px 61px #07006b7b;
 }
 
-.rocks-img {
-  animation: moveTO 2s ease-out;
-  animation-play-state: paused;
-  transform: translateY(0px);
-
-}
-
 .hero-about {}
 
 .hero-loaded {
@@ -51,16 +44,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-@keyframes moveTO {
-  0% {
-    transform: translateY(80px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
 }
 
 @keyframes moveWidth {

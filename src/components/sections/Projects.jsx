@@ -11,13 +11,13 @@ export default function Projects({ mainProjectsRef, leftContainerRef, rightConta
 const headingWord = "WORKS".split("");
 
   return (
-    <div ref={projectsBodyRef} className=" absolute inset-0">
+    <div ref={projectsBodyRef} className=" absolute min-h-[650px] inset-0">
       <div
         id="projects"
         ref={mainProjectsRef}
-        className="projects text-(--p-font) h-auto overflow-hidden relative w-full"
+        className="projects text-(--p-font) h-auto overflow-hidden min-h-[650px] relative w-full"
       >
-        <section className="absolute inset-0 w-full h-screen overflow-hidden">
+        <section className="absolute min-h-[650px] inset-0 w-full h-screen overflow-hidden">
           <div ref={bgImage} className="masked-section w-full  h-[130%] ">
             <div className="for-bg-image relative size-full">
               <Image
