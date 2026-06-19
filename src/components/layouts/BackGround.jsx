@@ -18,8 +18,7 @@ const SRCS = Array.from(
   (_, i) => `images/scratframe/frame_${i + 1}.webp`
 );
 
-export default function BackGround({ moonRef, handleLoad }) {
-  const animationContainer = useRef(null);
+export default function BackGround({ moonRef, handleLoad, IceAgeScrat }) {
   const mainContainer = useRef(null);
   const canvasRef = useRef(null);
 
@@ -84,7 +83,7 @@ useEffect(() => {
  useEffect(() => {
    let fromLeft = true;
 
-   const mainContainer = animationContainer.current;
+   const mainContainer = IceAgeScrat.current;
    if (!mainContainer) return;
 
    const boxWidth = mainContainer.offsetWidth;
@@ -151,7 +150,7 @@ useEffect(() => {
         className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none"
       >
         <div
-          ref={animationContainer}
+          ref={IceAgeScrat}
           className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2 overflow-hidden"
         >
           <div className="w-30 h-30">

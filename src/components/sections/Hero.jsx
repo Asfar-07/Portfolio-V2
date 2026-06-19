@@ -262,6 +262,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
 export default function Hero({
   heroBodyRef,
   heroRef,
+  IceAgeScrat,
   groundRef,
   rightRockRef,
   rightRockHubRef,
@@ -314,7 +315,7 @@ export default function Hero({
     <div ref={heroBodyRef} className="absolute  min-h-[650px] inset-0">
       <div className="fixed inset-0 -z-10 overflow-hidden" ref={heroBgRef} ></div>
 
-      <BackGround moonRef={moonRef} handleLoad={handleLoad} />
+      <BackGround moonRef={moonRef} IceAgeScrat={IceAgeScrat} handleLoad={handleLoad} />
 
       <div className="main-hero relative" ref={heroRef}>
 

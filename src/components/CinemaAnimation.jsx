@@ -14,10 +14,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function CinemaAnimation({timelineRef}) {
 
+  // Refs for Background Section
+  const IceAgeScrat = useRef(null);
+
   // Refs for Hero Section
   const mainCinemaRef = useRef(null);
   const heroBodyRef = useRef(null);
-  const aboutBodyRef = useRef(null);
   const heroRef = useRef();
   const groundRef = useRef();
   const rightRockRef = useRef();
@@ -32,6 +34,7 @@ export default function CinemaAnimation({timelineRef}) {
 
   // Refs for About Section
   const mainAboutRef = useRef(null);
+  const aboutBodyRef = useRef(null);
   const aboutMeRef = useRef(null);
   const collectionRef = useRef(null);
 
@@ -63,6 +66,7 @@ export default function CinemaAnimation({timelineRef}) {
     const headingLetters = gsap.utils.toArray(".work-letter");
 
     gsap.set(heroBodyRef.current, { yPercent: 0 });
+    gsap.set(IceAgeScrat.current, { opacity: 1 });
     gsap.set(aboutBodyRef.current, { yPercent: 100 });
     gsap.set(projectsBodyRef.current, { yPercent: 100 });
     gsap.set(achievementBodyRef.current, { yPercent: 100 })
@@ -98,6 +102,7 @@ export default function CinemaAnimation({timelineRef}) {
    //hero section animation
     timelineRef.current.to(
       heroBgRef.current, { backgroundColor: "#000027", duration: 1, ease: "none" }, 0)
+      .to(IceAgeScrat.current, { opacity: 0 , duration: 1, ease: "none" }, "<")
       .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 1.5)
       .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 1.8)
       .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 2.2)
@@ -168,6 +173,7 @@ export default function CinemaAnimation({timelineRef}) {
       <Header timelineRef={timelineRef} />
       <div ref={mainCinemaRef} className=" relative w-full min-h-screen">
         <Hero
+          IceAgeScrat={IceAgeScrat}
           heroBodyRef={heroBodyRef}
           heroRef={heroRef}
           groundRef={groundRef}
