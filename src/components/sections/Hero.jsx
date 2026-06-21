@@ -262,7 +262,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
 export default function Hero({
   heroBodyRef,
   heroRef,
-  IceAgeScrat,
+  scratWrapper,
   groundRef,
   rightRockRef,
   rightRockHubRef,
@@ -315,7 +315,7 @@ export default function Hero({
     <div ref={heroBodyRef} className="absolute  min-h-[650px] inset-0">
       <div className="fixed inset-0 -z-10 overflow-hidden" ref={heroBgRef} ></div>
 
-      <BackGround moonRef={moonRef} IceAgeScrat={IceAgeScrat} handleLoad={handleLoad} />
+      <BackGround moonRef={moonRef} scratWrapper={scratWrapper} handleLoad={handleLoad} />
 
       <div className="main-hero relative" ref={heroRef}>
 
@@ -339,7 +339,7 @@ export default function Hero({
           >
             <aside
               className={`relative h-full flex flex-col  gap-6 justify-center bottom-[5%] max-sm:bottom-0  max-sm:pb-10 
-           [@media(max-width:500px)]:pt-14 [@media(max-width:500px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40`}
+           [@media(max-width:500px)]:pt-0 [@media(max-width:500px)]:justify-center [@media(max-width:750px)_and_(min-height:780px)]:justify-start [@media(max-width:750px)_and_(min-height:780px)]:pt-40`}
             >
               <div
                 ref={heroBadge}
@@ -373,7 +373,7 @@ export default function Hero({
                 className={`w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
               [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]`}
               >
-                <p className=" w-full font-light leading-relaxed text-[18px]   max-sm:text-sm ">
+                <p className=" w-full font-extralight leading-relaxed tracking-wider text-[16px] max-sm:text-sm ">
                   I am Asfar Muhammed N S, a passionate software developer
                   building modern, scalable web experiences. Explore my creative
                   work and skills.

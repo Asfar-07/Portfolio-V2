@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function CinemaAnimation({timelineRef}) {
 
   // Refs for Background Section
-  const IceAgeScrat = useRef(null);
+  const scratWrapper = useRef(null);
 
   // Refs for Hero Section
   const mainCinemaRef = useRef(null);
@@ -66,7 +66,6 @@ export default function CinemaAnimation({timelineRef}) {
     const headingLetters = gsap.utils.toArray(".work-letter");
 
     gsap.set(heroBodyRef.current, { yPercent: 0 });
-    gsap.set(IceAgeScrat.current, { opacity: 1 });
     gsap.set(aboutBodyRef.current, { yPercent: 100 });
     gsap.set(projectsBodyRef.current, { yPercent: 100 });
     gsap.set(achievementBodyRef.current, { yPercent: 100 })
@@ -75,6 +74,7 @@ export default function CinemaAnimation({timelineRef}) {
 
 
     gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
+    gsap.set(scratWrapper.current, { scale: 1 });
     gsap.set(groundRef.current, { y: 300 });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
     gsap.set(rightRockRef.current, {y: 300,scale: 0.4, transformOrigin: "bottom right" });
@@ -93,8 +93,8 @@ export default function CinemaAnimation({timelineRef}) {
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: "+=7000",
-        scrub: 1,
+        end: isDesktop ? "+=6000" : "+=4500",
+        scrub: isDesktop ? 1 : 3,
         pin: true,
       },
     });
@@ -102,29 +102,29 @@ export default function CinemaAnimation({timelineRef}) {
    //hero section animation
     timelineRef.current.to(
       heroBgRef.current, { backgroundColor: "#000027", duration: 1, ease: "none" }, 0)
-      .to(IceAgeScrat.current, { opacity: 0 , duration: 1, ease: "none" }, "<")
-      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, 1.5)
-      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, 1.8)
-      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, 2.2)
+      .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
+      .to(scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
+      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, "<+=0.3")
+      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
       .to(
         rightRockHubRef.current,
-        { scale: 1, xPercent: 0, yPercent: 0, duration: 1.5, ease: "power1.inOut" }, 3)
+        { scale: 1, xPercent: 0, yPercent: 0, duration: 1.5, ease: "power1.inOut" }, "<+=.4")
       .to(
         heroBadge.current,
-        { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" }, 3.2)
-      .to(heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, 4.2)
-      .to(heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, 5)
-      .to(heroButton.current, { opacity: 1, backdropFilter: "blur(10px)", duration: .5, ease: "none" }, 5.5)
-      .to(heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, 7)
+        { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" }, "<")
+      .to(heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" }, "<+=.5")
+      .to(heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, "<+=1.2")
+      .to(heroButton.current, { opacity: 1, backdropFilter: "blur(10px)", duration: .5, ease: "none" },"<+=1")
+      .to(heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<+=1")
 
       //about section animation
-      .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 7)
-      .to(aboutWords, { x: 0, opacity: 1,stagger: { each: 0.12 }, direction: 1 , ease: "none" }, 8)
-      .to(collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, 9)
+      .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
+      .to(aboutWords, { x: 0, opacity: 1,stagger: { each: 0.10 }, direction: 1 , ease: "none" }, "<=+1.1")
+      .to(collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "<=+5")
 
       //project section animation
-      .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, 15)
-      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, 17)
+      .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<=+0.2")
+      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, "<=+2")
       
       headingLetters.forEach((letter) => {
         timelineRef.current.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
@@ -171,9 +171,9 @@ export default function CinemaAnimation({timelineRef}) {
   return (
     <main className=" w-full relative">
       <Header timelineRef={timelineRef} />
-      <div ref={mainCinemaRef} className=" relative w-full min-h-screen">
+      <div ref={mainCinemaRef} className=" relative w-full min-h-screen overflow-hidden">
         <Hero
-          IceAgeScrat={IceAgeScrat}
+          scratWrapper={scratWrapper}
           heroBodyRef={heroBodyRef}
           heroRef={heroRef}
           groundRef={groundRef}

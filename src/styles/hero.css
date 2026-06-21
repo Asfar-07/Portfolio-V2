@@ -179,7 +179,7 @@
   background-color: rgba(36, 0, 99, 0.249);
   backdrop-filter: blur(10px);
   overflow: hidden;
-  transition: .7s linear;
+  transition: 0.1s linear;
 }
 
 .hero-btn:hover{

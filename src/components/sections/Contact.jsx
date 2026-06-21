@@ -30,17 +30,17 @@ export default function Contact({contactBodyRef, timelineRef}) {
   }, []);
 
   return (
-    <div ref={mainContactRef} className="relative h-auto min-h-[650px] overflow-hidden">
+    <div ref={mainContactRef} className="relative h-auto min-h-screen overflow-hidden">
       <Footer timelineRef={timelineRef} />
       <section
         id="contact"
-        className="absolute w-full bg-(--s-bg-deep) text-(--p-font) z-3 p-[5rem_2rem] max-md:p-[5rem_1.5rem]"
+        className="absolute w-full bg-(--s-bg-deep)  text-(--p-font) z-3 p-[5rem_2rem] max-md:p-[5rem_1.5rem]"
       >
         {isOpen && <Maintain setIsOpen={setIsOpen} />}
         <main className="w-[90%] max-w-350 m-auto max-md:w-full">
           {/* section label */}
           <div
-            className="relative z-10 flex items-center gap-3 text-(--s-bg-light) mb-3 text-[0.72rem] font-semibold tracking-[0.12em] uppercase"
+            className="relative z-10 flex items-center gap-3 text-(--s-bg-light)  text-[0.72rem] font-semibold tracking-[0.12em] uppercase"
           >
             <RevealWrapper type="wipe">
               <span className="w-6 h-px bg-(--s-bg-light)" />
