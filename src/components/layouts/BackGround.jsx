@@ -129,7 +129,7 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
       mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
       mainContainer.style.setProperty(
         "--scrat-end-scale",
-        (0.5 + Math.random()).toFixed(2),
+        (Math.random()).toFixed(2),
       );
       mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
 
