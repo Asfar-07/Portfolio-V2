@@ -3,7 +3,6 @@
 import { useEffect, useRef, useCallback } from "react";
 import codeLines from "@/store/uiData/codeLines";
 
-
 const KEYWORDS = new Set([
   "import","public","private","static","class","void","int","boolean",
   "return","if","else","while","new","null","true","false","for",
@@ -70,10 +69,10 @@ export default function TypingCodeUi({ className, multiColor = true }) {
       nu: "#c45000",
     };
   } else {
-    TOKEN_COLORS = {
-     
-    };
+    TOKEN_COLORS = {};
   }
+
+  const MAX_LINES = 30;
 
   const paint = useCallback((partialTokens = null) => {
     const el = innerRef.current;
@@ -116,6 +115,7 @@ export default function TypingCodeUi({ className, multiColor = true }) {
 
     if (line.type === "blank") {
       s.completed.push([{ t: " ", c: "" }]);
+      if (s.completed.length > MAX_LINES) s.completed.splice(0, s.completed.length - MAX_LINES);
       s.lineIdx++;
       if (s.lineIdx % src.length === 0)
         s.completed.push(...src.map((l) => tokenize(l.text, l.type)));
@@ -131,6 +131,7 @@ export default function TypingCodeUi({ className, multiColor = true }) {
       s.timer = setTimeout(tick, 26 + Math.random() * 20);
     } else {
       s.completed.push(tokenize(full, line.type));
+      if (s.completed.length > MAX_LINES) s.completed.splice(0, s.completed.length - MAX_LINES);
       s.lineIdx++;
       s.charIdx = 0;
       if (s.lineIdx % src.length === 0)
@@ -142,7 +143,20 @@ export default function TypingCodeUi({ className, multiColor = true }) {
 
   useEffect(() => {
     stateRef.current.timer = setTimeout(tick, 400);
-    return () => clearTimeout(stateRef.current.timer);
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        clearTimeout(stateRef.current.timer);
+      } else {
+        stateRef.current.timer = setTimeout(tick, 400);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      clearTimeout(stateRef.current.timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, [tick]);
 
   return (
