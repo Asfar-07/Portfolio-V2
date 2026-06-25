@@ -75,7 +75,7 @@ export default function CinemaAnimation({timelineRef}) {
 
     gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
     gsap.set(scratWrapper.current, { scale: 1 });
-    gsap.set(groundRef.current, { y: 300 });
+    gsap.set(groundRef.current, { yPercent: 100 });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
     gsap.set(rightRockRef.current, {y: 300,scale: 0.4, transformOrigin: "bottom right" });
     gsap.set(rightRockHubRef.current, { scale: 0, xPercent: 40, yPercent: 20 });
@@ -104,7 +104,7 @@ export default function CinemaAnimation({timelineRef}) {
       heroBgRef.current, { backgroundColor: "#000027", duration: 1, ease: "none" }, 0)
       .to(moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
       .to(scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
-      .to(groundRef.current, { y: 0, duration: 1, ease: "none" }, "<+=0.3")
+      .to(groundRef.current, { yPercent: 0, duration: 1, ease: "none" }, "<+=0.3")
       .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
       .to(
         rightRockHubRef.current,

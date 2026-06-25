@@ -137,11 +137,11 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
       >
         <div
           ref={groundRef}
-          className="ground-img absolute z-5  -bottom-0 right-0 w-full h-[100%]"
+          className="ground-img absolute z-5  bottom-2 right-0 w-full h-[65%]"
         >
           <div
             ref={cloudsRef}
-            className="sky-clouds absolute w-full h-[10%] bottom-[30%] left-0"
+            className="sky-clouds absolute w-full h-[10%] bottom-[44%] left-0"
           >
             {randomClouds.map((cloud) => (
               <div
@@ -162,7 +162,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             {orderedClouds.map((cloud) => (
               <div
                 key={cloud.key}
-                className="sky-cloud absolute object-fill object-center -translate-x-1/2 -translate-y-1/2"
+                className="sky-cloud absolute object-cover object-center -translate-x-1/2 -translate-y-1/2"
                 style={cloud.style}
               >
                 <Image
@@ -176,12 +176,12 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             ))}
           </div>
           <Image
-            src="/images/hero/ground.webp"
+            src="/images/hero/heroGround.webp"
             alt="Ground Image"
             fill
-            sizes="(max-width: 768px) 100vw, 1500px"
+            sizes="(max-width: 768px) 50vw, 20000px"
             onLoad={handleLoad}
-            className="size-full max-md:object-cover max-md:object-center"
+            className="size-full max-md:object-fit max-md:object-center"
             priority
           />
         </div>

@@ -4,7 +4,7 @@
 }
 
 .ground-img > img {
-  filter: drop-shadow(1px 4px 2px #dd5bf7);
+  filter: drop-shadow(0px -0.01px 0.01px #dd5bf7);
   animation-play-state: paused;
 }
 
@@ -17,7 +17,7 @@
   z-index: -2;
   left: 0;
   bottom: 0;
-  box-shadow: 0px -20px 50px #d14be6, 0 -130px 61px #07006b7b;
+  box-shadow: 0px -65px 50px #d14be6, 0 -140px 61px #07006b7b;
 }
 
 .hero-about {}
