@@ -7,7 +7,7 @@ import Welcome from "./Welcome";
 import BackGround from "../layouts/BackGround";
 import ScrollMove from '@/utils/ScrollMove';
 import "../../styles/hero.css";
-import HeroRightSide from "../ui/HeroRightSide";
+import HeroRightSide from "./subSections/HeroRightSide";
 
 
 const roles = [

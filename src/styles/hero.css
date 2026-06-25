@@ -189,32 +189,26 @@
 /* Movement */
 @keyframes fireflyMove {
 
-  /* Start */
   0% {
     transform: translate(0px, 0px);
   }
 
-  /* Move slowly */
   20% {
     transform: translate(-150px, 0px);
   }
 
-  /* Stay 4s */
   42% {
     transform: translate(-150px, 0px);
   }
 
-  /* Move again */
   62% {
     transform: translate(-200px, -180px);
   }
 
-  /* Stay 4s */
   84% {
     transform: translate(-200px, -180px);
   }
 
-  /* Back to start */
   100% {
     transform: translate(0px, 0px);
   }
@@ -275,6 +269,16 @@
     transform: scale(0.7);
     opacity: 0.2;
   }
+}
+
+.astronaut-monitor {
+  background-color: #d2d2d2aa;
+  transform-origin: left center;
+  width: 14%;
+  height: 13%;
+  bottom: 66%;
+  right: 48%;
+  transform: rotateX(37deg) rotateY(33deg) rotateZ(338deg);
 }
 
 .hub{
