@@ -68,7 +68,7 @@ export default function Welcome({heroRef, timelineRef}) {
   return (
       <div
         id="welcome"
-        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-50 
+        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0  
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
         <main

@@ -137,7 +137,7 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
       >
         <div
           ref={groundRef}
-          className="ground-img absolute z-5  bottom-2 right-0 w-full h-[65%]"
+          className="ground-img absolute z-5  bottom-2 right-0 w-full h-[65%] max-md:h-[45%]"
         >
           <div
             ref={cloudsRef}
@@ -179,9 +179,9 @@ function Hero_Ground({ handleLoad, groundRef, rightRockRef, rightRockHubRef }) {
             src="/images/hero/heroGround.webp"
             alt="Ground Image"
             fill
-            sizes="(max-width: 768px) 50vw, 20000px"
+            sizes="(max-width: 768px) 100vw, 1000px"
             onLoad={handleLoad}
-            className="size-full max-md:object-fit max-md:object-center"
+            className="size-full max-md:object-cover max-md:object-center"
             priority
           />
         </div>
