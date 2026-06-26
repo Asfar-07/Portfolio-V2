@@ -18,142 +18,146 @@ const SRCS = Array.from(
   (_, i) => `images/scratframe/frame_${i + 1}.webp`
 );
 
-export default function BackGround({ moonRef, handleLoad, IceAgeScrat }) {
+export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
   const mainContainer = useRef(null);
   const canvasRef = useRef(null);
+  const IceAgeScrat = useRef(null);
 
-const [stars, setStars] = useState([]);
+  const [stars, setStars] = useState([]);
 
-useEffect(() => {
-  const generatedStars = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 2 + 1,
-    top: Math.random() * 100,
-    left: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: Math.random() * 3 + 2,
-    opacity: Math.random() * 0.8 + 0.2,
-  }));
+  useEffect(() => {
+    const generatedStars = Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 2 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: Math.random() * 3 + 2,
+      opacity: Math.random() * 0.8 + 0.2,
+    }));
 
-  setStars(generatedStars);
-}, []);
- 
+    setStars(generatedStars);
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
- 
+
     let frameIndex = 0;
     let timer = null;
     let destroyed = false;
 
-    const bitmaps= [];
- 
+    const bitmaps = [];
+
     const loadAll = async () => {
       await Promise.all(
         SRCS.map((src, i) =>
           fetch(src)
             .then((r) => r.blob())
             .then((blob) => createImageBitmap(blob))
-            .then((bmp) => { bitmaps[i] = bmp; })
-        )
+            .then((bmp) => {
+              bitmaps[i] = bmp;
+            }),
+        ),
       );
- 
+
       if (destroyed) return;
- 
+
       ctx.drawImage(bitmaps[0], 0, 0, 120, 120);
- 
+
       timer = setInterval(() => {
         frameIndex = (frameIndex + 1) % TOTAL_FRAMES;
         ctx.clearRect(0, 0, 120, 120);
         ctx.drawImage(bitmaps[frameIndex], 0, 0, 120, 120);
       }, FRAME_DURATION);
     };
- 
+
     loadAll();
- 
+
     return () => {
       destroyed = true;
       if (timer) clearInterval(timer);
       bitmaps.forEach((bmp) => bmp?.close());
     };
   }, []);
-  
- useEffect(() => {
-   let fromLeft = true;
 
-   const mainContainer = IceAgeScrat.current;
-   if (!mainContainer) return;
+  useEffect(() => {
+    let fromLeft = true;
 
-   const boxWidth = mainContainer.offsetWidth;
+    const mainContainer = IceAgeScrat.current;
 
-   let timeoutId;
-   let animationResetId;
+    if (!mainContainer) return;
 
-   function animeScrat() {
-     const windowWidth = window.innerWidth;
-     const windowHeight = window.innerHeight;
-     const duration = windowWidth / 35;
-     const startY = Math.random() * (windowHeight / 1.1 - boxWidth);
-     const endY = Math.random() * 100;
+    const boxWidth = mainContainer.offsetWidth;
 
-     // ✅ Cancel running animations without forcing reflow
-     mainContainer.getAnimations().forEach((a) => a.cancel());
+    let timeoutId;
+    let animationResetId;
 
-     if (fromLeft) {
-       mainContainer.style.left = `-${boxWidth}px`;
-       mainContainer.style.right = "auto";
-       mainContainer.style.top = `${startY}px`;
-       mainContainer.style.setProperty(
-         "--scrat-end-x",
-         `${windowWidth + boxWidth}px`,
-       );
-       mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
-       fromLeft = false;
-     } else {
-       mainContainer.style.right = "auto";
-       mainContainer.style.left = `${windowWidth + boxWidth}px`;
-       mainContainer.style.top = `${startY}px`;
-       mainContainer.style.setProperty(
-         "--scrat-end-x",
-         `-${windowWidth + boxWidth * 2}px`,
-       );
-       mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
-       fromLeft = true;
-     }
+    function animeScrat() {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const duration = windowWidth / 35;
+      const startY = Math.random() * (windowHeight / 1.5 - boxWidth);
+      const endY = Math.random() * 100;
 
-     mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
-     mainContainer.style.setProperty(
-       "--scrat-end-scale",
-       (0.5 + Math.random()).toFixed(2),
-     );
-     mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
+      mainContainer.getAnimations().forEach((a) => a.cancel());
 
-     animationResetId = setTimeout(() => {
-       mainContainer.style.animation = "none";
-       const randomDelay = 1000 + Math.random() * 3000;
-       timeoutId = setTimeout(animeScrat, randomDelay);
-     }, duration * 1000);
-   }
+      if (fromLeft) {
+        mainContainer.style.left = `-${boxWidth}px`;
+        mainContainer.style.right = "auto";
+        mainContainer.style.top = `${startY}px`;
+        mainContainer.style.setProperty(
+          "--scrat-end-x",
+          `${windowWidth + boxWidth}px`,
+        );
+        mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
+        fromLeft = false;
+      } else {
+        mainContainer.style.right = "auto";
+        mainContainer.style.left = `${windowWidth + boxWidth}px`;
+        mainContainer.style.top = `${startY}px`;
+        mainContainer.style.setProperty(
+          "--scrat-end-x",
+          `-${windowWidth + boxWidth * 2}px`,
+        );
+        mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
+        fromLeft = true;
+      }
 
-   animeScrat();
+      mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
+      mainContainer.style.setProperty(
+        "--scrat-end-scale",
+        (Math.random()).toFixed(2),
+      );
+      mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
 
-   return () => {
-     clearTimeout(timeoutId);
-     clearTimeout(animationResetId);
-   };
- }, []);
-    return (
-      <section
-        ref={mainContainer}
-        className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none"
+      animationResetId = setTimeout(() => {
+        mainContainer.style.animation = "none";
+        const randomDelay = 1000 + Math.random() * 3000;
+        timeoutId = setTimeout(animeScrat, randomDelay);
+      }, duration * 1000);
+    }
+
+    animeScrat();
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(animationResetId);
+    };
+  }, []);
+  return (
+    <section
+      ref={mainContainer}
+      className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none"
+    >
+      <div
+        ref={IceAgeScrat}
+        className="bg-scrat-animation  max-w-70 max-h-50 z-2 overflow-hidden"
       >
-        <div
-          ref={IceAgeScrat}
-          className="bg-scrat-animation flex items-end gap-3 max-w-70 max-h-50 z-2 overflow-hidden"
-        >
-          <div className="w-30 h-30">
+        <div ref={scratWrapper} className="flex items-end gap-3">
+          <div className="w-25 h-28">
             <canvas
               ref={canvasRef}
               width={120}
@@ -163,40 +167,41 @@ useEffect(() => {
               }}
             />
           </div>
-          <div className="w-8 h-8 -translate-y-8">
+          <div className="w-6 h-6 -translate-y-8">
             <figure className="size-full">
               <AcornExperience />
             </figure>
           </div>
         </div>
+      </div>
 
-        {stars.map((star) => (
-          <span
-            key={star.id}
-            className="absolute z-0 rounded-full star"
-            style={{
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              top: `${star.top}%`,
-              left: `${star.left}%`,
-              opacity: star.opacity,
-              animationDelay: `${star.delay}s`,
-              animationDuration: `${star.duration}s`,
-            }}
-          />
-        ))}
+      {stars.map((star) => (
+        <span
+          key={star.id}
+          className="absolute z-0 rounded-full star"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            opacity: star.opacity,
+            animationDelay: `${star.delay}s`,
+            animationDuration: `${star.duration}s`,
+          }}
+        />
+      ))}
 
-        <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
-          <Image
-            src="/images/hero/planet.webp"
-            alt="Moon Image"
-            fill
-            priority
-            onLoad={handleLoad}
-            sizes="(max-width: 768px) 60vw, 800px"
-            className="moon-img-main"
-          />
-        </div>
-      </section>
-    );
+      <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
+        <Image
+          src="/images/hero/planet.webp"
+          alt="Moon Image"
+          fill
+          priority
+          onLoad={handleLoad}
+          sizes="(max-width: 768px) 60vw, 800px"
+          className="moon-img-main"
+        />
+      </div>
+    </section>
+  );
 }

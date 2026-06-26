@@ -1,10 +1,18 @@
+.test {
+    width: 26%;
+    height: 16%;
+    top: 13%;
+    left: 30%;
+    transform: rotate(348deg);
+}
+
 
 .hero-ground {
   /* animation: moveTO 1s ease-out; */
 }
 
 .ground-img > img {
-  filter: drop-shadow(1px 4px 2px #dd5bf7);
+  filter: drop-shadow(0px -0.01px 0.01px #dd5bf7);
   animation-play-state: paused;
 }
 
@@ -17,7 +25,7 @@
   z-index: -2;
   left: 0;
   bottom: 0;
-  box-shadow: 0px -20px 50px #d14be6, 0 -130px 61px #07006b7b;
+  box-shadow: 0px -65px 50px #d14be6, 0 -140px 61px #07006b7b;
 }
 
 .hero-about {}
@@ -179,7 +187,7 @@
   background-color: rgba(36, 0, 99, 0.249);
   backdrop-filter: blur(10px);
   overflow: hidden;
-  transition: .7s linear;
+  transition: 0.1s linear;
 }
 
 .hero-btn:hover{
@@ -189,32 +197,26 @@
 /* Movement */
 @keyframes fireflyMove {
 
-  /* Start */
   0% {
     transform: translate(0px, 0px);
   }
 
-  /* Move slowly */
   20% {
     transform: translate(-150px, 0px);
   }
 
-  /* Stay 4s */
   42% {
     transform: translate(-150px, 0px);
   }
 
-  /* Move again */
   62% {
     transform: translate(-200px, -180px);
   }
 
-  /* Stay 4s */
   84% {
     transform: translate(-200px, -180px);
   }
 
-  /* Back to start */
   100% {
     transform: translate(0px, 0px);
   }
@@ -277,6 +279,16 @@
   }
 }
 
+.astronaut-monitor {
+  background-color: #d2d2d2aa;
+  transform-origin: left center;
+  width: 14%;
+  height: 13%;
+  bottom: 66%;
+  right: 48%;
+  transform: rotateX(37deg) rotateY(33deg) rotateZ(338deg);
+}
+
 .hub{
   transform-origin: center;
   transform: rotateX(44deg) rotateY(36deg) rotateZ(335deg);
@@ -287,7 +299,73 @@
     /* rotate around circle center */
     transform-origin: 10px center;
 }
+.hub-graph > li{
+  transform-origin: bottom;
+}
+.spinning{
+  animation: spinningNormal 4s linear infinite ;
+}
+.hub-notify-ui {
+  animation: showNotify 15s ease-in-out infinite;
+}
 
+@keyframes showNotify {
+  0% {
+    transform: translateX(100%) scale(.5);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateX(100%) scale(.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(100%) scale(.5);
+    opacity: 0;
+  }
+}
+
+@keyframes spinningNormal {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+@keyframes _blink {
+  0%,
+  100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+}
+@keyframes animateGraph{
+  0%{
+    transform: scaleY(0);
+  }
+  50%{
+    transform: scaleY(1);
+  }
+  100%{
+    transform: scaleY(0)
+  }
+}
 @keyframes swingbadge{
     0%{ transform:rotate(-5deg); }
     50%{ transform:rotate(5deg); }

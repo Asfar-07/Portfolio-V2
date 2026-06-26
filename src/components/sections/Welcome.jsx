@@ -22,6 +22,8 @@ export default function Welcome({heroRef, timelineRef}) {
     const tagline  = taglineRef.current
     const hero     = heroRef.current
 
+    const isDesktop = window.innerWidth >= 1000;
+
     // Perspective on container for 3D z transforms
     gsap.set(hero,    { perspective: 1200 })
     gsap.set([badge, title, roles, tagline], {
@@ -37,7 +39,7 @@ export default function Welcome({heroRef, timelineRef}) {
       scrollTrigger: {
         trigger: hero,
         start: '0% top',
-        end: '+=1000',
+        end: isDesktop ? "+=800" : "+=500",
         pin: true,
         anticipatePin: true,
         scrub: 0.8,
@@ -66,7 +68,7 @@ export default function Welcome({heroRef, timelineRef}) {
   return (
       <div
         id="welcome"
-        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-50 
+        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0  
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
         <main
@@ -78,7 +80,7 @@ export default function Welcome({heroRef, timelineRef}) {
               Welcome to my
             </div>
             <div ref={mainTitleRef}>
-              <h4 className="inline-block font-bold text-[160px] tracking-[0.2rem] m-0 p-0 text-start leading-none max-md:text-[100px] max-sm:text-[70px]">
+              <h4 className="inline-block whitespace-nowrap font-bold text-[160px] tracking-[0.2rem] m-0 p-0 text-start leading-none max-md:text-[100px] max-sm:text-[70px]">
                 <span>p</span>
                 <span className='rounded-grad'>o</span>
                 <span>r</span>
