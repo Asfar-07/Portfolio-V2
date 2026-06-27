@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
-import { Controller, Crystal_1, Crystal_2, Crystal_3, FireFly, FireFlyMoving, Plant_1, Plant_2 } from '../../ui/GroundElements';
+import { Controller, Crystal_1, Crystal_2, Crystal_3, FireFly, FireFlyMoving, GroundLight, Plant_1, Plant_2 } from '../../ui/GroundElements';
 import HeroHubUi from '@/components/ui/HeroHubUi';
 import TypingCodeUi from '@/components/ui/TypingCodeUi';
 
@@ -19,6 +19,24 @@ export default function HeroRightSide({handleLoad, rightRockRef, rightRockHubRef
           </div>
           <div className=' relative size-full z-0'>
             <Crystal_1 dust= {false}/>
+          </div>
+        </div>
+
+        <div className='w-[22%] h-[22%] absolute right-[15%] bottom-[45%] z-10'>
+          <div className=' absolute w-[30%] h-[30%] top-[20%] left-[55%] -z-1 rotate-10'>
+            <Plant_1 dust= {false}/>
+          </div>
+          <div className=' relative size-full z-0'>
+            <Crystal_1 dust= {false}/>
+          </div>
+        </div>
+
+        <div className='w-[15%] h-[15%] absolute right-[15%] bottom-[45%] z-20'>
+          <div className=' absolute w-[30%] h-[30%] top-[20%] left-[45%] -z-1 rotate-10'>
+            <Plant_2 dust= {false}/>
+          </div>
+          <div className=' relative size-full z-0'>
+            <Crystal_3 dust= {false}/>
           </div>
         </div>
 
@@ -158,7 +176,7 @@ export default function HeroRightSide({handleLoad, rightRockRef, rightRockHubRef
         </div>
 
         {/* bottom of rock */}
-        <div className='w-[22%] h-[22%] absolute right-[35%] bottom-[20%] z-20'>
+        <div className='w-[22%] h-[22%] absolute right-[35%] bottom-[20%] z-10'>
           <div className=' absolute w-[30%] h-[30%] top-[20%] left-[55%] -z-1 rotate-10'>
             <Plant_1 dust/>
           </div>
@@ -167,7 +185,7 @@ export default function HeroRightSide({handleLoad, rightRockRef, rightRockHubRef
           </div>
         </div>
 
-        <div className='w-[22%] h-[22%] absolute right-[42%] bottom-[14%] z-20'>
+        <div className='w-[22%] h-[22%] absolute right-[42%] bottom-[14%] z-10'>
           <div className=' absolute w-[30%] h-[30%] top-[20%] left-[55%] -z-1 rotate-10'>
             <Plant_1 dust/>
           </div>
@@ -243,6 +261,14 @@ export default function HeroRightSide({handleLoad, rightRockRef, rightRockHubRef
           <div className=' relative size-full z-0'>
             <Crystal_1 dust/>
           </div>
+        </div>
+
+        <div className='w-[1%] h-[1%] absolute right-[40%] bottom-[45%] z-20'>
+          <GroundLight />
+        </div>
+
+        <div className='w-[1%] h-[1%] absolute right-[4%] bottom-[28%] z-20'>
+          <GroundLight />
         </div>
         {/* <div className='w-[5%] h-[5%] absolute left-0 top-0 z-999'>
           <Plant_1 />

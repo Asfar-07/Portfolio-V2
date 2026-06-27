@@ -52,7 +52,7 @@ function Plant_1({dust= true}){
 
   return (
     <main className="size-full">
-      <div className="planet1_light light-glow absolute rounded-t-full bg-[#0BE1FB] blur-[3px] z-20"></div>
+      <div className="planet1_light light-glow absolute rounded-t-full bg-[#0BE1FB] blur-[2px] z-20"></div>
       {dust && (
         <div className=" absolute w-[32%] h-[12%] top-[12%] left-[38%] z-900">
           {[...Array(2)].map((_, index) => (
@@ -205,4 +205,12 @@ function Crystal_3({dust= true}){
     </main>
   );
 }
-export { FireFly, FireFlyMoving, Plant_1, Plant_2, Crystal_1, Crystal_2, Crystal_3, Controller}
+
+function GroundLight() {
+  return(
+    <main className='size-full'>
+      <div className='light-glow size-full bg-[#00bfff] blur-[1.5px] rounded-full'></div>
+    </main>
+  )
+}
+export { FireFly, FireFlyMoving, Plant_1, Plant_2, Crystal_1, Crystal_2, Crystal_3, GroundLight, Controller}
