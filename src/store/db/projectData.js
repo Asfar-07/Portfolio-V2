@@ -43,7 +43,7 @@ export default projectData = [
     description: "A real-time Gym management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
     point: "managing gym operations and building a community",
     display: "image",
-    links: ["/", "/"],
+    links: ["https://github.com/Asfar-07/Gym-Management-Platform", "https://github.com/Asfar-07/Gym-Management-Platform"],
     features: [{
       title: "microservices architecture",
       icon: Columns3Cog,
@@ -74,7 +74,7 @@ export default projectData = [
     description: "A full-featured e-learning platform built with Spring Boot and MySQL, featuring Spring Security authentication, course management, JPA-based data handling, and an email notification system. Built with clean MVC architecture using Thymeleaf for dynamic UI rendering.",
     point: "building a responsive e-learning platform for an institution",
     display: "image",
-    links: ["/", "/"],
+    links: ["https://github.com/Asfar-07/E-Learning-application", "https://github.com/Asfar-07/E-Learning-application"],
     features: [{
       title: "responsive design",
       icon: MonitorSmartphone,
@@ -102,7 +102,7 @@ export default projectData = [
     name: "Social Media Web App",
     description: "A real-time social media platform built as a college team project using Node.js and Socket.IO. Features include secure user authentication, public and private chat, user dashboard, search functionality, and a gaming section — all built with Express and Handlebars templating",
     point: "are you using different application ",
-    links: ["/", "/"],
+    links: ["https://github.com/Asfar-07/social-media-web", "https://github.com/Asfar-07/social-media-web"],
     features: [{
       title: "first_college project",
       icon: University,
