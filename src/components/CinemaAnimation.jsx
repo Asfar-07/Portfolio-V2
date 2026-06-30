@@ -44,6 +44,7 @@ export default function CinemaAnimation({timelineRef}) {
   const rightContainerRef = useRef(null);
   const projectsBodyRef = useRef(null);
   const bgImage = useRef(null);
+  const mainImage = useRef(null);
 
   // Refs for achievement Section
   const achievementBodyRef = useRef(null);
@@ -125,6 +126,7 @@ export default function CinemaAnimation({timelineRef}) {
       //project section animation
       .to(projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<=+0.2")
       .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, "<=+2")
+      .fromTo( mainImage.current, { top: "0%", height: "100%" }, { top: "20%", height: "70%", duration: 0.2 }, "<=+1")
       
       headingLetters.forEach((letter) => {
         timelineRef.current.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .3 });
@@ -200,6 +202,7 @@ export default function CinemaAnimation({timelineRef}) {
           rightContainerRef={rightContainerRef}
           projectsBodyRef={projectsBodyRef}
           bgImage={bgImage}
+          mainImage={mainImage}
         />
       </div>
     </main>
