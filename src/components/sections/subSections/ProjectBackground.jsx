@@ -36,7 +36,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
         <div ref={containerRef} className=" relative size-full  z-15">
           <div ref={circleRef} className="w-75 h-75 absolute top-0 left-0">
             <div className="mouse-child size-full rounded-full pointer-events-none bg-[#00eeff] blur-[14px]"></div>
-            <div className=" absolute inset-0 rounded-full overflow-hidden">
+            {/* <div className=" absolute inset-0 rounded-full overflow-hidden">
               {[...Array(400)].map((_, i) => (
                 <span
                   key={i}
@@ -52,7 +52,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
         <div
@@ -69,7 +69,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
         </div>
         <div className=" absolute w-full h-[20%] left-0 bottom-0 z-25 max-sm:h-[16%]">
           <div className=" absolute left-[34%] bottom-[45%] w-[6%] h-[25%] z-25">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <span
                 key={index}
                 className="dust-custom w-1 h-1 bg-[#ff00ea]"
@@ -82,7 +82,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
             ))}
           </div>
           <div className=" absolute left-[0%] bottom-[45%] w-[6%] h-[25%] z-25">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <span
                 key={index}
                 className="dust-custom w-1 h-1 bg-[#ff00ea]"
@@ -95,7 +95,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
             ))}
           </div>
           <div className=" absolute left-[95%] bottom-[45%] w-[6%] h-[25%] z-25">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <span
                 key={index}
                 className="dust-custom w-1 h-1 bg-[#ff00ea]"
@@ -109,7 +109,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
           </div>
 
           <div className=" absolute left-[50%] bottom-[5%] w-[6%] h-[25%] z-25">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <span
                 key={index}
                 className="dust w-1 h-1 bg-[#ff00ea]"
@@ -122,7 +122,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
             ))}
           </div>
           <div className=" absolute left-[84%] bottom-[58%] w-[6%] h-[25%] z-25">
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <span
                 key={index}
                 className="dust w-1 h-1 bg-[#ff00ea]"
