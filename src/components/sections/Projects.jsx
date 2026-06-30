@@ -4,9 +4,10 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import projects from "../../store/db/projectData";
 import "../../styles/projects.css";
+import ProjectBackground from "./subSections/ProjectBackground";
 
 
-export default function Projects({ mainProjectsRef, leftContainerRef, rightContainerRef, projectsBodyRef, bgImage }) {
+export default function Projects({ mainProjectsRef, leftContainerRef, rightContainerRef, projectsBodyRef, bgImage, mainImage }) {
 
 const headingWord = "WORKS".split("");
 
@@ -17,19 +18,7 @@ const headingWord = "WORKS".split("");
         ref={mainProjectsRef}
         className="projects text-(--p-font) h-auto overflow-hidden min-h-[650px] relative w-full"
       >
-        <section className="absolute min-h-[650px] inset-0 w-full h-screen overflow-hidden">
-          <div ref={bgImage} className="masked-section w-full  h-[130%] ">
-            <div className="for-bg-image relative size-full">
-              <Image
-                src="/images/projectBg.webp"
-                alt="project background"
-                fill
-                priority
-                className=" object-cover object-bottom"
-              />
-            </div>
-          </div>
-        </section>
+        <ProjectBackground bgImage={bgImage} mainImage={mainImage} />
         <main className=" flex relative z-3 w-100% text-(--p-font) ">
           <section className="w-full relative p-[0rem_4rem] max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
             <main className="flex justify-center items-center h-screen  max-w-[1250px] m-auto ">

@@ -14,3 +14,47 @@
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
 }
+
+.mouse-child{
+  box-shadow: 0 0 50px 15px #0BE1FB;
+}
+
+.project-dust {
+  position: absolute;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 4px #fff,
+    0 0 8px #fff,
+    0 0 14px #00eeff;
+
+  will-change: transform;
+
+  left: var(--dust-left);
+  top: var(--dust-top);
+
+  width: var(--dust-size);
+  height: var(--dust-size);
+
+  animation: floatingProjectDust var(--dust-duration) ease-in-out infinite;
+  animation-delay: var(--dust-delay);
+
+}
+
+@keyframes floatingProjectDust {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(var(--dust-move-x),
+        var(--dust-move-y));
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
