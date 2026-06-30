@@ -23,6 +23,15 @@
   z-index: 900;
   animation: floatDust linear infinite;
 }
+.dust-custom {
+  position: absolute;
+  bottom: 0px;
+  border-radius: 50%;
+  /* filter: blur(.5px); */
+  box-shadow: 0 0 5px #ffffff;
+  z-index: 900;
+  animation: floatDust linear infinite;
+}
 
 @keyframes floatDust {
   0% {
