@@ -68,7 +68,7 @@ function Plant_1({dust= true}){
           ))}
         </div>
       )}
-      <div className="size-full">
+      <div className="relative size-full">
         <Image
           src="/images/hero/ground-elements/plant_1.webp"
           alt="plants1"
@@ -100,7 +100,7 @@ function Plant_2({dust= true}){
           ))}
         </div>
       )}
-      <div className="size-full">
+      <div className="relative size-full">
         <Image
           src="/images/hero/ground-elements/plant_2.webp"
           alt="plants2"
@@ -131,7 +131,7 @@ function Crystal_1({dust= true}) {
           ))}
         </div>
       )}
-      <div className="size-full">
+      <div className="relative size-full">
         <Image
           src="/images/hero/ground-elements/crystalGroup_1.webp"
           alt="plants2"
@@ -163,7 +163,7 @@ function Crystal_2({dust= true}){
           ))}
         </div>
       )}
-      <div className="size-full">
+      <div className="relative size-full">
         <Image
           src="/images/hero/ground-elements/crystalGroup_2.webp"
           alt="plants2"
@@ -194,7 +194,7 @@ function Crystal_3({dust= true}){
           ))}
         </div>
       )}
-      <div className="size-full">
+      <div className="relative size-full">
         <Image
           src="/images/hero/ground-elements/crystalGroup_3.webp"
           alt="plants2"
