@@ -13,6 +13,11 @@ const Contact = dynamic(() => import('./sections/Contact'), {
   loading: () => <div className="w-full min-h-screen" />,
 })
 
+const Experience = dynamic(() => import('./sections/Experience'), {
+  ssr: false,
+  loading: () => <div className="w-full min-h-screen" />,
+})
+
 export default function PortfolioClient() {
   const timelineRef = useRef(null)
   return (
@@ -20,6 +25,7 @@ export default function PortfolioClient() {
       <CinemaAnimation timelineRef={timelineRef} />
       <Achievement />
       <Contact timelineRef={timelineRef} />
+      {/* <Experience /> */}
     </>
   )
 }

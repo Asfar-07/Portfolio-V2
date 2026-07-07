@@ -1,60 +1,39 @@
 "use client"
-import React from 'react'
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import React, { useRef } from 'react'
 import 'react-vertical-timeline-component/style.min.css';
 import "@/styles/experience.css"
 import { experiences } from '@/store/db/experience';
-
-const ExperienceCard = ({experience})=>(
-  <VerticalTimelineElement contentStyle={{background:"rgba(0, 229, 255, 0.03)", color:"#fff"}}
-  date={experience.date}
-  iconStyle={{background: experience.iconBg}}
-  icon={
-    <div className='flex justify-center items-center w-full h-full'>
-      <img 
-        src={experience.icon}
-        alt={experience.company_name}
-        className=' size-full object-contain rounded-full'
-      />
-    </div>
-  }
-  >
-    <div>
-      <h4 className='text-white text-[22px] font-bold m-0'>{experience.title}</h4>
-      <p className='text-[#ffffff7f] text-[14px] font-light m-0' style={{margin:"0px",fontSize:"14px",fontWeight:"400"}}>{experience.company_name}</p>
-    </div>
-    <p style={{fontSize:"16px",fontWeight:"300", lineHeight:"1.4"}}>{experience.points}</p>
-    <div className=' w-full'>
-      <ul className='mt-5 flex gap-2 flex-wrap list-none w-full'>
-      {experience.skills.map((skill,index)=>(
-        <li 
-        key={`skill-${index}`}
-        className='text-white-100 px-3 py-1 text-[10px] rounded-xl  border border-cyan-400'
-        > 
-          {skill}
-        </li>
-      ))}
-    </ul>
-    </div>
-  </VerticalTimelineElement>
-)
+import RobotExperience from '../techModels/RobotExperience';
 
 export default function Experience() {
-  return (
-    <section id="experience" className=" relative p-[7rem_4rem] w-full z-10 text-white max-md:p-[3rem_1.5rem]">
-      <div className='w-100% max-w-[1250px] m-auto '>
-        <div className='w-full md:text-center'>
-          {/* <p>What I have done so far</p> */}
-          <h2 className=' text-4xl font-black'>Education & Experience</h2>
-        </div>
-        <div className="mt-30 flex flex-col">
-          <VerticalTimeline>
-            {experiences.map((experience, index) => (
-              <ExperienceCard key={index} experience={experience} />
-            ))}
-          </VerticalTimeline>
-        </div>
+  const experiencesBody = useRef(null);
+  const experiencesMain = useRef(null);
+  const robotBody = useRef(null);
+  const leftHeading = useRef(null);
+  const rightHeading = useRef(null);
+
+ return (
+    <div ref={experiencesBody} className=' relative'>
+      <div className="bg-(--p-bg-deep) text-(--p-font) h-screen min-h-[600px] relative p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]">
+        <main ref={experiencesMain} className=" flex flex-col justify-center items-center  w-100% m-auto  max-w-[1250px] min-h-[600px] relative text-(--p-font) overflow-hidden  max-md:w-full max-md:h-auto">
+          <section>
+            
+          </section>
+          <div ref={robotBody} className=' relative size-140'>
+            <div className=' absolute top-[25%] -left-[35%]  scale-y-[1.2] scale-x-[1.5] overflow-hidden'>
+              <h4 ref={leftHeading} className='text-6xl font-extrabold'>Interfaces</h4>
+              <span className='exp-heading-tittle'>memorical</span>
+            </div>
+            <div className=' absolute bottom-[25%] -right-[38%]  scale-y-[1.2] scale-x-[1.5] overflow-hidden'>
+              <h4 ref={rightHeading} className='text-6xl font-extrabold'>Experience</h4>
+              <span className='exp-heading-tittle'>path</span>
+            </div>
+            <figure className='w-full h-full'>
+              <RobotExperience experiencesBody={experiencesBody} leftHeading={leftHeading} rightHeading={rightHeading} robotBody={robotBody} experiencesMain={experiencesMain}/>
+            </figure>
+          </div>
+        </main>
       </div>
-    </section>
+    </div>
   );
 }
