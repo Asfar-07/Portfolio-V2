@@ -41,9 +41,8 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
         trigger: experiencesBody.current,
         start: "top top",
         end: "+=1500",
-        scrub: true,
-        pin: true,
-        markers: true
+        scrub: 2,
+        pin: true
       },
     });
 
