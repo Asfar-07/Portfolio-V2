@@ -24,7 +24,7 @@ export default function Experience() {
        >
          <section className=" absolute inset-0 ">
           {experiences.map((exp,index)=>(
-           <aside key={index} className={`experience-card absolute ${index % 2 === 0 ? 'left-0' : 'right-0'} top-1/2 p-10 max-w-155 -translate-y-1/2 b rounded-2xl 
+           <aside key={index} className={`experience-card absolute ${index % 2 === 0 ? 'left-0' : 'right-0'} top-1/2 p-10 max-w-155 b rounded-2xl 
            border border-[#04deff78] bg-transparent backdrop-blur-3xl max-md:p-5`}>
              {/* <div className='flex items-center gap-2 text-[#cdbbfc] uppercase w-fit text-[12px] rounded-xl px-2.5 py-px bg-[#3e00c53b]'>
               <University className=" size-3" />

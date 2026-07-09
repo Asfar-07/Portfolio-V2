@@ -35,12 +35,17 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
     gsap.set(".exp-heading-tittle", {
       opacity: 0
     })
+    gsap.set(".experience-card", {
+      opacity: 0,
+      yPercent: 100
+    });
+   const expCards = gsap.utils.toArray(".experience-card");
 
     const tl = gsap.timeline({
      scrollTrigger: {
         trigger: experiencesBody.current,
         start: "top top",
-        end: "+=1500",
+        end: "+=2500",
         scrub: 2,
         pin: true
       },
@@ -113,46 +118,53 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
       duration: .5,
       ease: "power2.out"
     }, "<")
-    
-    .to(robot, {
-      xPercent: 50,
-      duration: 1,
-      ease: "none",
-      invalidateOnRefresh: true,
-      }, "<")
-    
-    .to(mainRobot.current.position, {
-      x: 0.1,
-      z: -0.4,
-      duration: .8,
-      ease: "none"
-    }, "<")
 
-    .to(mainRobot.current.rotation, {
-      y: -0.4,
-      duration: .8,
-      ease: "none"
-    }, "<")
+    //main animation
 
-    .to(robot, {
-      xPercent: -50,
+    expCards.forEach((card, index) => {
+
+    tl.to(robot, {
+      xPercent: index % 2 === 0 ? 50 : -50,
       duration: 1.5,
       ease: "none",
       invalidateOnRefresh: true,
-    }, "<+=1.5")
+    })
+
+    if (index > 0) {
+      tl.to( expCards[index - 1],
+        {
+          opacity: 1,
+          yPercent: -200,
+          duration: 1,
+          ease: "none",
+        },
+        "<",
+      );
+    }
+ 
+    tl.to(card, {
+      opacity: 1,
+      yPercent: -50,
+      duration: 1,
+      ease: "none",
+    }, "<")
     
     .to(mainRobot.current.position, {
-      x: -0.1,
+      x: index % 2 === 0 ? 0.1 : -0.1,
       z: -0.4,
       duration: .8,
       ease: "none"
     }, "<")
 
     .to(mainRobot.current.rotation, {
-      y: 0.4,
+      y: index % 2 === 0 ? -0.4 : 0.4,
       duration: .8,
       ease: "none"
     }, "<")
+
+
+    })
+
 
 
   }, { scope: experiencesBody, dependencies: [robotReady] });

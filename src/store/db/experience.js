@@ -45,10 +45,10 @@ const experiences=[
             name: "Database Systems",
             icon: <Database />
         },
-        {
-            name: "Operating Systems",
-            icon: <University />
-        },
+        // {
+        //     name: "Operating Systems",
+        //     icon: <University />
+        // },
         {
             name: "Networking",
             icon: <Globe />
