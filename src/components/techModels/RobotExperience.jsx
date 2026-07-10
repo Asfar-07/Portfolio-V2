@@ -45,7 +45,7 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
      scrollTrigger: {
         trigger: experiencesBody.current,
         start: "top top",
-        end: "+=2500",
+        end: "+=2200",
         scrub: 2,
         pin: true
       },
@@ -126,8 +126,7 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
     tl.to(robot, {
       xPercent: index % 2 === 0 ? 50 : -50,
       duration: 1.5,
-      ease: "none",
-      invalidateOnRefresh: true,
+      ease: "none"
     })
 
     if (index > 0) {
