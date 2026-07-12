@@ -11,6 +11,7 @@ const experiences=[
     //     date: "2019 - 2021",
     //     points: "Built the foundational knowledge in computer science, mathematics, and logical thinking that shaped every step ahead.",
     //     certificate:"",
+    //     banner:"/images/UniversityBanner.webp",
     //     skills: [{
     //         name: "Computer Science",
     //         icon: <Computer />
@@ -32,7 +33,8 @@ const experiences=[
         iconBg:"",
         date: "2021 - 2024",
         points: "Pursued a full undergraduate degree in computer science, gaining deep expertise in data structures, algorithms, software engineering, and more.",
-        certificate:"",
+        certificate: null,
+        banner:"/images/UniversityBanner.webp",
         skills: [{
             name: "Data Structures & Algorithms",
             icon: <Grid2x2Plus />
@@ -61,7 +63,8 @@ const experiences=[
         iconBg:"",
         date: "2024 - 2025",
         points: "Completed an intensive full-stack program focused on building production-ready web applications from front to back.",
-        certificate:"",
+        certificate: null,
+         banner:"/images/CityBanner.webp",
         skills: [{
             name: "Java & Spring Boot",
             icon: <Code />
@@ -90,7 +93,8 @@ const experiences=[
         iconBg:"",
         date: "2025 - 2026",
         points: "Worked closely with senior developers to build multiple applications, gaining hands-on experience in scalable MVP development, microservices, clean architecture, and modern security practices within a six-month internship.",
-        certificate:"",
+        banner:"/images/CompanyBanner.webp",
+        certificate: null,
         skills: [{
             name: "System Design",
             icon: <MonitorCog />
@@ -124,7 +128,8 @@ const experiences=[
     //     iconBg:"",
     //     date: "2025 - Present",
     //     points: "Taking intentional time to explore modern software development beyond the classroom — experimenting with new tools, frameworks, and building personal projects.",
-    //     certificate:"",
+    //     certificate:"https://img.magnific.com/free-psd/elegant-certificate-template-with-golden-details_69286-459.jpg?semt=ais_hybrid&w=740&q=80",
+    //     banner:"/images/CompanyBanner.webp",
     //     skills: [{
     //         name: "Open source",
     //         icon: <University />

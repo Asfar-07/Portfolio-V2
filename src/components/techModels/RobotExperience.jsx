@@ -35,6 +35,9 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
     gsap.set(".exp-heading-tittle", {
       opacity: 0
     })
+    gsap.set(".floating-box", {
+      opacity: 0
+    })
     gsap.set(".experience-card", {
       opacity: 0,
       yPercent: 100
@@ -101,6 +104,12 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
       ease: "none"
     }, "<+=.2")
 
+    .to(".floating-box",{
+      opacity: 1,
+      duration: .4,
+      ease: "none"
+    }, "<")
+
     .to(".exp-heading-tittle", {
       opacity: 0,
       duration: .4,
@@ -117,6 +126,12 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
       yPercent: -150,
       duration: .5,
       ease: "power2.out"
+    }, "<")
+
+    .to(".floating-box", {
+      opacity: 0,
+      duration: .4,
+      ease: "none"
     }, "<")
 
     //main animation
@@ -163,8 +178,6 @@ export default function RobotExperience({experiencesBody, leftHeading,  rightHea
 
 
     })
-
-
 
   }, { scope: experiencesBody, dependencies: [robotReady] });
 

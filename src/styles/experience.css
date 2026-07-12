@@ -1,3 +1,18 @@
 .experience-card{
     box-shadow: 0px 0px 55px 10px rgba(0, 6, 75, 0.395);
 }
+.floating-box {
+  animation: floatingDiv 8s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes floatingDiv {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
