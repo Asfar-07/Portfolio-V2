@@ -11,19 +11,20 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Contact({contactBodyRef, timelineRef}) {
+export default function Contact({ timelineRef}) {
   const mainContactRef = useRef(null);
   const contactRef = useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
   useGSAP(() => {
+    if (!mainContactRef.current || !contactRef.current) return;
 
     gsap.to(contactRef.current, {
       yPercent: -100,
       scrollTrigger: {
         trigger: mainContactRef.current,
         start: "top top",
-        end: "+=1200",
+        end: "+=1000",
         pin: true,
         scrub: true,
       },

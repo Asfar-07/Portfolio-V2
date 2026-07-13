@@ -1,12 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react'
+import React from 'react'
 import { Canvas } from "@react-three/fiber";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import Robot from './Robot';
 import RobotLight from './RobotLight';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function RobotExperience({groupRobot, setRobotRef}) {
  

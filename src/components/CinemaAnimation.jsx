@@ -114,30 +114,18 @@ export default function CinemaAnimation({ timelineRef }) {
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
 
     //experience section
-    gsap.set(leftHeading.current, {
-      xPercent: 100,
-    });
-
-    gsap.set(rightHeading.current, {
-      xPercent: -100,
-    });
-    gsap.set(".exp-heading-tittle", {
-      opacity: 0,
-    });
-    gsap.set(".floating-box", {
-      opacity: 0,
-    });
-    gsap.set(".experience-card", {
-      opacity: 0,
-      yPercent: 100,
-    });
+    gsap.set(leftHeading.current, {xPercent: 100 });
+    gsap.set(rightHeading.current, {xPercent: -100 });
+    gsap.set(".exp-heading-tittle", { opacity: 0 });
+    gsap.set(".floating-box", { opacity: 0 });
+    gsap.set(".experience-card", { opacity: 0, yPercent: 100 });
     const expCards = gsap.utils.toArray(".experience-card");
 
     timelineRef.current = gsap.timeline({
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: isDesktop ? "+=5000" : "+=4000",
+        end: isDesktop ? "+=8000" : "+=6000",
         scrub: isDesktop ? 1 : 3,
         pin: true,
       },
@@ -145,25 +133,12 @@ export default function CinemaAnimation({ timelineRef }) {
 
     //hero section animation
     timelineRef.current
-      .to(
-        heroBgRef.current,
-        { backgroundColor: "#000027", duration: 1, ease: "none" },
-        0,
-      )
-      .to(
-        moonRef.current,
-        { y: 0, duration: 1, ease: "none", scale: 1 },
-        "<+=1.5",
-      )
-      .to(scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
-      .to(
-        groundRef.current,
-        { yPercent: 0, duration: 1, ease: "none" },
-        "<+=0.3",
-      )
-      .to(rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
-      .to(
-        rightRockHubRef.current,
+      .to( heroBgRef.current, { backgroundColor: "#000027", duration: 1, ease: "none" }, 0)
+      .to( moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
+      .to( scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
+      .to( groundRef.current, { yPercent: 0, duration: 1, ease: "none" }, "<+=0.3")
+      .to( rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
+      .to( rightRockHubRef.current,
         {
           scale: 1,
           xPercent: 0,
@@ -173,23 +148,10 @@ export default function CinemaAnimation({ timelineRef }) {
         },
         "<+=.4",
       )
-      .to(
-        heroBadge.current,
-        { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" },
-        "<",
-      )
-      .to(
-        heroHeading.current,
-        { y: 0, opacity: 1, duration: 1, ease: "none" },
-        "<+=.5",
-      )
-      .to(
-        heroParagraph.current,
-        { opacity: 1, duration: 1, ease: "none" },
-        "<+=1.2",
-      )
-      .to(
-        heroButton.current,
+      .to( heroBadge.current, { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" }, "<")
+      .to( heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" },"<+=.5")
+      .to( heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, "<+=1.2")
+      .to( heroButton.current,
         {
           opacity: 1,
           backdropFilter: "blur(10px)",
@@ -198,11 +160,7 @@ export default function CinemaAnimation({ timelineRef }) {
         },
         "<+=1",
       )
-      .to(
-        heroBodyRef.current,
-        { yPercent: -100, duration: 2, ease: "none" },
-        "<+=1",
-      )
+      .to( heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<+=1")
 
       //about section animation
       .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
@@ -217,143 +175,30 @@ export default function CinemaAnimation({ timelineRef }) {
         },
         "<=+1.1",
       )
-      .to(
-        collectionRef.current,
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-        "<=+5",
-      )
-      .to(
-        aboutBodyRef.current,
-        { yPercent: -100, duration: 1, ease: "none" },
-        "<=+1",
-      )
+      .to( collectionRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "<=+5")
+      .to( aboutBodyRef.current, { yPercent: -100, duration: 1, ease: "none" }, "<=+1")
 
       //experience section animation
-      .to(
-        experiencesBody.current,
-        { yPercent: 0, duration: 1, ease: "none" },
-        "<",
-      )
-      .to(
-        mainRobot.current.position,
-        {
-          x: 0.5,
-          y: 0,
-          z: -5,
-          duration: 0.8,
-          ease: "none",
-        },
-        "<+=1",
-      )
-      .to(
-        mainRobot.current.rotation,
-        {
-          y: -0.6,
-          duration: 0.8,
-          ease: "none",
-        },
-        "<",
-      )
-      .to(
-        mainRobot.current.position,
-        {
-          x: 0,
-          y: 0,
-          z: 0,
-          duration: 0.8,
-          ease: "none",
-        },
-        "<+=1",
-      )
-      .to(
-        mainRobot.current.rotation,
-        {
-          x: 0,
-          y: 0,
-          duration: 0.8,
-          ease: "none",
-        },
-        "<",
-      )
+      .to( experiencesBody.current, { yPercent: 0, duration: 1, ease: "none" }, "<")
+      .to( mainRobot.current.position, { x: 0.5, y: 0, z: -5, duration: 0.8, ease: "none" }, "<+=1")
+      .to( mainRobot.current.rotation, { y: -0.6, duration: 0.8, ease: "none" }, "<")
+      .to( mainRobot.current.position, { x: 0, y: 0, z: 0, duration: 0.8, ease: "none" }, "<+=1")
+      .to( mainRobot.current.rotation, { x: 0, y: 0, duration: 0.8, ease: "none", }, "<")
 
-      .to(
-        leftHeading.current,
-        {
-          xPercent: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<+=1",
-      )
-      .to(
-        rightHeading.current,
-        {
-          xPercent: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<",
-      )
+      .to( leftHeading.current, { xPercent: 0, duration: 0.5, ease: "power2.out", }, "<+=1")
+      .to( rightHeading.current, { xPercent: 0, duration: 0.5, ease: "power2.out", }, "<")
 
-      .to(
-        ".exp-heading-tittle",
-        {
-          opacity: 1,
-          duration: 0.4,
-          ease: "none",
-        },
-        "<+=.2",
-      )
+      .to( ".exp-heading-tittle", { opacity: 1, duration: 0.4, ease: "none", }, "<+=.2" )
 
-      .to(
-        ".floating-box",
-        {
-          opacity: 1,
-          duration: 0.4,
-          ease: "none",
-        },
-        "<",
-      )
+      .to( ".floating-box", { opacity: 1, duration: 0.4, ease: "none", }, "<")
 
-      .to(
-        ".exp-heading-tittle",
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "none",
-        },
-        "<+=1",
-      )
+      .to( ".exp-heading-tittle", { opacity: 0, duration: 0.4, ease: "none", }, "<+=1")
 
-      .to(
-        leftHeading.current,
-        {
-          yPercent: 150,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<+=1",
-      )
+      .to( leftHeading.current, { yPercent: 150, duration: 0.5, ease: "power2.out" }, "<+=1")
 
-      .to(
-        rightHeading.current,
-        {
-          yPercent: -150,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<",
-      )
+      .to( rightHeading.current, { yPercent: -150, duration: 0.5, ease: "power2.out", }, "<")
 
-      .to(
-        ".floating-box",
-        {
-          opacity: 0,
-          duration: 0.4,
-          ease: "none",
-        },
-        "<",
-      );
+      .to( ".floating-box", { opacity: 0, duration: 0.4, ease: "none", }, "<",);
 
     //main animation
 
@@ -378,19 +223,9 @@ export default function CinemaAnimation({ timelineRef }) {
       }
 
       timelineRef.current
-        .to(
-          card,
-          {
-            opacity: 1,
-            yPercent: -50,
-            duration: 1,
-            ease: "none",
-          },
-          "<",
-        )
+        .to( card, { opacity: 1, yPercent: -50, duration: 1, ease: "none", }, "<")
 
-        .to(
-          mainRobot.current.position,
+        .to( mainRobot.current.position,
           {
             x: index % 2 === 0 ? 0.1 : -0.1,
             z: -0.4,
@@ -400,8 +235,7 @@ export default function CinemaAnimation({ timelineRef }) {
           "<",
         )
 
-        .to(
-          mainRobot.current.rotation,
+        .to( mainRobot.current.rotation,
           {
             y: index % 2 === 0 ? -0.4 : 0.4,
             duration: 0.8,
@@ -411,47 +245,21 @@ export default function CinemaAnimation({ timelineRef }) {
         );
     });
       
-      //project section animation
+    //project section animation
     timelineRef.current
-      .to(
-        projectsBodyRef.current,
-        { yPercent: 0, duration: 2, ease: "none" },
-        "<=+1.5",
-      )
-      .fromTo(
-        bgImage.current,
-        { yPercent: 0 },
-        { yPercent: -20, duration: 1 },
-        "<=+2",
-      )
-      .fromTo(
-        mainImage.current,
-        { top: "0%", height: "100%" },
-        { top: "20%", height: "70%", duration: 0.2 },
-        "<=+1",
-      );
+      .to( projectsBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<=+1.5")
+      .fromTo( bgImage.current, { yPercent: 0 }, { yPercent: -20, duration: 1 }, "<=+2")
+      .fromTo( mainImage.current, { top: "0%", height: "100%" }, { top: "20%", height: "70%", duration: 0.2 }, "<=+1");
 
     headingLetters.forEach((letter) => {
-      timelineRef.current.fromTo(
-        letter,
-        { yPercent: 100, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 0.3 },
-      );
+      timelineRef.current.fromTo( letter, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.3 });
     });
 
     timelineRef.current
-      .to(
-        heroBodyRef.current,
-        { yPercent: -500, duration: 1, ease: "none" },
-        "<",
-      );
+      .to( heroBodyRef.current, { yPercent: -500, duration: 1, ease: "none" }, "<");
 
     cards.forEach((card, index) => {
-      timelineRef.current.fromTo(
-        card,
-        { yPercent: 140, scale: 1.25 },
-        { yPercent: -50, scale: 1, duration: 1 },
-      );
+      timelineRef.current.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1 });
 
       // last card fullscreen
       if (index === cards.length - 1) {
@@ -465,22 +273,15 @@ export default function CinemaAnimation({ timelineRef }) {
             duration: 1,
           })
 
-          .to(leftContainerRef.current, { width: 0, duration: 0.5 })
-          .to(document.body, {
-            backgroundColor: "#6D28D9",
-            duration: 0.1,
-            ease: "power3.out",
-          })
-          .to(
-            rightContainerRef.current,
+          .to( leftContainerRef.current, { width: 0, duration: 0.5 })
+          .to( document.body, { backgroundColor: "#6D28D9", duration: 0.1, ease: "power3.out" })
+          .to( rightContainerRef.current,
             {
               width: "100%",
               paddingLeft: isDesktop ? 90 : 20,
               paddingRight: isDesktop ? 90 : 20,
               duration: 0.5,
-            },
-            "<",
-          );
+            }, "<");
       }
     });
   }, { scope: mainCinemaRef, dependencies: [robotReady] });

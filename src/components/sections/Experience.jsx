@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import 'react-vertical-timeline-component/style.min.css';
 import "@/styles/experience.css"
 import { experiences } from '@/store/db/experience';
