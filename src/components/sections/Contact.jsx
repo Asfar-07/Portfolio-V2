@@ -13,11 +13,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact({contactBodyRef, timelineRef}) {
   const mainContactRef = useRef(null);
+  const contactRef = useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
   useGSAP(() => {
 
-    gsap.to("#contact", {
+    gsap.to(contactRef.current, {
       yPercent: -100,
       scrollTrigger: {
         trigger: mainContactRef.current,
@@ -33,6 +34,7 @@ export default function Contact({contactBodyRef, timelineRef}) {
     <div ref={mainContactRef} className="relative h-auto min-h-screen overflow-hidden">
       <Footer timelineRef={timelineRef} />
       <section
+        ref={contactRef}
         id="contact"
         className="absolute w-full bg-(--s-bg-deep)  text-(--p-font) z-3 p-[5rem_2rem] max-md:p-[5rem_1.5rem]"
       >

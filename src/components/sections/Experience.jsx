@@ -9,12 +9,8 @@ import Image from 'next/image';
 
 
 
-export default function Experience() {
-  const experiencesBody = useRef(null);
-  const experiencesMain = useRef(null);
-  const robotBody = useRef(null);
-  const leftHeading = useRef(null);
-  const rightHeading = useRef(null);
+export default function Experience({experiencesBody, leftHeading, rightHeading, robotBody, experiencesMain, groupRobot, setRobotRef}) {
+
 
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -22,19 +18,20 @@ export default function Experience() {
     
     {/* Display the Certificate */}
     return (
-      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50">
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-100 max-sm:pt-14">
         <div
           className="absolute inset-0 bg-opacity-50"
           onClick={() => setSelectedIndex(null)}
         ></div>
-        <div className=" relative z-30 w-[60%] h-[65%] max-w-180 max-h-100 flex items-center px-6 py-8 bg-[#5917ff] rounded-2xl">
+        <div className= {`relative z-100 w-[60%] h-[65%]  flex items-center px-6 py-8 bg-[#5917ff] rounded-2xl
+          min-w-150 min-h-90 max-w-180 max-h-100 max-sm:w-[100%] max-sm:min-w-60 max-sm:h-full max-sm:max-h-[90%] max-sm:flex-col max-sm:p-4`}>
           <aside
             className="absolute -top-2 -right-2 p-1 bg-amber-50 rounded-full cursor-pointer"
             onClick={() => setSelectedIndex(null)}
           >
             <CircleX className=" size-5 text-[#3e00c5da]" />
           </aside>
-          <section className="flex-4 relative h-[90%] border border-white rounded-sm overflow-hidden">
+          <section className="flex-4 relative h-[90%] border border-white rounded-sm overflow-hidden max-sm:w-full">
             {exp.certificate ? (
               <Image
                 className="size-full"
@@ -50,7 +47,7 @@ export default function Experience() {
               </div>
             )}
           </section>
-          <section className="relative flex-3 h-[90%] pl-3 ">
+          <section className="relative flex-3 h-[90%] pl-3 max-sm:w-full max-sm:pl-0 max-sm:pt-3">
             <h4 className=" font-bold text-lg uppercase">{exp.title}</h4>
             <div className="italic flex items-center text-[10px]">
               <div className="p-.5 bg-[#3e00c57a] mr-2 rounded-full">
@@ -96,7 +93,7 @@ export default function Experience() {
   }
 
  return (
-   <div ref={experiencesBody} className=" relative max-md:hidden">
+   <div ref={experiencesBody} className="absolute min-h-[650px] inset-0">
      <div
        className={`bg-(--p-bg-deep) text-(--p-font) h-screen min-h-[600px] relative p-[0rem_4rem] w-full 
      max-md:p-[0rem_1rem] max-lg:p-[0rem_2rem] overflow-hidden`}
@@ -243,11 +240,8 @@ export default function Experience() {
            </section>
            <figure className="w-full h-full">
              <RobotExperience
-               experiencesBody={experiencesBody}
-               leftHeading={leftHeading}
-               rightHeading={rightHeading}
-               robotBody={robotBody}
-               experiencesMain={experiencesMain}
+               groupRobot={groupRobot}
+               setRobotRef={setRobotRef}
              />
            </figure>
          </div>

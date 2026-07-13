@@ -25,7 +25,6 @@ export default function PortfolioClient() {
       <CinemaAnimation timelineRef={timelineRef} />
       <Achievement />
       <Contact timelineRef={timelineRef} />
-      <Experience />
     </>
   )
 }

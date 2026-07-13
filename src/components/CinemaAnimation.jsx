@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -8,6 +8,7 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import SplitType from "split-type";
 import Projects from "./sections/Projects";
+import Experience from "./sections/Experience";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +65,13 @@ export default function CinemaAnimation({ timelineRef }) {
   // Refs for footer Section
   const footerBodyRef = useRef(null);
 
+  const setRobotRef = useCallback((node) => {
+    mainRobot.current = node;
+    if (node) setRobotReady(true);
+  }, []);
+
   useGSAP(() => {
+    if (!robotReady || !mainRobot.current) return;
     const isDesktop = window.innerWidth >= 1000;
 
     const split = new SplitType(aboutMeRef.current, { types: "words" });
@@ -74,12 +81,14 @@ export default function CinemaAnimation({ timelineRef }) {
     const cards = gsap.utils.toArray(".project-card");
     const headingLetters = gsap.utils.toArray(".work-letter");
 
+    const robot = robotBody.current;
+    const rect = robot.getBoundingClientRect();
+    const moveX = experiencesMain.current.innerWidth / 2 - rect.width / 2;
+
     gsap.set(heroBodyRef.current, { yPercent: 0 });
     gsap.set(aboutBodyRef.current, { yPercent: 100 });
+    gsap.set(experiencesBody.current, { yPercent: 100});
     gsap.set(projectsBodyRef.current, { yPercent: 100 });
-    gsap.set(achievementBodyRef.current, { yPercent: 100 });
-    gsap.set(contactBodyRef.current, { yPercent: 100 });
-    gsap.set(footerBodyRef.current, { yPercent: 100 });
 
     gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
     gsap.set(scratWrapper.current, { scale: 1 });
@@ -103,6 +112,26 @@ export default function CinemaAnimation({ timelineRef }) {
 
     gsap.set(aboutWords, { x: 100, opacity: 0 });
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
+
+    //experience section
+    gsap.set(leftHeading.current, {
+      xPercent: 100,
+    });
+
+    gsap.set(rightHeading.current, {
+      xPercent: -100,
+    });
+    gsap.set(".exp-heading-tittle", {
+      opacity: 0,
+    });
+    gsap.set(".floating-box", {
+      opacity: 0,
+    });
+    gsap.set(".experience-card", {
+      opacity: 0,
+      yPercent: 100,
+    });
+    const expCards = gsap.utils.toArray(".experience-card");
 
     timelineRef.current = gsap.timeline({
       scrollTrigger: {
@@ -193,12 +222,201 @@ export default function CinemaAnimation({ timelineRef }) {
         { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
         "<=+5",
       )
+      .to(
+        aboutBodyRef.current,
+        { yPercent: -100, duration: 1, ease: "none" },
+        "<=+1",
+      )
 
+      //experience section animation
+      .to(
+        experiencesBody.current,
+        { yPercent: 0, duration: 1, ease: "none" },
+        "<",
+      )
+      .to(
+        mainRobot.current.position,
+        {
+          x: 0.5,
+          y: 0,
+          z: -5,
+          duration: 0.8,
+          ease: "none",
+        },
+        "<+=1",
+      )
+      .to(
+        mainRobot.current.rotation,
+        {
+          y: -0.6,
+          duration: 0.8,
+          ease: "none",
+        },
+        "<",
+      )
+      .to(
+        mainRobot.current.position,
+        {
+          x: 0,
+          y: 0,
+          z: 0,
+          duration: 0.8,
+          ease: "none",
+        },
+        "<+=1",
+      )
+      .to(
+        mainRobot.current.rotation,
+        {
+          x: 0,
+          y: 0,
+          duration: 0.8,
+          ease: "none",
+        },
+        "<",
+      )
+
+      .to(
+        leftHeading.current,
+        {
+          xPercent: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "<+=1",
+      )
+      .to(
+        rightHeading.current,
+        {
+          xPercent: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "<",
+      )
+
+      .to(
+        ".exp-heading-tittle",
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "none",
+        },
+        "<+=.2",
+      )
+
+      .to(
+        ".floating-box",
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "none",
+        },
+        "<",
+      )
+
+      .to(
+        ".exp-heading-tittle",
+        {
+          opacity: 0,
+          duration: 0.4,
+          ease: "none",
+        },
+        "<+=1",
+      )
+
+      .to(
+        leftHeading.current,
+        {
+          yPercent: 150,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "<+=1",
+      )
+
+      .to(
+        rightHeading.current,
+        {
+          yPercent: -150,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "<",
+      )
+
+      .to(
+        ".floating-box",
+        {
+          opacity: 0,
+          duration: 0.4,
+          ease: "none",
+        },
+        "<",
+      );
+
+    //main animation
+
+    expCards.forEach((card, index) => {
+      timelineRef.current.to(robot, {
+        xPercent: index % 2 === 0 ? 50 : -50,
+        duration: 1.5,
+        ease: "none",
+      });
+
+      if (index > 0) {
+        timelineRef.current.to(
+          expCards[index - 1],
+          {
+            opacity: 1,
+            yPercent: -200,
+            duration: 1,
+            ease: "none",
+          },
+          "<",
+        );
+      }
+
+      timelineRef.current
+        .to(
+          card,
+          {
+            opacity: 1,
+            yPercent: -50,
+            duration: 1,
+            ease: "none",
+          },
+          "<",
+        )
+
+        .to(
+          mainRobot.current.position,
+          {
+            x: index % 2 === 0 ? 0.1 : -0.1,
+            z: -0.4,
+            duration: 0.8,
+            ease: "none",
+          },
+          "<",
+        )
+
+        .to(
+          mainRobot.current.rotation,
+          {
+            y: index % 2 === 0 ? -0.4 : 0.4,
+            duration: 0.8,
+            ease: "none",
+          },
+          "<",
+        );
+    });
+      
       //project section animation
+    timelineRef.current
       .to(
         projectsBodyRef.current,
         { yPercent: 0, duration: 2, ease: "none" },
-        "<=+0.2",
+        "<=+1.5",
       )
       .fromTo(
         bgImage.current,
@@ -222,11 +440,6 @@ export default function CinemaAnimation({ timelineRef }) {
     });
 
     timelineRef.current
-      .to(
-        aboutBodyRef.current,
-        { yPercent: -500, duration: 1, ease: "none" },
-        "<",
-      )
       .to(
         heroBodyRef.current,
         { yPercent: -500, duration: 1, ease: "none" },
@@ -270,7 +483,7 @@ export default function CinemaAnimation({ timelineRef }) {
           );
       }
     });
-  }, []);
+  }, { scope: mainCinemaRef, dependencies: [robotReady] });
   return (
     <main className=" w-full relative">
       <Header timelineRef={timelineRef} />
@@ -299,6 +512,15 @@ export default function CinemaAnimation({ timelineRef }) {
           mainAboutRef={mainAboutRef}
           aboutMeRef={aboutMeRef}
           collectionRef={collectionRef}
+        />
+        <Experience 
+          experiencesBody={experiencesBody}
+          leftHeading={leftHeading}
+          rightHeading={rightHeading}
+          robotBody={robotBody}
+          experiencesMain={experiencesMain}
+          groupRobot={groupRobot}
+          setRobotRef={setRobotRef}
         />
         <Projects
           mainProjectsRef={mainProjectsRef}
