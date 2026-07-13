@@ -62,6 +62,7 @@ export default function ProjectBackground({bgImage, mainImage}) {
           <Image
             src="/images/project-elements/background.webp"
             alt="project background"
+            sizes="(max-width: 768px) 100vw, 1000px"
             fill
             priority
             className=" object-fill"
@@ -137,8 +138,8 @@ export default function ProjectBackground({bgImage, mainImage}) {
           <Image
             src="/images/project-elements/backgroundBottom.webp"
             alt="project background"
+            sizes="(max-width: 768px) 100vw, 1000px"
             fill
-            priority
             className="object-fill max-sm:object-cover"
           />
         </div>

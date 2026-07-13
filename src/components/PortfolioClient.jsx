@@ -13,6 +13,7 @@ const Contact = dynamic(() => import('./sections/Contact'), {
   loading: () => <div className="w-full min-h-screen" />,
 })
 
+
 export default function PortfolioClient() {
   const timelineRef = useRef(null)
   return (
