@@ -17,7 +17,6 @@ export default function Contact({ timelineRef}) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   useGSAP(() => {
-    if (!mainContactRef.current || !contactRef.current) return;
 
     gsap.to(contactRef.current, {
       yPercent: -100,
@@ -27,8 +26,10 @@ export default function Contact({ timelineRef}) {
         end: "+=1000",
         pin: true,
         scrub: true,
+        refreshPriority: -10,
       },
     });
+    ScrollTrigger.refresh();
   }, []);
 
   return (

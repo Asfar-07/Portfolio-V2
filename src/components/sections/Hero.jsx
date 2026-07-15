@@ -8,6 +8,7 @@ import BackGround from "../layouts/BackGround";
 import ScrollMove from '@/utils/ScrollMove';
 import "../../styles/hero.css";
 import HeroRightSide from "./subSections/HeroRightSide";
+import { ScrollTrigger } from "gsap/all";
 
 
 const roles = [
@@ -219,34 +220,51 @@ export default function Hero({
   const [animState, setAnimState] = useState("active");
 
   //tittle action
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimState("exit");
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % roles.length);
-        setAnimState("active");
-      }, 500);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setAnimState("exit");
+  //     setTimeout(() => {
+  //       setCurrent((prev) => (prev + 1) % roles.length);
+  //       setAnimState("active");
+  //     }, 500);
+  //   }, 2500);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const handleLoad = (e) => {
-    setLoaded((prev) => prev + 1);
-    setImageCollected((prev) => [...prev, e]);
-  };
+const handleLoad = (e) => {
+  setLoaded((prev) => prev + 1);
+  setImageCollected((prev) => [...prev, e]);
+};
 
-  useEffect(() => {
-    const timerLimit = setTimeout(() => {
-      setReady(true); // force start after 4s
-    }, 4000);
-    if (loaded >= 3) {
-      imageCollected.forEach((src, index) => {
-        src.currentTarget.classList.add("hero-loaded"); // Add class to trigger animation
-      });
-      setReady(true);
-      clearTimeout(timerLimit); // clear the timer if loading completes before the limit
-    }
-  }, [loaded]);
+useEffect(() => {
+  const timerLimit = setTimeout(() => {
+    startApp();
+  }, 5000);
+
+  if (loaded >= 3) {
+    clearTimeout(timerLimit);
+
+    imageCollected.forEach((img) => {
+      img.currentTarget.classList.add("hero-loaded");
+    });
+
+    // Wait 300ms before enabling animations
+    setTimeout(() => {
+      startApp();
+    }, 300);
+  }
+
+  return () => clearTimeout(timerLimit);
+}, [loaded]);
+
+function startApp() {
+  setReady(true);
+  document.body.style.overflowY = "scroll";
+
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
+  });
+}
 
   return (
     <div ref={heroBodyRef} className="absolute  min-h-[650px] inset-0">
