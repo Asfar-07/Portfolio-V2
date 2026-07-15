@@ -128,6 +128,7 @@ export default function CinemaAnimation({ timelineRef }) {
         end: isDesktop ? "+=8000" : "+=6000",
         scrub: isDesktop ? 1 : 3,
         pin: true,
+        refreshPriority: 10
       },
     });
 
@@ -259,7 +260,7 @@ export default function CinemaAnimation({ timelineRef }) {
       .to( heroBodyRef.current, { yPercent: -500, duration: 1, ease: "none" }, "<");
 
     cards.forEach((card, index) => {
-      timelineRef.current.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1 });
+      timelineRef.current.fromTo( card, { yPercent: 140, scale: 1.25 }, { yPercent: -50, scale: 1, duration: 1.5, ease: "power2.out" });
 
       // last card fullscreen
       if (index === cards.length - 1) {
@@ -284,6 +285,7 @@ export default function CinemaAnimation({ timelineRef }) {
             }, "<");
       }
     });
+    ScrollTrigger.refresh();
   }, { scope: mainCinemaRef, dependencies: [robotReady] });
   return (
     <main className=" w-full relative">
