@@ -68,11 +68,11 @@ export default function Welcome({heroRef, timelineRef}) {
   return (
       <div
         id="welcome"
-        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0  
+        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-4 
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
         <main
-          className={`flex w-100% min-h-[650px]  h-screen  max-w-[1250px] m-auto   relative z-3 text-(--p-font) 
+          className={`flex w-100% min-h-[650px]  h-screen  max-w-[1250px] m-auto text-(--p-font) 
         max-md:w-full`}
         >
           <section className=" relative size-full flex gap-4 flex-col justify-center items-center">
@@ -106,13 +106,13 @@ export default function Welcome({heroRef, timelineRef}) {
                 transforming ideas into digital experiences that are modern,
                 responsive & user focused.
               </p>
-              <button onClick={() => ScrollMove("projects", timelineRef)}
-              className="welcome-bottom-button flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
+              {/* <button onClick={() => ScrollMove("projects", timelineRef)}
+              className="welcome-bottom-button relative z-900 flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
                 <span>explore my work</span>
                 <span>
                   <ArrowRight />
                 </span>
-              </button>
+              </button> */}
             </div>
           </section>
         </main>

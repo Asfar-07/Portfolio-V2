@@ -90,7 +90,7 @@ export default function CinemaAnimation({ timelineRef }) {
     gsap.set(experiencesBody.current, { yPercent: 100});
     gsap.set(projectsBodyRef.current, { yPercent: 100 });
 
-    gsap.set(heroBgRef.current, { backgroundColor: "#000631" });
+    gsap.set(heroBgRef.current, { backgroundColor: "#030516" });
     gsap.set(scratWrapper.current, { scale: 1 });
     gsap.set(groundRef.current, { yPercent: 100 });
     gsap.set(moonRef.current, { y: 600, scale: 0.6 });
@@ -108,7 +108,7 @@ export default function CinemaAnimation({ timelineRef }) {
     });
     gsap.set(heroHeading.current, { y: 200, opacity: 0 });
     gsap.set(heroParagraph.current, { opacity: 0 });
-    gsap.set(heroButton.current, { opacity: 0, backdropFilter: "blur(0px)" });
+    gsap.set(heroButton.current, { opacity: 0, y: 20, backdropFilter: "blur(0px)" });
 
     gsap.set(aboutWords, { x: 100, opacity: 0 });
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
@@ -134,7 +134,7 @@ export default function CinemaAnimation({ timelineRef }) {
 
     //hero section animation
     timelineRef.current
-      .to( heroBgRef.current, { backgroundColor: "#000027", duration: 1, ease: "none" }, 0)
+      .to( heroBgRef.current, { backgroundColor: "#00031f", duration: 1, ease: "none" }, 0)
       .to( moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
       .to( scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
       .to( groundRef.current, { yPercent: 0, duration: 1, ease: "none" }, "<+=0.3")
@@ -155,13 +155,22 @@ export default function CinemaAnimation({ timelineRef }) {
       .to( heroButton.current,
         {
           opacity: 1,
+          y: 0,
           backdropFilter: "blur(10px)",
-          duration: 0.5,
+          duration: 1,
           ease: "none",
         },
-        "<+=1",
+        "<+=.5",
       )
-      .to( heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<+=1")
+      // .to( heroButton.current,
+      //   {
+      //     y: 0,
+      //     duration: 1,
+      //     ease: "none",
+      //   },
+      //   "<+=1",
+      // )
+      .to( heroBodyRef.current, { yPercent: -100, duration: 2, ease: "none" }, "<+=1.5")
 
       //about section animation
       .to(aboutBodyRef.current, { yPercent: 0, duration: 2, ease: "none" }, "<")
