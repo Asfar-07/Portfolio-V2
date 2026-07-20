@@ -317,7 +317,7 @@ function startApp() {
               </div>
               <h1
                 ref={heroHeading}
-                className={` font-black m-0 w-[70%] leading-none   max-w-2xl   max-sm:min-w-[360px] 
+                className={` font-black m-0 w-[70%] leading-none   max-w-3xl   max-sm:min-w-[360px] 
               [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]`}
               >
                 Crafting <span className="grad">Engaging</span> User Experiences

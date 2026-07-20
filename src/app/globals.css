@@ -19,7 +19,7 @@ html {
   --neon-blue: #2979ff;
   --p-font: white;
   --s-font: #e8f4f8;
-  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 4.4rem); 
+  --header1-text:clamp(2.7rem,calc(6vw + 1rem), 5rem);
   --para-text:clamp(.8rem, calc(1vw + .2rem), 1.1rem); 
 }
 body {
@@ -35,7 +35,7 @@ body {
 }
 h1{
   font-size:var(--header1-text);
-   font-weight: 700; 
+   font-weight: 900;
 }
 /* h2{
   font-weight: 700;

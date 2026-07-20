@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import dynamic from 'next/dynamic'
 import Image from "next/image";
 import "../../styles/background.css"
+import MainSpaceExperience from "../spaceModel/MainSpaceExperience";
 
 const AcornExperience = dynamic(
   () => import('../spaceModel/AcornExperience'),
@@ -150,8 +151,14 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
   return (
     <section
       ref={mainContainer}
-      className="hero-bg fixed inset-0 -z-5 overflow-hidden pointer-events-none"
+      className="hero-bg fixed inset-0 z-5 overflow-hidden pointer-events-none"
     >
+      {/* main space canvas */}
+      <main className="z-5 absolute inset-0 w-full h-full">
+        <figure className="size-full ">
+          <MainSpaceExperience />
+        </figure>
+      </main>
       <div
         ref={IceAgeScrat}
         className="bg-scrat-animation  max-w-70 max-h-50 z-2 overflow-hidden"
@@ -167,7 +174,7 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
               }}
             />
           </div>
-          <div className="w-6 h-6 -translate-y-8">
+          <div className=" w-6 h-6 -translate-y-8">
             <figure className="size-full">
               <AcornExperience />
             </figure>
@@ -175,7 +182,7 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
         </div>
       </div>
 
-      {stars.map((star) => (
+      {/* {stars.map((star) => (
         <span
           key={star.id}
           className="absolute z-0 rounded-full star"
@@ -189,7 +196,7 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
             animationDuration: `${star.duration}s`,
           }}
         />
-      ))}
+      ))} */}
 
       <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
         <Image
