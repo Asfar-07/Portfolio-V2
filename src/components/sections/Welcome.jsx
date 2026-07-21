@@ -1,14 +1,29 @@
-import React, {useRef,useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
+import dynamic from 'next/dynamic'
 import { ArrowRight } from 'lucide-react';
 import '../../styles/welcome.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import ScrollMove from '@/utils/ScrollMove';
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Welcome({heroRef, timelineRef}) {
+const AcornExperience = dynamic(
+  () => import('../spaceModel/AcornExperience'),
+  { ssr: false, loading: () => <div className="size-full" /> }
+)
+
+const TOTAL_FRAMES = 40;
+const FPS = 5;
+const FRAME_DURATION = 1000 / FPS;
+ 
+const SRCS = Array.from(
+  { length: TOTAL_FRAMES },
+  (_, i) => `images/scratframe/frame_${i + 1}.webp`
+);
+
+
+export default function Welcome({heroRef, timelineRef, scratWrapper}) {
   const topBadgeRef = useRef();
   const mainTitleRef = useRef();
   const rolesRef = useRef();
@@ -65,14 +80,149 @@ export default function Welcome({heroRef, timelineRef}) {
         0.1)
   }, []);
 
+  const canvasRef = useRef(null);
+  const IceAgeScrat = useRef(null);
+
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let frameIndex = 0;
+    let timer = null;
+    let destroyed = false;
+
+    const bitmaps = [];
+
+    const loadAll = async () => {
+      await Promise.all(
+        SRCS.map((src, i) =>
+          fetch(src)
+            .then((r) => r.blob())
+            .then((blob) => createImageBitmap(blob))
+            .then((bmp) => {
+              bitmaps[i] = bmp;
+            }),
+        ),
+      );
+
+      if (destroyed) return;
+
+      ctx.drawImage(bitmaps[0], 0, 0, 120, 120);
+
+      timer = setInterval(() => {
+        frameIndex = (frameIndex + 1) % TOTAL_FRAMES;
+        ctx.clearRect(0, 0, 120, 120);
+        ctx.drawImage(bitmaps[frameIndex], 0, 0, 120, 120);
+      }, FRAME_DURATION);
+    };
+
+    loadAll();
+
+    return () => {
+      destroyed = true;
+      if (timer) clearInterval(timer);
+      bitmaps.forEach((bmp) => bmp?.close());
+    };
+  }, []);
+
+  useEffect(() => {
+    let fromLeft = true;
+
+    const mainContainer = IceAgeScrat.current;
+
+    if (!mainContainer) return;
+
+    const boxWidth = mainContainer.offsetWidth;
+
+    let timeoutId;
+    let animationResetId;
+
+    function animeScrat() {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const duration = windowWidth / 35;
+      const startY = Math.random() * (windowHeight / 1.5 - boxWidth);
+      const endY = Math.random() * 100;
+
+      mainContainer.getAnimations().forEach((a) => a.cancel());
+
+      if (fromLeft) {
+        mainContainer.style.left = `-${boxWidth}px`;
+        mainContainer.style.right = "auto";
+        mainContainer.style.top = `${startY}px`;
+        mainContainer.style.setProperty(
+          "--scrat-end-x",
+          `${windowWidth + boxWidth}px`,
+        );
+        mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
+        fromLeft = false;
+      } else {
+        mainContainer.style.right = "auto";
+        mainContainer.style.left = `${windowWidth + boxWidth}px`;
+        mainContainer.style.top = `${startY}px`;
+        mainContainer.style.setProperty(
+          "--scrat-end-x",
+          `-${windowWidth + boxWidth * 2}px`,
+        );
+        mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
+        fromLeft = true;
+      }
+
+      mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
+      mainContainer.style.setProperty(
+        "--scrat-end-scale",
+        (Math.random()).toFixed(2),
+      );
+      mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
+
+      animationResetId = setTimeout(() => {
+        mainContainer.style.animation = "none";
+        const randomDelay = 1000 + Math.random() * 3000;
+        timeoutId = setTimeout(animeScrat, randomDelay);
+      }, duration * 1000);
+    }
+
+    animeScrat();
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(animationResetId);
+    };
+  }, []);
+
   return (
       <div
         id="welcome"
         className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-4 
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
+         <div
+                ref={IceAgeScrat}
+                className="bg-scrat-animation  max-w-70 max-h-50 z-1 overflow-hidden"
+              >
+                <div ref={scratWrapper} className="flex items-end gap-3">
+                  <div className="w-25 h-28">
+                    <canvas
+                      ref={canvasRef}
+                      width={120}
+                      height={120}
+                      style={{
+                        display: "block",
+                      }}
+                    />
+                  </div>
+                  <div className=" w-6 h-6 -translate-y-8">
+                    <figure className="size-full">
+                      <AcornExperience />
+                    </figure>
+                  </div>
+                </div>
+              </div>
         <main
-          className={`flex w-100% min-h-[650px]  h-screen  max-w-[1250px] m-auto text-(--p-font) 
+          className={` relative z-4 flex w-100% min-h-[650px]  h-screen  max-w-[1250px] m-auto text-(--p-font) 
         max-md:w-full`}
         >
           <section className=" relative size-full flex gap-4 flex-col justify-center items-center">

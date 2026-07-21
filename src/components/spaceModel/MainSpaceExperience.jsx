@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import RotatingStars from './RotatingStars';
 import FootballExperience from './FootballExperience';
 
-export default function MainSpaceExperience() {
+export default function MainSpaceExperience({footballRef}) {
   return (
    <Canvas camera={{ position: [0, 0, 10], fov: 55 }}>
         {/* <color attach="background" args={['#05060f']} /> */}
@@ -15,7 +15,7 @@ export default function MainSpaceExperience() {
         <directionalLight position={[-6, -4, -5]} intensity={0.4} color="#4466ff" />
         <RotatingStars />
         <Suspense fallback={null}>
-          <FootballExperience />
+          <FootballExperience footballRef={footballRef}/>
         </Suspense>
     </Canvas>
   )

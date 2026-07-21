@@ -1,10 +1,10 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default function Football(props) {
+export default function Football({props, footballRef}) {
   const { nodes, materials } = useGLTF('/models/football.glb')
   return (
-    <group {...props} dispose={null} position={[0, 0, 0]} scale={0.02}>
+    <group {...props} ref={footballRef} dispose={null} position={[0, 0, 0]} scale={0.02}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group position={[-33.119, -33.119, -0.701]}>
           <lineSegments geometry={nodes.Material2.geometry} material={materials.edge_color000255} />
