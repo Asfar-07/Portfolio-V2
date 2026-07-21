@@ -14,8 +14,8 @@ const BASE_ROTATION_SPEED = 0.006; // slow idle spin (radians/frame)
 const KICK_POWER = 0.34;
 const KICK_SPIN = 0.16;
 
-export default function FootballExperience() {
-    const meshRef = useRef();
+export default function FootballExperience({footballRef}) {
+  const meshRef = useRef();
   const { camera, size } = useThree();
 
   // Actual bounding radius of the loaded model, measured on first frame —
@@ -165,7 +165,7 @@ export default function FootballExperience() {
  
   return (
     <group ref={meshRef} onClick={handleClick}>
-      <Football />
+      <Football footballRef={footballRef}/>
     </group>
   )
 }

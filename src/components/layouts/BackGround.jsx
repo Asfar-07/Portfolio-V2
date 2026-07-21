@@ -1,153 +1,12 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import dynamic from 'next/dynamic'
+import React, { useRef } from "react";
 import Image from "next/image";
 import "../../styles/background.css"
 import MainSpaceExperience from "../spaceModel/MainSpaceExperience";
 
-const AcornExperience = dynamic(
-  () => import('../spaceModel/AcornExperience'),
-  { ssr: false, loading: () => <div className="size-full" /> }
-)
 
-const TOTAL_FRAMES = 40;
-const FPS = 5;
-const FRAME_DURATION = 1000 / FPS;
- 
-const SRCS = Array.from(
-  { length: TOTAL_FRAMES },
-  (_, i) => `images/scratframe/frame_${i + 1}.webp`
-);
-
-export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
+export default function BackGround({ moonRef, handleLoad, footballRef}) {
   const mainContainer = useRef(null);
-  const canvasRef = useRef(null);
-  const IceAgeScrat = useRef(null);
-
-  const [stars, setStars] = useState([]);
-
-  useEffect(() => {
-    const generatedStars = Array.from({ length: 100 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 2 + 1,
-      top: Math.random() * 100,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: Math.random() * 3 + 2,
-      opacity: Math.random() * 0.8 + 0.2,
-    }));
-
-    setStars(generatedStars);
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let frameIndex = 0;
-    let timer = null;
-    let destroyed = false;
-
-    const bitmaps = [];
-
-    const loadAll = async () => {
-      await Promise.all(
-        SRCS.map((src, i) =>
-          fetch(src)
-            .then((r) => r.blob())
-            .then((blob) => createImageBitmap(blob))
-            .then((bmp) => {
-              bitmaps[i] = bmp;
-            }),
-        ),
-      );
-
-      if (destroyed) return;
-
-      ctx.drawImage(bitmaps[0], 0, 0, 120, 120);
-
-      timer = setInterval(() => {
-        frameIndex = (frameIndex + 1) % TOTAL_FRAMES;
-        ctx.clearRect(0, 0, 120, 120);
-        ctx.drawImage(bitmaps[frameIndex], 0, 0, 120, 120);
-      }, FRAME_DURATION);
-    };
-
-    loadAll();
-
-    return () => {
-      destroyed = true;
-      if (timer) clearInterval(timer);
-      bitmaps.forEach((bmp) => bmp?.close());
-    };
-  }, []);
-
-  useEffect(() => {
-    let fromLeft = true;
-
-    const mainContainer = IceAgeScrat.current;
-
-    if (!mainContainer) return;
-
-    const boxWidth = mainContainer.offsetWidth;
-
-    let timeoutId;
-    let animationResetId;
-
-    function animeScrat() {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      const duration = windowWidth / 35;
-      const startY = Math.random() * (windowHeight / 1.5 - boxWidth);
-      const endY = Math.random() * 100;
-
-      mainContainer.getAnimations().forEach((a) => a.cancel());
-
-      if (fromLeft) {
-        mainContainer.style.left = `-${boxWidth}px`;
-        mainContainer.style.right = "auto";
-        mainContainer.style.top = `${startY}px`;
-        mainContainer.style.setProperty(
-          "--scrat-end-x",
-          `${windowWidth + boxWidth}px`,
-        );
-        mainContainer.style.setProperty("--scrat-end-rotate", "0deg");
-        fromLeft = false;
-      } else {
-        mainContainer.style.right = "auto";
-        mainContainer.style.left = `${windowWidth + boxWidth}px`;
-        mainContainer.style.top = `${startY}px`;
-        mainContainer.style.setProperty(
-          "--scrat-end-x",
-          `-${windowWidth + boxWidth * 2}px`,
-        );
-        mainContainer.style.setProperty("--scrat-end-rotate", "180deg");
-        fromLeft = true;
-      }
-
-      mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
-      mainContainer.style.setProperty(
-        "--scrat-end-scale",
-        (Math.random()).toFixed(2),
-      );
-      mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
-
-      animationResetId = setTimeout(() => {
-        mainContainer.style.animation = "none";
-        const randomDelay = 1000 + Math.random() * 3000;
-        timeoutId = setTimeout(animeScrat, randomDelay);
-      }, duration * 1000);
-    }
-
-    animeScrat();
-
-    return () => {
-      clearTimeout(timeoutId);
-      clearTimeout(animationResetId);
-    };
-  }, []);
   return (
     <section
       ref={mainContainer}
@@ -156,31 +15,10 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
       {/* main space canvas */}
       <main className="z-5 absolute inset-0 w-full h-full">
         <figure className="size-full ">
-          <MainSpaceExperience />
+          <MainSpaceExperience footballRef={footballRef}/>
         </figure>
       </main>
-      <div
-        ref={IceAgeScrat}
-        className="bg-scrat-animation  max-w-70 max-h-50 z-2 overflow-hidden"
-      >
-        <div ref={scratWrapper} className="flex items-end gap-3">
-          <div className="w-25 h-28">
-            <canvas
-              ref={canvasRef}
-              width={120}
-              height={120}
-              style={{
-                display: "block",
-              }}
-            />
-          </div>
-          <div className=" w-6 h-6 -translate-y-8">
-            <figure className="size-full">
-              <AcornExperience />
-            </figure>
-          </div>
-        </div>
-      </div>
+     
 
       {/* {stars.map((star) => (
         <span
@@ -198,7 +36,7 @@ export default function BackGround({ moonRef, handleLoad, scratWrapper}) {
         />
       ))} */}
 
-      <div ref={moonRef} className="moon-img absolute right-0 bottom-0">
+      <div ref={moonRef} className="moon-img absolute z-10 right-0 bottom-0">
         <Image
           src="/images/hero/planet.webp"
           alt="Moon Image"

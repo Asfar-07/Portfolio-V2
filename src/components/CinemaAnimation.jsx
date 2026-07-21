@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function CinemaAnimation({ timelineRef }) {
   // Refs for Background Section
   const scratWrapper = useRef(null);
+  const footballRef = useRef(null);
 
   // Refs for Hero Section
   const mainCinemaRef = useRef(null);
@@ -107,8 +108,8 @@ export default function CinemaAnimation({ timelineRef }) {
       rotate: "90deg",
     });
     gsap.set(heroHeading.current, { y: 200, opacity: 0 });
-    gsap.set(heroParagraph.current, { opacity: 0 });
-    gsap.set(heroButton.current, { opacity: 0, y: 20, backdropFilter: "blur(0px)" });
+    gsap.set(heroParagraph.current, { opacity: 0, zIndex: -99 });
+    gsap.set(heroButton.current, { opacity: 0, y: 20, zIndex: -99, backdropFilter: "blur(0px)" });
 
     gsap.set(aboutWords, { x: 100, opacity: 0 });
     gsap.set(collectionRef.current, { opacity: 0, y: 50 });
@@ -134,9 +135,10 @@ export default function CinemaAnimation({ timelineRef }) {
 
     //hero section animation
     timelineRef.current
-      .to( heroBgRef.current, { backgroundColor: "#00031f", duration: 1, ease: "none" }, 0)
+      .to( heroBgRef.current, { backgroundColor: "#00031f", duration: 1, ease: "none" }, "0.5")
       .to( moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
       .to( scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
+      .to( footballRef.current.scale, { x: 0.0001, y: 0.0001, z: 0.0001, duration: 1, ease: "none", }, "<")
       .to( groundRef.current, { yPercent: 0, duration: 1, ease: "none" }, "<+=0.3")
       .to( rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
       .to( rightRockHubRef.current,
@@ -151,10 +153,11 @@ export default function CinemaAnimation({ timelineRef }) {
       )
       .to( heroBadge.current, { opacity: 1, rotate: "0deg", duration: 1.5, ease: "power1.inOut" }, "<")
       .to( heroHeading.current, { y: 0, opacity: 1, duration: 1, ease: "none" },"<+=.5")
-      .to( heroParagraph.current, { opacity: 1, duration: 1, ease: "none" }, "<+=1.2")
+      .to( heroParagraph.current, { opacity: 1, duration: 1, zIndex: 100, ease: "none" }, "<+=1.2")
       .to( heroButton.current,
         {
           opacity: 1,
+          zIndex: 100,
           y: 0,
           backdropFilter: "blur(10px)",
           duration: 1,
@@ -318,6 +321,7 @@ export default function CinemaAnimation({ timelineRef }) {
           heroParagraph={heroParagraph}
           heroBgRef={heroBgRef}
           timelineRef={timelineRef}
+          footballRef={footballRef}
         />
         <About
           aboutBodyRef={aboutBodyRef}

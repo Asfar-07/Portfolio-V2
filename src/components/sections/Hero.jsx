@@ -211,7 +211,8 @@ export default function Hero({
   heroButton,
   heroParagraph,
   heroBgRef,
-  timelineRef
+  timelineRef,
+  footballRef
 }) {
   const [loaded, setLoaded] = useState(0);
   const [ready, setReady] = useState(false);
@@ -270,12 +271,12 @@ function startApp() {
     <div ref={heroBodyRef} className="absolute  min-h-[650px] inset-0">
       <div className="fixed inset-0 -z-10 overflow-hidden" ref={heroBgRef} ></div>
 
-      <BackGround moonRef={moonRef} scratWrapper={scratWrapper} handleLoad={handleLoad} />
+      <BackGround moonRef={moonRef} scratWrapper={scratWrapper} footballRef={footballRef} handleLoad={handleLoad} />
 
       <div className="main-hero relative" ref={heroRef}>
 
         {!ready && <GeneralLoading />}
-        <Welcome heroRef={heroRef} timelineRef={timelineRef}/>
+        <Welcome heroRef={heroRef} timelineRef={timelineRef} scratWrapper={scratWrapper}/>
         <Hero_Ground
           handleLoad={handleLoad}
           groundRef={groundRef}
@@ -317,7 +318,7 @@ function startApp() {
               </div>
               <h1
                 ref={heroHeading}
-                className={` font-black m-0 w-[70%] leading-none   max-w-3xl   max-sm:min-w-[360px] 
+                className={` font-black relative m-0 w-[70%] leading-none   max-w-3xl   max-sm:min-w-[360px] 
               [@media(max-width:750px)_and_(min-height:780px)]:w-[90%]`}
               >
                 Crafting <span className="grad">Engaging</span> User Experiences
@@ -325,10 +326,10 @@ function startApp() {
               </h1>
               <div
                 ref={heroParagraph}
-                className={`w-[50%] relative z-30 max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
+                className={`w-[50%] relative max-w-xl max-md:w-[66%] max-sm:w-[50%] max-sm:min-w-[230px]
               [@media(max-width:750px)_and_(min-height:780px)]:w-[80%]`}
               >
-                <p className=" w-full font-extralight leading-relaxed tracking-wider text-[16px] max-sm:text-sm ">
+                <p className=" w-full font-light leading-relaxed tracking-wider text-[16px] max-sm:text-sm ">
                   I am Asfar Muhammed N S, a passionate software developer
                   building modern, scalable web experiences. Explore my creative
                   work and skills.
@@ -336,12 +337,12 @@ function startApp() {
               </div>
 
               <div
-                className="flex gap-5 relative z-100 uppercase"
+                className="flex gap-5 relative  uppercase"
               >
                 <button
                   ref={heroButton}
                   onClick={() => ScrollMove("projects", timelineRef)}
-                  className="hero-btn flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
+                  className="hero-btn relative flex items-center text-[13px] leading-0 font-normal tracking-widest cursor-pointer"
                 >
                   View my work{" "}
                   <span className="ml-4">
