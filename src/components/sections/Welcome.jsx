@@ -110,12 +110,12 @@ export default function Welcome({heroRef, timelineRef, scratWrapper}) {
 
       if (destroyed) return;
 
-      ctx.drawImage(bitmaps[0], 0, 0, 120, 120);
+      ctx.drawImage(bitmaps[0], 0, 0, 80, 80);
 
       timer = setInterval(() => {
         frameIndex = (frameIndex + 1) % TOTAL_FRAMES;
-        ctx.clearRect(0, 0, 120, 120);
-        ctx.drawImage(bitmaps[frameIndex], 0, 0, 120, 120);
+        ctx.clearRect(0, 0, 80, 80);
+        ctx.drawImage(bitmaps[frameIndex], 0, 0, 80, 80);
       }, FRAME_DURATION);
     };
 
@@ -174,7 +174,7 @@ export default function Welcome({heroRef, timelineRef, scratWrapper}) {
       mainContainer.style.setProperty("--scrat-end-y", `${endY}px`);
       mainContainer.style.setProperty(
         "--scrat-end-scale",
-        (Math.random()).toFixed(2),
+        (Math.random()).toFixed(1),
       );
       mainContainer.style.animation = `animateScrat ${duration}s linear forwards`;
 
@@ -204,17 +204,17 @@ export default function Welcome({heroRef, timelineRef, scratWrapper}) {
                 className="bg-scrat-animation  max-w-70 max-h-50 z-1 overflow-hidden"
               >
                 <div ref={scratWrapper} className="flex items-end gap-3">
-                  <div className="w-25 h-28">
+                  <div className="w-20 h-21">
                     <canvas
                       ref={canvasRef}
-                      width={120}
-                      height={120}
+                      width={80}
+                      height={80}
                       style={{
                         display: "block",
                       }}
                     />
                   </div>
-                  <div className=" w-6 h-6 -translate-y-8">
+                  <div className=" w-4 h-4 -translate-y-8">
                     <figure className="size-full">
                       <AcornExperience />
                     </figure>
