@@ -27,75 +27,12 @@ const stats = [
   },
 ];
 
-export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectionRef}) {
-  const glitchBox = useRef(null);
-  const projectorBeamRef = useRef(null);
-
-  useEffect(() => {
-    if (!glitchBox.current) return;
-
-    const mainLayer = glitchBox.current.querySelectorAll(".layer");
-    const redLayer = glitchBox.current.querySelector(".red");
-    const greenLayer = glitchBox.current.querySelector(".green");
-    const blueLayer = glitchBox.current.querySelector(".blue");
-    const originalLayer = glitchBox.current.querySelector(".original");
-
-    redLayer.style.animation = "redMove 0.15s infinite alternate";
-    greenLayer.style.animation = "greenMove 0.2s infinite alternate";
-    blueLayer.style.animation = "blueMove 0.12s infinite alternate";
-
-    redLayer.style.animationPlayState = "paused";
-    greenLayer.style.animationPlayState = "paused";
-    blueLayer.style.animationPlayState = "paused";
-
-    mainLayer.forEach((item) => {
-      item.style.mixBlendMode = "normal";
-      item.style.opacity = "0";
-    });
-    originalLayer.style.opacity = "1";
-
-    const interval = setInterval(() => {
-      redLayer.style.animationPlayState = "running";
-      greenLayer.style.animationPlayState = "running";
-      blueLayer.style.animationPlayState = "running";
-
-      mainLayer.forEach((item) => {
-        item.style.mixBlendMode = "screen";
-        item.style.opacity = "1";
-      });
-
-      setTimeout(() => {
-        redLayer.style.animationPlayState = "paused";
-        greenLayer.style.animationPlayState = "paused";
-        blueLayer.style.animationPlayState = "paused";
-
-        mainLayer.forEach((item) => {
-          item.style.mixBlendMode = "normal";
-          item.style.opacity = "0";
-        });
-        originalLayer.style.opacity = "1";
-      }, 1500);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
-
- const [particlesFloating, setParticlesFloating] = useState([]);
-
- useEffect(() => {
-   setParticlesFloating(
-     Array.from({ length: 22 }, (_, i) => ({
-       id: i,
-       size: Math.random() * 2.5 + 0.5,
-       left: `calc(50% + ${(Math.random() - 0.5) * 160 * (i / 22)}px)`,
-       bottom: `${Math.random() * 40}px`,
-       duration: `${Math.random() * 4 + 3}s`,
-       delay: `${Math.random() * 5}s`,
-       drift: `${(Math.random() - 0.5) * 60}px`,
-     })),
-   );
- }, []);
-
+export default function About({
+  aboutBodyRef,
+  mainAboutRef,
+  aboutMeRef,
+  collectionRef,
+}) {
   return (
     <div ref={aboutBodyRef} className=" absolute min-h-[650px] inset-0">
       <div
@@ -129,84 +66,35 @@ export default function About({aboutBodyRef, mainAboutRef, aboutMeRef, collectio
       max-lg:flex-col-reverse  max-md:w-full max-md:max-h-none max-md:h-auto`}
         >
           <section className="left-about flex-1 flex justify-center items-center max-md:w-full">
-            <div className="w-full h-full  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
-              <div className="glitch-box" ref={glitchBox}>
-                <Image src="/images/about/about-me-red.webp"
-                 fill
-                 sizes="(max-width: 768px) 20vw, 100px"
-                 className="layer red" 
-                 loading="lazy"
-                 alt="about-me"
-                 />
-                <Image src="/images/about/about-me-green.webp"
-                 fill
-                 sizes="(max-width: 768px) 20vw, 100px"
-                 className="layer green" 
-                 loading="lazy"
-                 alt="about-me"
-                 />
-                <Image src="/images/about/about-me-blue.webp"
-                 fill
-                 sizes="(max-width: 768px) 20vw, 100px"
-                 className="layer blue" 
-                 loading="lazy"
-                 alt="about-me"
-                 />
-                <Image
-                 src="/images/about/about-me-original.webp"
-                 fill
-                 sizes="(max-width: 768px) 80vw, 100px"
-                 className="layer original"
-                 loading="lazy"
-                 alt="about-me"
-                />
-              </div>
-              <div className="w-full h-[25%] absolute bottom-[2%] left-0 flex items-center justify-center">
-                <section className="beam-main" ref={projectorBeamRef}>
-                  <div className="project-beam "></div>
-                  <div className="beam-particles">
-                    {particlesFloating.map((p) => (
-                      <div
-                        key={p.id}
-                        className="projectile-particle-floating"
-                        style={{
-                          width: p.size,
-                          height: p.size,
-                          left: p.left,
-                          bottom: p.bottom,
-                          animationDuration: p.duration,
-                          animationDelay: p.delay,
-                          "--drift": p.drift,
-                        }}
+            <div className="w-full h-full flex flex-col  max-w-120 max-h-120 min-w-90 min-h-100 relative max-md:h-110 max-md:w-75">
+              <div className="relative flex flex-2 justify-center items-center min-w-80 min-h-80">
+                {/* Flip wrapper: sets perspective and hover group */}
+                <div className="group relative size-full max-w-95 max-h-95 perspective-distant">
+                  {/* Inner element that actually rotates */}
+                  <div className="relative size-full transform-3d transition-transform duration-700 ease-in-out group-hover:rotate-y-180">
+                    {/* Front side */}
+                    <div className="absolute inset-0 overflow-hidden rounded-2xl backface-hidden">
+                      <Image
+                        src="/images/about/about-profile-pic.webp"
+                        fill
+                        sizes="(max-width: 768px) 80vw, 100px"
+                        className="size-full object-cover filter grayscale"
+                        alt="Me"
                       />
-                    ))}
+                    </div>
 
-                    {particlesFloating.map((p) => (
-                      <div
-                        key={p.id}
-                        className="projectile-particle-moving"
-                        style={{
-                          width: p.size,
-                          height: p.size,
-                          left: p.left,
-                          bottom: p.bottom,
-                          animationDuration: p.duration,
-                          animationDelay: p.delay,
-                          "--drift": p.drift,
-                        }}
+                    {/* Back side */}
+                    <div className="absolute inset-0 overflow-hidden rounded-2xl backface-hidden rotate-y-180">
+                      <Image
+                        src="/images/about/about-cat-profile.webp"
+                        fill
+                        sizes="(max-width: 768px) 80vw, 100px"
+                        className="size-full object-cover grayscale"
+                        alt="Cat Meme"
                       />
-                    ))}
+                    </div>
                   </div>
-                </section>
-
-                <Image
-                  src="/images/about/about-projector.webp"
-                  fill
-                  sizes="(max-width: 768px) 80vw, 100px"
-                  className="projector size-full"
-                  loading="lazy"
-                  alt="Projector"
-                />
+                </div>
               </div>
             </div>
           </section>
