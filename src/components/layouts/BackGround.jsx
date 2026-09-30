@@ -18,23 +18,6 @@ export default function BackGround({ moonRef, handleLoad, footballRef}) {
           <MainSpaceExperience footballRef={footballRef}/>
         </figure>
       </main>
-     
-
-      {/* {stars.map((star) => (
-        <span
-          key={star.id}
-          className="absolute z-0 rounded-full star"
-          style={{
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            top: `${star.top}%`,
-            left: `${star.left}%`,
-            opacity: star.opacity,
-            animationDelay: `${star.delay}s`,
-            animationDuration: `${star.duration}s`,
-          }}
-        />
-      ))} */}
 
       <div ref={moonRef} className="moon-img absolute z-10 right-0 bottom-0">
         <Image

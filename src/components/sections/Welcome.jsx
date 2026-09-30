@@ -5,6 +5,7 @@ import '../../styles/welcome.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import ScrollMove from '@/utils/ScrollMove';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -196,7 +197,7 @@ export default function Welcome({heroRef, timelineRef, scratWrapper}) {
   return (
       <div
         id="welcome"
-        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-4 
+        className={`welcome bg-transparent text-(--p-font) h-auto min-h-[650px] absolute inset-0 z-8
           p-[0rem_4rem] w-full max-md:p-[0rem_1.5rem] max-lg:p-[0rem_2rem]`}
       >
          <div
@@ -256,13 +257,13 @@ export default function Welcome({heroRef, timelineRef, scratWrapper}) {
                 transforming ideas into digital experiences that are modern,
                 responsive & user focused.
               </p>
-              {/* <button onClick={() => ScrollMove("projects", timelineRef)}
+              <button onClick={() => ScrollMove("projects", timelineRef)}
               className="welcome-bottom-button relative z-900 flex gap-4 items-center font-bold uppercase py-2 px-6 text-[12px] rounded-3xl cursor-pointer">
                 <span>explore my work</span>
                 <span>
                   <ArrowRight />
                 </span>
-              </button> */}
+              </button>
             </div>
           </section>
         </main>

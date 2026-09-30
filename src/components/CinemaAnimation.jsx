@@ -138,7 +138,7 @@ export default function CinemaAnimation({ timelineRef }) {
       .to( heroBgRef.current, { backgroundColor: "#00031f", duration: 1, ease: "none" }, "0.5")
       .to( moonRef.current, { y: 0, duration: 1, ease: "none", scale: 1 }, "<+=1.5")
       .to( scratWrapper.current, { scale: 0.03, duration: 1, ease: "none" }, "<")
-      .to( footballRef.current.scale, { x: 0.0001, y: 0.0001, z: 0.0001, duration: 1, ease: "none", }, "<")
+      // .to( footballRef.current.scale, { x: 0.0001, y: 0.0001, z: 0.0001, duration: 1, ease: "none", }, "<")
       .to( groundRef.current, { yPercent: 0, duration: 1, ease: "none" }, "<+=0.3")
       .to( rightRockRef.current, { y: 0, duration: 1, scale: 1 }, "<+=.4")
       .to( rightRockHubRef.current,
