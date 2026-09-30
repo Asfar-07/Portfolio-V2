@@ -14,9 +14,9 @@ export default function MainSpaceExperience({footballRef}) {
         <directionalLight position={[5, 8, 10]} intensity={1.2} />
         <directionalLight position={[-6, -4, -5]} intensity={0.4} color="#4466ff" />
         <RotatingStars />
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>
           <FootballExperience footballRef={footballRef}/>
-        </Suspense>
+        </Suspense> */}
     </Canvas>
   )
 }
