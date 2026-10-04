@@ -7,6 +7,37 @@ var projectData;
 export default projectData = [
   {
     order: 1,
+    type: { category: "web application", color: "#6dffba", icon: AppWindow },
+    name: "DinoFitClub Application",
+    description: "A real-time fitness management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
+    point: "managing fitness operations and building a community",
+    display: "image",
+    links: ["https://www.dinofitclub.fit/", "https://github.com/Asfar-07/DinoFitClub"],
+    features: [{
+      title: "modular monolithic",
+      icon: Columns3Cog,
+    },
+    {
+      title: "strong security",
+      icon: EarthLock,
+    },
+    {
+      title: "interactive dashboard",
+      icon: LayoutDashboard,
+    }
+    ],
+    image: ["/images/projects/dinoryx1.webp", "/images/projects/dinoryx2.webp"],
+    tool: [
+      "Java",
+      "Spring",
+      "React",
+      "TypeScript",
+      "CSS",
+      "Tailwind CSS",
+    ]
+  },
+  {
+    order: 2,
     type: { category: "web tool", color: "#005c9d", icon: Wrench },
     name: "Qu.dev Survey Builder",
     description: "QuDev solves this. It automatically generates a best-practice relational database schema for your survey system and gives you a full web interface to build, manage, version, and test surveys — without writing a single entity from scratch.",
@@ -36,37 +67,7 @@ export default projectData = [
     ]
   },
 
-  {
-    order: 2,
-    type: { category: "web application", color: "#6dffba", icon: AppWindow },
-    name: "DinoRyx Application",
-    description: "A real-time Gym management platform with immersive data visualization, custom WebGL charts, and live API integration for dashboard.",
-    point: "managing gym operations and building a community",
-    display: "image",
-    links: ["https://github.com/Asfar-07/Gym-Management-Platform", "https://github.com/Asfar-07/Gym-Management-Platform"],
-    features: [{
-      title: "microservices architecture",
-      icon: Columns3Cog,
-    },
-    {
-      title: "strong security",
-      icon: EarthLock,
-    },
-    {
-      title: "interactive dashboard",
-      icon: LayoutDashboard,
-    }
-    ],
-    image: ["/images/projects/dinoryx1.webp", "/images/projects/dinoryx2.webp"],
-    tool: [
-      "Java",
-      "Spring",
-      "React",
-      "TypeScript",
-      "CSS",
-      "Tailwind CSS",
-    ]
-  },
+  
   {
     order: 3,
     type: { category: "web application", color: "#ff6d6d", icon: Globe },
