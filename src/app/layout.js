@@ -1,3 +1,4 @@
+import CharacterMessage from "@/components/message/CharacterMessage";
 import "./globals.css";
 
 
@@ -11,10 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://asfarmuhammedns.vercel.app" />
+        <link rel="preconnect" href="https://www.asfarmuhammed.space" />
       </head>
       <body>
         <main>{children}</main>
+        <CharacterMessage image="/images/RobotWell.webp" />
       </body>
     </html>
   );

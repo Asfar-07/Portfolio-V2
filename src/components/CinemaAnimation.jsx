@@ -126,7 +126,7 @@ export default function CinemaAnimation({ timelineRef }) {
       scrollTrigger: {
         trigger: mainCinemaRef.current,
         start: "top top",
-        end: isDesktop ? "+=8000" : "+=6000",
+        end: isDesktop ? "+=7000" : "+=5000",
         scrub: isDesktop ? 1 : 3,
         pin: true,
         refreshPriority: 10

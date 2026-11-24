@@ -26,7 +26,7 @@ export default projectData = [
       icon: LayoutDashboard,
     }
     ],
-    image: ["/images/projects/dinoryx1.webp", "/images/projects/dinoryx2.webp"],
+    image: ["/images/projects/DinoFitClub1.webp", "/images/projects/DinoFitClub2.webp"],
     tool: [
       "Java",
       "Spring",
